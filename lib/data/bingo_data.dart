@@ -1,4 +1,4 @@
-mixin Guests {
+mixin BingoData {
   static final List<String> guestList = <String>[
     'Brianna',
     'Jason',
@@ -16,9 +16,7 @@ mixin Guests {
     'Tracy',
     'Mary',
   ];
-}
 
-mixin BingoConditions {
   static final List<Map<String, String>> conditions = <Map<String, String>>[
     <String, String>{'steve': "Steve says 'Nice.'"},
     <String, String>{'nathan': 'Nathan does knees over toes'},

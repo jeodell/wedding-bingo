@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wedding_bingo/bingo/bingo.dart';
+import 'package:wedding_bingo/home.dart';
 
 void main() {
   runApp(const Wedding());
@@ -15,7 +15,7 @@ class Wedding extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: const Bingo(title: 'Wedding Bingo'),
+      home: const Home(title: 'Wedding App'),
     );
   }
 }

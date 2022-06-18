@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:wedding_bingo/data/data.dart';
+import 'package:wedding_bingo/data/bingo_data.dart';
 
 class Bingo extends StatefulWidget {
   const Bingo({Key? key, required this.title}) : super(key: key);
@@ -24,7 +24,7 @@ class _BingoState extends State<Bingo> {
   @override
   Widget build(BuildContext context) {
     if (_currentGuest == '') {
-      for (final String name in Guests.guestList) {
+      for (final String name in BingoData.guestList) {
         dropdownItems.add(DropdownMenuItem<String>(
           value: name,
           child: Text(name),
@@ -59,7 +59,7 @@ class _BingoState extends State<Bingo> {
                     25,
                     (int index) {
                       final List<Map<String, String>> conditions =
-                          BingoConditions.conditions;
+                          BingoData.conditions;
                       final Map<String, String> currentMap = conditions
                           .elementAt(Random().nextInt(conditions.length));
                       final String currentVictim = currentMap.keys.first;

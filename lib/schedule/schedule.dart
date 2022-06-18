@@ -1,3 +1,8 @@
+/*
+Day select
+List of activites
+Links
+*/
 import 'package:flutter/material.dart';
 
 class Schedule extends StatelessWidget {

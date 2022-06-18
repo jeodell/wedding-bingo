@@ -1,3 +1,7 @@
+/*
+Categories
+List of suggestions
+*/
 import 'package:flutter/material.dart';
 
 class Activities extends StatelessWidget {
