@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wedding_bingo/data/bingo_data.dart';
 
 class Bingo extends StatefulWidget {
-  const Bingo({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const Bingo({Key? key}) : super(key: key);
 
   @override
   State<Bingo> createState() => _BingoState();
@@ -33,7 +31,7 @@ class _BingoState extends State<Bingo> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text(widget.title)),
+        title: const Center(child: Text('Bingo')),
       ),
       body: _currentGuest == ''
           ? Center(

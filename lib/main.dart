@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wedding_bingo/home.dart';
+import 'package:wedding_bingo/routes/router.gr.dart';
 
 void main() {
   runApp(const Wedding());
@@ -10,12 +10,15 @@ class Wedding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Wedding Bingo',
+    final AppRouter appRouter = AppRouter();
+
+    return MaterialApp.router(
+      title: 'Collective Bug',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: const Home(title: 'Wedding App'),
+      routerDelegate: appRouter.delegate(),
+      routeInformationParser: appRouter.defaultRouteParser(),
     );
   }
 }
