@@ -1,12 +1,11 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:wedding_bingo/activities/activities.dart';
+import 'package:wedding_bingo/base.dart';
 import 'package:wedding_bingo/bingo/bingo.dart';
-import 'package:wedding_bingo/home.dart';
 import 'package:wedding_bingo/house/house.dart';
 import 'package:wedding_bingo/landing/landing.dart';
 import 'package:wedding_bingo/schedule/schedule.dart';
-import 'package:wedding_bingo/settings.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -34,10 +33,6 @@ import 'package:wedding_bingo/settings.dart';
         AutoRoute(
           path: 'activities',
           page: Activities,
-        ),
-        AutoRoute(
-          path: 'settings',
-          page: Settings,
         ),
       ],
     ),

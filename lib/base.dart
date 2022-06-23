@@ -28,8 +28,8 @@ class Home extends StatelessWidget {
       ],
       bottomNavigationBuilder: (_, TabsRouter tabsRouter) => SalomonBottomBar(
         margin: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 40,
+          horizontal: 5,
+          vertical: 10,
         ),
         currentIndex: tabsRouter.activeIndex,
         onTap: tabsRouter.setActiveIndex,

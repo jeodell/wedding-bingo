@@ -36,5 +36,6 @@ mixin BingoData {
     <String, String>{'brianna': 'Brianna cries'},
     <String, String>{'steve': "Steve mentions Jason's 'Big Brain'"},
     <String, String>{'steve': 'Steve ignores someone while on his phone'},
+    <String, String>{'jared': 'Jared hug squeezes someone.'},
   ];
 }
