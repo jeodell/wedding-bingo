@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wedding_bingo/data/bingo_data.dart';
 
 class Bingo extends StatefulWidget {
@@ -10,88 +11,114 @@ class Bingo extends StatefulWidget {
 }
 
 class _BingoState extends State<Bingo> {
-  String _currentGuest = '';
-  List<DropdownMenuItem<String>> dropdownItems = <DropdownMenuItem<String>>[];
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  late Future<String> _currentGuest;
+  late List<DropdownMenuItem<String>> dropdownItems =
+      <DropdownMenuItem<String>>[];
 
-  void _onGuestChanged(dynamic value) {
+  @override
+  void initState() {
+    super.initState();
+    _currentGuest = _prefs.then((SharedPreferences prefs) {
+      return prefs.getString('currentGuest') ?? '';
+    });
+  }
+
+  Future<void> _onGuestChanged(String? value) async {
+    final SharedPreferences prefs = await _prefs;
+
     setState(() {
-      _currentGuest = value;
+      _currentGuest =
+          prefs.setString('currentGuest', value!).then((bool success) {
+        return value;
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_currentGuest == '') {
-      for (final String name in BingoData.guestList) {
-        dropdownItems.add(DropdownMenuItem<String>(
-          value: name,
-          child: Text(name),
-        ));
-      }
-    }
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text('Bingo')),
-      ),
-      body: _currentGuest == ''
-          ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text(
-                    'Who Are You?',
-                  ),
-                  DropdownButtonFormField<String>(
-                      items: dropdownItems, onChanged: _onGuestChanged),
-                ],
-              ),
-            )
-          : Padding(
-              padding: const EdgeInsets.all(1),
-              child: SizedBox(
-                child: GridView.count(
-                  crossAxisCount: 5,
-                  mainAxisSpacing: 1,
-                  crossAxisSpacing: 1,
-                  children: List<Stack>.generate(
-                    25,
-                    (int index) {
-                      final List<Map<String, String>> conditions =
-                          BingoData.conditions;
-                      final Map<String, String> currentMap = conditions
-                          .elementAt(Random().nextInt(conditions.length));
-                      final String currentVictim = currentMap.keys.first;
-                      final String? currentCondition =
-                          currentMap[currentVictim];
-                      return Stack(
+      body: Center(
+        child: FutureBuilder<String?>(
+            future: _currentGuest,
+            builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return const CircularProgressIndicator();
+                case ConnectionState.none:
+                  return const CircularProgressIndicator();
+                case ConnectionState.active:
+                  return const CircularProgressIndicator();
+                case ConnectionState.done:
+                  if (snapshot.data == '') {
+                    for (final String name in BingoData.guestList) {
+                      dropdownItems.add(DropdownMenuItem<String>(
+                        value: name,
+                        child: Text(name),
+                      ));
+                    }
+                  }
+                  if (snapshot.data == '') {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Container(
-                            alignment: Alignment.center,
-                            child: Image.asset(
-                              'images/$currentVictim.jpg',
-                              height: 250,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
+                          const Text(
+                            'Who Are You?',
                           ),
-                          Container(
-                            alignment: Alignment.topCenter,
-                            color: Colors.black.withOpacity(0.5),
-                            child: Text(
-                              currentCondition!,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          )
+                          DropdownButtonFormField<String>(
+                              items: dropdownItems, onChanged: _onGuestChanged),
                         ],
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ),
+                      ),
+                    );
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.all(1),
+                      child: SizedBox(
+                        child: GridView.count(
+                          crossAxisCount: 5,
+                          mainAxisSpacing: 1,
+                          crossAxisSpacing: 1,
+                          children: List<Stack>.generate(25, (int index) {
+                            final List<Map<String, String>> conditions =
+                                BingoData.conditions;
+                            final Map<String, String> currentMap = conditions
+                                .elementAt(Random().nextInt(conditions.length));
+                            final String currentVictim = currentMap.keys.first;
+                            final String? currentCondition =
+                                currentMap[currentVictim];
+                            return Stack(
+                              children: <Widget>[
+                                Container(
+                                  alignment: Alignment.center,
+                                  child: Image.asset(
+                                    'images/$currentVictim.jpg',
+                                    height: 250,
+                                    width: double.infinity,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Container(
+                                  alignment: Alignment.topCenter,
+                                  color: Colors.black.withOpacity(0.5),
+                                  child: Text(
+                                    currentCondition!,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            );
+                          }),
+                        ),
+                      ),
+                    );
+                  }
+              }
+            }),
+      ),
     );
   }
 }
