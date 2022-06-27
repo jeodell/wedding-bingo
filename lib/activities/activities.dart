@@ -9,17 +9,9 @@ class Activities extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Activities'),
-      ),
+    return const Scaffold(
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: const Text('Go back!'),
-        ),
+        child: Text('Activities'),
       ),
     );
   }
