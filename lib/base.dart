@@ -3,7 +3,6 @@ Bottom nav
 */
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:wedding_bingo/routes/router.gr.dart';
 
 class Home extends StatelessWidget {
@@ -14,79 +13,42 @@ class Home extends StatelessWidget {
     return AutoTabsScaffold(
       appBarBuilder: (_, TabsRouter tabsRouter) => AppBar(
         backgroundColor: Colors.blue,
-        title: const Text('Bottom Nav'),
+        title: Text(tabsRouter.current.name),
         centerTitle: true,
         leading: const AutoLeadingButton(),
       ),
-      backgroundColor: Colors.blue,
       routes: const <PageRouteInfo<dynamic>>[
-        Landing(),
+        Welcome(),
         Bingo(),
         House(),
         Schedule(),
         Activities(),
       ],
-      bottomNavigationBuilder: (_, TabsRouter tabsRouter) => SalomonBottomBar(
-        margin: const EdgeInsets.symmetric(
-          horizontal: 5,
-          vertical: 10,
-        ),
+      bottomNavigationBuilder: (_, TabsRouter tabsRouter) =>
+          BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: tabsRouter.activeIndex,
         onTap: tabsRouter.setActiveIndex,
-        items: <SalomonBottomBarItem>[
-          SalomonBottomBarItem(
-            selectedColor: Colors.amberAccent,
-            icon: const Icon(
-              Icons.device_hub,
-              size: 30,
-              color: Colors.white,
-            ),
-            title: const Text('Landing'),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.device_hub),
+            label: 'Welcome',
           ),
-          SalomonBottomBarItem(
-            selectedColor: Colors.amberAccent,
-            icon: const Icon(
-              Icons.gamepad,
-              size: 30,
-              color: Colors.white,
-            ),
-            title: const Text('Bingo'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.gamepad),
+            label: 'Bingo',
           ),
-          SalomonBottomBarItem(
-            selectedColor: Colors.amberAccent,
-            icon: const Icon(
-              Icons.home,
-              size: 30,
-              color: Colors.white,
-            ),
-            title: const Text('House'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'House',
           ),
-          SalomonBottomBarItem(
-            selectedColor: Colors.amberAccent,
-            icon: const Icon(
-              Icons.schedule,
-              size: 30,
-              color: Colors.white,
-            ),
-            title: const Text('Schedule'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.schedule),
+            label: 'Schedule',
           ),
-          SalomonBottomBarItem(
-            selectedColor: Colors.amberAccent,
-            icon: const Icon(
-              Icons.local_activity,
-              size: 30,
-              color: Colors.white,
-            ),
-            title: const Text('Activities'),
-          ),
-          SalomonBottomBarItem(
-            selectedColor: Colors.amberAccent,
-            icon: const Icon(
-              Icons.settings,
-              size: 30,
-              color: Colors.white,
-            ),
-            title: const Text('Settings'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_activity),
+            label: 'Activities',
           ),
         ],
       ),
