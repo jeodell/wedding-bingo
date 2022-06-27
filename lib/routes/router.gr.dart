@@ -17,7 +17,7 @@ import '../activities/activities.dart' as _i6;
 import '../base.dart' as _i1;
 import '../bingo/bingo.dart' as _i3;
 import '../house/house.dart' as _i4;
-import '../landing/landing.dart' as _i2;
+import '../welcome/welcome.dart' as _i2;
 import '../schedule/schedule.dart' as _i5;
 
 class AppRouter extends _i7.RootStackRouter {
@@ -30,9 +30,9 @@ class AppRouter extends _i7.RootStackRouter {
       return _i7.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.Home());
     },
-    Landing.name: (routeData) {
+    Welcome.name: (routeData) {
       return _i7.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.Landing());
+          routeData: routeData, child: const _i2.Welcome());
     },
     Bingo.name: (routeData) {
       return _i7.MaterialPageX<dynamic>(
@@ -55,7 +55,7 @@ class AppRouter extends _i7.RootStackRouter {
   @override
   List<_i7.RouteConfig> get routes => [
         _i7.RouteConfig(Home.name, path: '/', children: [
-          _i7.RouteConfig(Landing.name, path: 'landing', parent: Home.name),
+          _i7.RouteConfig(Welcome.name, path: 'Welcome', parent: Home.name),
           _i7.RouteConfig(Bingo.name, path: 'bingo', parent: Home.name),
           _i7.RouteConfig(House.name, path: 'house', parent: Home.name),
           _i7.RouteConfig(Schedule.name, path: 'schedule', parent: Home.name),
@@ -75,11 +75,11 @@ class Home extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.Landing]
-class Landing extends _i7.PageRouteInfo<void> {
-  const Landing() : super(Landing.name, path: 'landing');
+/// [_i2.Welcome]
+class Welcome extends _i7.PageRouteInfo<void> {
+  const Welcome() : super(Welcome.name, path: 'Welcome');
 
-  static const String name = 'Landing';
+  static const String name = 'Welcome';
 }
 
 /// generated route for

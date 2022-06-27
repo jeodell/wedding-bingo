@@ -4,8 +4,8 @@ import 'package:wedding_bingo/activities/activities.dart';
 import 'package:wedding_bingo/base.dart';
 import 'package:wedding_bingo/bingo/bingo.dart';
 import 'package:wedding_bingo/house/house.dart';
-import 'package:wedding_bingo/landing/landing.dart';
 import 'package:wedding_bingo/schedule/schedule.dart';
+import 'package:wedding_bingo/welcome/welcome.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -15,8 +15,8 @@ import 'package:wedding_bingo/schedule/schedule.dart';
       page: Home,
       children: <AutoRoute>[
         AutoRoute(
-          path: 'landing',
-          page: Landing,
+          path: 'welcome',
+          page: Welcome,
         ),
         AutoRoute(
           path: 'bingo',
