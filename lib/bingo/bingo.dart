@@ -77,9 +77,9 @@ class _BingoState extends State<Bingo> {
                       child: SizedBox(
                         child: GridView.count(
                           crossAxisCount: 5,
-                          mainAxisSpacing: 1,
-                          crossAxisSpacing: 1,
-                          children: List<Stack>.generate(25, (int index) {
+                          mainAxisSpacing: 2,
+                          crossAxisSpacing: 2,
+                          children: List<TextButton>.generate(25, (int index) {
                             final List<Map<String, String>> conditions =
                                 BingoData.conditions;
                             final Map<String, String> currentMap = conditions
@@ -87,29 +87,34 @@ class _BingoState extends State<Bingo> {
                             final String currentVictim = currentMap.keys.first;
                             final String? currentCondition =
                                 currentMap[currentVictim];
-                            return Stack(
-                              children: <Widget>[
-                                Container(
-                                  alignment: Alignment.center,
-                                  child: Image.asset(
+                            return TextButton(
+                              style: TextButton.styleFrom(
+                                  padding: EdgeInsets.zero),
+                              onPressed: () {
+                                print('button pressed');
+                              },
+                              child: Stack(
+                                fit: StackFit.expand,
+                                children: <Widget>[
+                                  Image.asset(
                                     'images/$currentVictim.jpg',
                                     height: 250,
                                     width: double.infinity,
                                     fit: BoxFit.cover,
                                   ),
-                                ),
-                                Container(
-                                  alignment: Alignment.topCenter,
-                                  color: Colors.black.withOpacity(0.5),
-                                  child: Text(
-                                    currentCondition!,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
+                                  Container(
+                                    alignment: Alignment.topCenter,
+                                    color: Colors.black.withOpacity(0.5),
+                                    child: Text(
+                                      currentCondition!,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10,
+                                      ),
                                     ),
-                                  ),
-                                )
-                              ],
+                                  )
+                                ],
+                              ),
                             );
                           }),
                         ),
