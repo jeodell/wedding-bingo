@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:wedding_bingo/routes/router.gr.dart';
 
 void main() {
-  runApp(const Wedding());
+  runApp(Wedding());
 }
 
 class Wedding extends StatelessWidget {
-  const Wedding({Key? key}) : super(key: key);
+  Wedding({Key? key}) : super(key: key);
+  final AppRouter appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    final AppRouter appRouter = AppRouter();
-
     return MaterialApp.router(
       title: 'Collective Bug',
       theme: ThemeData(

@@ -31,11 +31,11 @@ class Home extends StatelessWidget {
         onTap: tabsRouter.setActiveIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.device_hub),
+            icon: Icon(Icons.forest),
             label: 'Welcome',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.gamepad),
+            icon: Icon(Icons.grid_on),
             label: 'Bingo',
           ),
           BottomNavigationBarItem(
@@ -43,7 +43,7 @@ class Home extends StatelessWidget {
             label: 'House',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.schedule),
+            icon: Icon(Icons.calendar_month),
             label: 'Schedule',
           ),
           BottomNavigationBarItem(
