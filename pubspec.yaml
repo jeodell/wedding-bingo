@@ -17,6 +17,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   auto_route: ^4.0.1
   shared_preferences: ^2.0.15
+  google_fonts: ^3.0.1
+  url_launcher: ^6.1.4
 
 dev_dependencies:
   flutter_test:
@@ -30,19 +32,4 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/jared.jpg
-    - images/brianna.jpg
-    - images/nathan.jpg
-    - images/steve.jpg
-
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+    - images/
