@@ -35,6 +35,15 @@ class _BingoState extends State<Bingo> {
     });
   }
 
+  Future<void> _requestGuestChange() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      _currentGuest = prefs.setString('currentGuest', '').then((bool success) {
+        return '';
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,50 +83,65 @@ class _BingoState extends State<Bingo> {
                   } else {
                     return Padding(
                       padding: const EdgeInsets.all(1),
-                      child: SizedBox(
-                        child: GridView.count(
-                          crossAxisCount: 5,
-                          mainAxisSpacing: 2,
-                          crossAxisSpacing: 2,
-                          children: List<TextButton>.generate(25, (int index) {
-                            final List<Map<String, String>> conditions =
-                                BingoData.conditions;
-                            final Map<String, String> currentMap = conditions
-                                .elementAt(Random().nextInt(conditions.length));
-                            final String currentVictim = currentMap.keys.first;
-                            final String? currentCondition =
-                                currentMap[currentVictim];
-                            return TextButton(
-                              style: TextButton.styleFrom(
-                                  padding: EdgeInsets.zero),
-                              onPressed: () {
-                                print('button pressed');
-                              },
-                              child: Stack(
-                                fit: StackFit.expand,
-                                children: <Widget>[
-                                  Image.asset(
-                                    'images/$currentVictim.jpg',
-                                    height: 250,
-                                    width: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Container(
-                                    alignment: Alignment.topCenter,
-                                    color: Colors.black.withOpacity(0.5),
-                                    child: Text(
-                                      currentCondition!,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 10,
-                                      ),
+                      child: Column(
+                        children: <Widget>[
+                          ElevatedButton(
+                            onPressed: () {
+                              _requestGuestChange();
+                            },
+                            child: const Text('Change user'),
+                          ),
+                          Expanded(
+                            child: SizedBox(
+                              child: GridView.count(
+                                crossAxisCount: 5,
+                                mainAxisSpacing: 2,
+                                crossAxisSpacing: 2,
+                                children:
+                                    List<TextButton>.generate(25, (int index) {
+                                  final List<Map<String, String>> conditions =
+                                      BingoData.conditions;
+                                  final Map<String, String> currentMap =
+                                      conditions.elementAt(
+                                          Random().nextInt(conditions.length));
+                                  final String currentVictim =
+                                      currentMap.keys.first;
+                                  final String? currentCondition =
+                                      currentMap[currentVictim];
+                                  return TextButton(
+                                    style: TextButton.styleFrom(
+                                        padding: EdgeInsets.zero),
+                                    onPressed: () {
+                                      print('button pressed');
+                                    },
+                                    child: Stack(
+                                      fit: StackFit.expand,
+                                      children: <Widget>[
+                                        Image.asset(
+                                          'images/$currentVictim.jpg',
+                                          height: 250,
+                                          width: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                        Container(
+                                          alignment: Alignment.topCenter,
+                                          color: Colors.black.withOpacity(0.5),
+                                          child: Text(
+                                            currentCondition!,
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 10,
+                                            ),
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                  )
-                                ],
+                                  );
+                                }),
                               ),
-                            );
-                          }),
-                        ),
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   }
