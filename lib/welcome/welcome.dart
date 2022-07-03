@@ -29,44 +29,42 @@ class Welcome extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.topLeft,
                   padding: const EdgeInsets.fromLTRB(36, 36, 0, 0),
-                  child: Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          'Welcome',
-                          style: TextStyle(
-                            color: const Color(0xff46638E),
-                            fontSize: 48,
-                            fontFamily: GoogleFonts.marcellus().fontFamily,
-                          ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'Welcome',
+                        style: TextStyle(
+                          color: const Color(0xff46638E),
+                          fontSize: 48,
+                          fontFamily: GoogleFonts.marcellus().fontFamily,
                         ),
-                        const SizedBox(height: 24),
-                        const Text(
-                          "We can't wait to see you at",
-                          style: TextStyle(
-                            color: Color(0xff46638E),
-                            fontSize: 14,
-                          ),
+                      ),
+                      const SizedBox(height: 24),
+                      const Text(
+                        "We can't wait to see you at",
+                        style: TextStyle(
+                          color: Color(0xff46638E),
+                          fontSize: 14,
                         ),
-                        const SizedBox(height: 12),
-                        const Text(
-                          'A Bug Wedding',
-                          style: TextStyle(
-                            color: Color(0xff46638E),
-                            fontSize: 28,
-                          ),
+                      ),
+                      const SizedBox(height: 12),
+                      const Text(
+                        'A Bug Wedding',
+                        style: TextStyle(
+                          color: Color(0xff46638E),
+                          fontSize: 28,
                         ),
-                        const SizedBox(height: 36),
-                        const Text(
-                          'September 11-18, 2022',
-                          style: TextStyle(
-                            color: Color(0xff46638E),
-                            fontSize: 16,
-                          ),
+                      ),
+                      const SizedBox(height: 36),
+                      const Text(
+                        'September 11-18, 2022',
+                        style: TextStyle(
+                          color: Color(0xff46638E),
+                          fontSize: 16,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 )),
           ),
