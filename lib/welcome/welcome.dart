@@ -5,7 +5,6 @@ Our story
 Pics
 */
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -31,33 +30,33 @@ class Welcome extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(36, 36, 0, 0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                    children: const <Widget>[
                       Text(
                         'Welcome',
                         style: TextStyle(
-                          color: const Color(0xff46638E),
+                          color: Color(0xff46638E),
                           fontSize: 48,
-                          fontFamily: GoogleFonts.marcellus().fontFamily,
+                          fontFamily: 'Marcellus',
                         ),
                       ),
-                      const SizedBox(height: 24),
-                      const Text(
+                      SizedBox(height: 24),
+                      Text(
                         "We can't wait to see you at",
                         style: TextStyle(
                           color: Color(0xff46638E),
                           fontSize: 14,
                         ),
                       ),
-                      const SizedBox(height: 12),
-                      const Text(
+                      SizedBox(height: 12),
+                      Text(
                         'A Bug Wedding',
                         style: TextStyle(
                           color: Color(0xff46638E),
                           fontSize: 28,
                         ),
                       ),
-                      const SizedBox(height: 36),
-                      const Text(
+                      SizedBox(height: 36),
+                      Text(
                         'September 11-18, 2022',
                         style: TextStyle(
                           color: Color(0xff46638E),
