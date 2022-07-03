@@ -1,3 +1,6 @@
+/*
+"Are you sure?" with picture of them
+*/
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
