@@ -18,47 +18,43 @@ class Home extends StatelessWidget {
       'Activities': const Color(0xffA4B6B4),
     };
 
-    return AutoTabsScaffold(
-      appBarBuilder: (_, TabsRouter tabsRouter) => AppBar(
-        backgroundColor: titleToColor[tabsRouter.current.name],
-        title: Text(tabsRouter.current.name),
-        centerTitle: true,
-        leading: const AutoLeadingButton(),
-      ),
-      routes: const <PageRouteInfo<dynamic>>[
-        Welcome(),
-        Bingo(),
-        House(),
-        Schedule(),
-        Activities(),
-      ],
-      bottomNavigationBuilder: (_, TabsRouter tabsRouter) =>
-          BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: tabsRouter.activeIndex,
-        onTap: tabsRouter.setActiveIndex,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.forest),
-            label: 'Welcome',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.grid_on),
-            label: 'Bingo',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'House',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: 'Schedule',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_activity),
-            label: 'Activities',
-          ),
+    return SafeArea(
+      child: AutoTabsScaffold(
+        routes: const <PageRouteInfo<dynamic>>[
+          Welcome(),
+          Bingo(),
+          House(),
+          Schedule(),
+          Activities(),
         ],
+        bottomNavigationBuilder: (_, TabsRouter tabsRouter) =>
+            BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: tabsRouter.activeIndex,
+          onTap: tabsRouter.setActiveIndex,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.forest),
+              label: 'Welcome',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.grid_on),
+              label: 'Bingo',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'House',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month),
+              label: 'Schedule',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.local_activity),
+              label: 'Activities',
+            ),
+          ],
+        ),
       ),
     );
   }
