@@ -10,14 +10,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, Color> titleToColor = <String, Color>{
-      'Welcome': const Color(0xff46638E),
-      'Bingo': const Color(0xff8BA5C3),
-      'House': const Color(0xff3D6575),
-      'Schedule': const Color(0xff264436),
-      'Activities': const Color(0xffA4B6B4),
-    };
-
     return SafeArea(
       child: AutoTabsScaffold(
         routes: const <PageRouteInfo<dynamic>>[
