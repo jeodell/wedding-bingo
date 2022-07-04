@@ -361,6 +361,20 @@ class House extends StatelessWidget {
     );
   }
 
+  Widget _buildPackingListItem(String label) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 2),
+      child: Text(
+        '\u2022 $label',
+        style: const TextStyle(
+          color: Color(0xff896759),
+          fontSize: 14,
+          fontWeight: FontWeight.w300,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -387,13 +401,13 @@ class House extends StatelessWidget {
                 _buildRoomAssignments(),
                 const SizedBox(height: 18),
                 _buildFloorplanImages(context),
-                const SizedBox(height: 18),
+                const SizedBox(height: 72),
                 Container(
                   color: const Color(0xffdfdacc),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const SizedBox(height: 18),
+                      const SizedBox(height: 72),
                       _buildHeaderWithDivider(
                         'PACKING NOTES',
                         const Color(0xff896759),
@@ -402,9 +416,9 @@ class House extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 48),
                         alignment: Alignment.centerLeft,
-                        width: 250,
+                        width: 275,
                         child: const Text(
-                          'Average Temperate Range in September:',
+                          'Average Temperature Range in September:',
                           style:
                               TextStyle(color: Color(0xff896759), fontSize: 16),
                         ),
@@ -412,6 +426,43 @@ class House extends StatelessWidget {
                       const SizedBox(height: 24),
                       _buildTemperatureBox(),
                       const SizedBox(height: 24),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 48),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            const Text(
+                              'Ceremony Attire:',
+                              style: TextStyle(
+                                color: Color(0xff896759),
+                                fontSize: 16,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            const Text(
+                              'Please wear Cocktail Formals attire in earthy colors',
+                              style: TextStyle(
+                                  color: Color(0xff896759),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300),
+                            ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              'Items to Pack:',
+                              style: TextStyle(
+                                color: Color(0xff896759),
+                                fontSize: 16,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            _buildPackingListItem('Active Clothing'),
+                            _buildPackingListItem('Swim Suit'),
+                            _buildPackingListItem('Hiking Shoes'),
+                            _buildPackingListItem('Water Shoes'),
+                            const SizedBox(height: 72),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 )
