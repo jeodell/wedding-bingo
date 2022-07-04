@@ -19,7 +19,7 @@ class House extends StatelessWidget {
           decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
-                  'images/map.jpg',
+                  'assets/images/map.jpg',
                 ),
                 fit: BoxFit.fill),
           ),
@@ -87,7 +87,7 @@ class House extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(36, 24, 36, 36),
       child: InkWell(
         child: Image.asset(
-          'images/house.jpg',
+          'assets/images/house.jpg',
           fit: BoxFit.cover,
         ),
         onTap: () {
@@ -295,14 +295,14 @@ class House extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
         child: GestureDetector(
           child: Image.asset(
-            'images/mainfloor.jpg',
+            'assets/images/mainfloor.jpg',
             fit: BoxFit.cover,
           ),
           onTap: () async {
             await showDialog(
               context: context,
               builder: (_) =>
-                  _buildImageDialog(context, 'images/mainfloor.jpg'),
+                  _buildImageDialog(context, 'assets/images/mainfloor.jpg'),
             );
           },
         ),
@@ -311,14 +311,14 @@ class House extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
         child: GestureDetector(
           child: Image.asset(
-            'images/upperfloor.jpg',
+            'assets/images/upperfloor.jpg',
             fit: BoxFit.cover,
           ),
           onTap: () async {
             await showDialog(
               context: context,
               builder: (_) =>
-                  _buildImageDialog(context, 'images/upperfloor.jpg'),
+                  _buildImageDialog(context, 'assets/images/upperfloor.jpg'),
             );
           },
         ),
@@ -379,7 +379,6 @@ class House extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,

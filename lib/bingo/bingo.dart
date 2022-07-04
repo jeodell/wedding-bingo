@@ -121,7 +121,7 @@ class _BingoState extends State<Bingo> {
                                       fit: StackFit.expand,
                                       children: <Widget>[
                                         Image.asset(
-                                          'images/$currentVictim.jpg',
+                                          'assets/images/$currentVictim.jpg',
                                           height: 250,
                                           width: double.infinity,
                                           fit: BoxFit.cover,
