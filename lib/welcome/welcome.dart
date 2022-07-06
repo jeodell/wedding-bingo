@@ -5,6 +5,7 @@ Our story
 Pics
 */
 import 'package:flutter/material.dart';
+import 'package:wedding_bingo/theme/colors.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class Welcome extends StatelessWidget {
                 Text(
                   'Welcome',
                   style: TextStyle(
-                    color: Color(0xff46638E),
+                    color: WeddingColors.maine,
                     fontSize: 48,
                     fontFamily: 'Marcellus',
                   ),
@@ -41,7 +42,7 @@ class Welcome extends StatelessWidget {
                 Text(
                   "We can't wait to see you at",
                   style: TextStyle(
-                    color: Color(0xff46638E),
+                    color: WeddingColors.maine,
                     fontSize: 14,
                   ),
                 ),
@@ -49,7 +50,7 @@ class Welcome extends StatelessWidget {
                 Text(
                   'A Bug Wedding',
                   style: TextStyle(
-                    color: Color(0xff46638E),
+                    color: WeddingColors.maine,
                     fontSize: 28,
                   ),
                 ),
@@ -57,7 +58,7 @@ class Welcome extends StatelessWidget {
                 Text(
                   'September 11-18, 2022',
                   style: TextStyle(
-                    color: Color(0xff46638E),
+                    color: WeddingColors.maine,
                     fontSize: 16,
                   ),
                 ),

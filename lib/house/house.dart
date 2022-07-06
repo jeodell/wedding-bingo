@@ -8,6 +8,7 @@ Link to VRBO listing
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:wedding_bingo/theme/colors.dart';
 
 class House extends StatelessWidget {
   const House({super.key});
@@ -31,11 +32,11 @@ class House extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(150),
-                  topRight: Radius.circular(150),
+                  topLeft: Radius.circular(200),
+                  topRight: Radius.circular(200),
                 ),
                 child: Container(
-                  color: const Color(0xffA4B6B4),
+                  color: WeddingColors.sage,
                   child: Column(
                     children: const <Widget>[
                       SizedBox(height: 36),
@@ -52,7 +53,7 @@ class House extends StatelessWidget {
                         'The Grand River Lodge',
                         style: TextStyle(
                           fontSize: 18,
-                          color: Color(0xff46638E),
+                          color: WeddingColors.maine,
                         ),
                       ),
                       SizedBox(height: 12),
@@ -60,7 +61,7 @@ class House extends StatelessWidget {
                         'LEAVENWORTH, WA',
                         style: TextStyle(
                           fontSize: 18,
-                          color: Color(0xff46638E),
+                          color: WeddingColors.maine,
                         ),
                       ),
                       SizedBox(height: 24),
@@ -68,7 +69,7 @@ class House extends StatelessWidget {
                         'Approximately 2.5 Hours from Seattle',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Color(0xff46638E),
+                          color: WeddingColors.maine,
                         ),
                       ),
                     ],
@@ -107,7 +108,7 @@ class House extends StatelessWidget {
           'ADDRESS',
           style: TextStyle(
             fontSize: 16,
-            color: Color(0xff46638E),
+            color: WeddingColors.maine,
           ),
         ),
         const SizedBox(height: 4),
@@ -119,7 +120,7 @@ class House extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16,
-              color: Color(0xff46638E),
+              color: WeddingColors.maine,
             ),
           ),
         ),
@@ -167,7 +168,7 @@ class House extends StatelessWidget {
             child: Text(
               'Main Floor',
               style: TextStyle(
-                color: Color(0xff46638E),
+                color: WeddingColors.maine,
                 fontSize: 20,
               ),
             ),
@@ -177,7 +178,7 @@ class House extends StatelessWidget {
             child: Text(
               '\u2022 J&B: River King',
               style: TextStyle(
-                color: Color(0xff46638E),
+                color: WeddingColors.maine,
                 fontSize: 16,
               ),
             ),
@@ -187,7 +188,7 @@ class House extends StatelessWidget {
             child: Text(
               '\u2022 Janice: The Creset',
               style: TextStyle(
-                color: Color(0xff46638E),
+                color: WeddingColors.maine,
                 fontSize: 16,
               ),
             ),
@@ -197,7 +198,7 @@ class House extends StatelessWidget {
             child: Text(
               '\u2022 Larry & Tracy: The Plume',
               style: TextStyle(
-                color: Color(0xff46638E),
+                color: WeddingColors.maine,
                 fontSize: 16,
               ),
             ),
@@ -207,7 +208,7 @@ class House extends StatelessWidget {
             child: Text(
               'Upper Floor',
               style: TextStyle(
-                color: Color(0xff46638E),
+                color: WeddingColors.maine,
                 fontSize: 20,
               ),
             ),
@@ -217,7 +218,7 @@ class House extends StatelessWidget {
             child: Text(
               '\u2022 Steve & Rhonda: The Grand Suite',
               style: TextStyle(
-                color: Color(0xff46638E),
+                color: WeddingColors.maine,
                 fontSize: 16,
               ),
             ),
@@ -227,7 +228,7 @@ class House extends StatelessWidget {
             child: Text(
               "\u2022 Grandma Wilkins: Quail's Egg",
               style: TextStyle(
-                color: Color(0xff46638E),
+                color: WeddingColors.maine,
                 fontSize: 16,
               ),
             ),
@@ -237,7 +238,7 @@ class House extends StatelessWidget {
             child: Text(
               "\u2022 Amanda & Derek: Murphey's Run",
               style: TextStyle(
-                color: Color(0xff46638E),
+                color: WeddingColors.maine,
                 fontSize: 16,
               ),
             ),
@@ -247,7 +248,7 @@ class House extends StatelessWidget {
             child: Text(
               '\u2022 Rachel & Chris: Covey Suite',
               style: TextStyle(
-                color: Color(0xff46638E),
+                color: WeddingColors.maine,
                 fontSize: 16,
               ),
             ),
@@ -257,7 +258,7 @@ class House extends StatelessWidget {
             child: Text(
               '\u2022 Jared, Lindsey, & Nathan: 4-bunk  ',
               style: TextStyle(
-                color: Color(0xff46638E),
+                color: WeddingColors.maine,
                 fontSize: 16,
               ),
             ),
@@ -351,7 +352,7 @@ class House extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 64),
       child: Container(
-          color: const Color(0xffbe7552),
+          color: WeddingColors.terracotta,
           child: Column(
             children: <Widget>[
               _buildTemperatureRow('HIGHS', '66-77'),
@@ -367,7 +368,7 @@ class House extends StatelessWidget {
       child: Text(
         '\u2022 $label',
         style: const TextStyle(
-          color: Color(0xff896759),
+          color: WeddingColors.mushroom,
           fontSize: 14,
           fontWeight: FontWeight.w300,
         ),
@@ -383,13 +384,13 @@ class House extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: <Color>[Color(0xffA4B6B4), Color(0xffdfdacc)],
+            colors: <Color>[WeddingColors.sage, WeddingColors.birch],
             stops: <double>[0.5, 0.5],
           ),
         ),
         child: SingleChildScrollView(
           child: Container(
-            color: const Color(0xffA4B6B4),
+            color: WeddingColors.sage,
             child: Column(
               children: <Widget>[
                 _buildMapStack(context),
@@ -402,14 +403,14 @@ class House extends StatelessWidget {
                 _buildFloorplanImages(context),
                 const SizedBox(height: 72),
                 Container(
-                  color: const Color(0xffdfdacc),
+                  color: WeddingColors.birch,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       const SizedBox(height: 72),
                       _buildHeaderWithDivider(
                         'PACKING NOTES',
-                        const Color(0xff896759),
+                        WeddingColors.mushroom,
                       ),
                       const SizedBox(height: 24),
                       Container(
@@ -418,8 +419,8 @@ class House extends StatelessWidget {
                         width: 275,
                         child: const Text(
                           'Average Temperature Range in September:',
-                          style:
-                              TextStyle(color: Color(0xff896759), fontSize: 16),
+                          style: TextStyle(
+                              color: WeddingColors.mushroom, fontSize: 16),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -433,7 +434,7 @@ class House extends StatelessWidget {
                             const Text(
                               'Ceremony Attire:',
                               style: TextStyle(
-                                color: Color(0xff896759),
+                                color: WeddingColors.mushroom,
                                 fontSize: 16,
                               ),
                             ),
@@ -441,7 +442,7 @@ class House extends StatelessWidget {
                             const Text(
                               'Please wear Cocktail Formals attire in earthy colors',
                               style: TextStyle(
-                                  color: Color(0xff896759),
+                                  color: WeddingColors.mushroom,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300),
                             ),
@@ -449,7 +450,7 @@ class House extends StatelessWidget {
                             const Text(
                               'Items to Pack:',
                               style: TextStyle(
-                                color: Color(0xff896759),
+                                color: WeddingColors.mushroom,
                                 fontSize: 16,
                               ),
                             ),
