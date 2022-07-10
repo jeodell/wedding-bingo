@@ -36,7 +36,7 @@ class Schedule extends StatelessWidget {
           text,
           style: TextStyle(
             color: color,
-            fontSize: 20,
+            fontSize: 24,
           ),
         ),
         _buildDivider(color, 'right'),
@@ -53,7 +53,7 @@ class Schedule extends StatelessWidget {
           activity,
           style: const TextStyle(
             color: WeddingColors.pine,
-            fontSize: 16,
+            fontSize: 18,
           ),
         ),
       );

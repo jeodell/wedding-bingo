@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
           Bingo(),
           House(),
           Schedule(),
-          Activities(),
+          EmptyRouterRoute(),
         ],
         bottomNavigationBuilder: (_, TabsRouter tabsRouter) =>
             BottomNavigationBar(
