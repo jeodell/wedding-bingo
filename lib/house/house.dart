@@ -291,40 +291,42 @@ class House extends StatelessWidget {
   }
 
   Widget _buildFloorplanImages(BuildContext context) {
-    return Column(children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
-        child: GestureDetector(
-          child: Image.asset(
-            'assets/images/mainfloor.jpg',
-            fit: BoxFit.cover,
+    return Column(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
+          child: GestureDetector(
+            child: Image.asset(
+              'assets/images/mainfloor.jpg',
+              fit: BoxFit.cover,
+            ),
+            onTap: () async {
+              await showDialog(
+                context: context,
+                builder: (_) =>
+                    _buildImageDialog(context, 'assets/images/mainfloor.jpg'),
+              );
+            },
           ),
-          onTap: () async {
-            await showDialog(
-              context: context,
-              builder: (_) =>
-                  _buildImageDialog(context, 'assets/images/mainfloor.jpg'),
-            );
-          },
         ),
-      ),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
-        child: GestureDetector(
-          child: Image.asset(
-            'assets/images/upperfloor.jpg',
-            fit: BoxFit.cover,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
+          child: GestureDetector(
+            child: Image.asset(
+              'assets/images/upperfloor.jpg',
+              fit: BoxFit.cover,
+            ),
+            onTap: () async {
+              await showDialog(
+                context: context,
+                builder: (_) =>
+                    _buildImageDialog(context, 'assets/images/upperfloor.jpg'),
+              );
+            },
           ),
-          onTap: () async {
-            await showDialog(
-              context: context,
-              builder: (_) =>
-                  _buildImageDialog(context, 'assets/images/upperfloor.jpg'),
-            );
-          },
-        ),
-      )
-    ]);
+        )
+      ],
+    );
   }
 
   Widget _buildTemperatureRow(String label, String range) {
@@ -352,13 +354,14 @@ class House extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 64),
       child: Container(
-          color: WeddingColors.terracotta,
-          child: Column(
-            children: <Widget>[
-              _buildTemperatureRow('HIGHS', '66-77'),
-              _buildTemperatureRow('LOWS', '47-55'),
-            ],
-          )),
+        color: WeddingColors.terracotta,
+        child: Column(
+          children: <Widget>[
+            _buildTemperatureRow('HIGHS', '66-77'),
+            _buildTemperatureRow('LOWS', '47-55'),
+          ],
+        ),
+      ),
     );
   }
 
