@@ -49,8 +49,8 @@ android {
 
     defaultConfig {
         applicationId "com.jasoneodell.wedding_bingo"
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 29
+        targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
