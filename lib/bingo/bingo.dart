@@ -61,7 +61,7 @@ class _BingoState extends State<Bingo> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Bingo page coming soon!'),
     );
   }
