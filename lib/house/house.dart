@@ -32,8 +32,8 @@ class House extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(200),
-                  topRight: Radius.circular(200),
+                  topLeft: Radius.circular(1000),
+                  topRight: Radius.circular(1000),
                 ),
                 child: Container(
                   color: WeddingColors.sage,
