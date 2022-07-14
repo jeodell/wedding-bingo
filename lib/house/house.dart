@@ -26,7 +26,7 @@ class House extends StatelessWidget {
           ),
           child: Container(
             alignment: Alignment.bottomCenter,
-            height: MediaQuery.of(context).size.height / 1.25,
+            height: MediaQuery.of(context).size.height / 1.15,
             child: SizedBox(
               height: 200,
               width: MediaQuery.of(context).size.width,
@@ -157,112 +157,48 @@ class House extends StatelessWidget {
     );
   }
 
+  Widget _buildFloorHeaders(String floorLevel) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
+      child: Text(
+        floorLevel,
+        style: const TextStyle(
+          color: WeddingColors.maine,
+          fontSize: 20,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildIndividualRoomAssignments(String guests) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Text(
+        '\u2022 $guests',
+        style: const TextStyle(
+          color: WeddingColors.maine,
+          fontSize: 16,
+        ),
+      ),
+    );
+  }
+
   Widget _buildRoomAssignments() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 32),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: const <Widget>[
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 8),
-            child: Text(
-              'Main Floor',
-              style: TextStyle(
-                color: WeddingColors.maine,
-                fontSize: 20,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 2),
-            child: Text(
-              '\u2022 J&B: River King',
-              style: TextStyle(
-                color: WeddingColors.maine,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 2),
-            child: Text(
-              '\u2022 Janice: The Creset',
-              style: TextStyle(
-                color: WeddingColors.maine,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 2),
-            child: Text(
-              '\u2022 Larry & Tracy: The Plume',
-              style: TextStyle(
-                color: WeddingColors.maine,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 16, 0, 8),
-            child: Text(
-              'Upper Floor',
-              style: TextStyle(
-                color: WeddingColors.maine,
-                fontSize: 20,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 2),
-            child: Text(
-              '\u2022 Steve & Rhonda: The Grand Suite',
-              style: TextStyle(
-                color: WeddingColors.maine,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 2),
-            child: Text(
-              "\u2022 Grandma Wilkins: Quail's Egg",
-              style: TextStyle(
-                color: WeddingColors.maine,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 2),
-            child: Text(
-              "\u2022 Amanda & Derek: Murphey's Run",
-              style: TextStyle(
-                color: WeddingColors.maine,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 2),
-            child: Text(
-              '\u2022 Rachel & Chris: Covey Suite',
-              style: TextStyle(
-                color: WeddingColors.maine,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 2),
-            child: Text(
-              '\u2022 Jared, Lindsey, & Nathan: 4-bunk  ',
-              style: TextStyle(
-                color: WeddingColors.maine,
-                fontSize: 16,
-              ),
-            ),
-          ),
+        children: <Widget>[
+          _buildFloorHeaders('Main Floor'),
+          _buildIndividualRoomAssignments('J&B: River King'),
+          _buildIndividualRoomAssignments('Janice: The Creset'),
+          _buildIndividualRoomAssignments('Larry & Tracy: The Plume'),
+          _buildFloorHeaders('Upper Floor'),
+          _buildIndividualRoomAssignments('Steve & Rhonda: The Grand Suite'),
+          _buildIndividualRoomAssignments("Grandma Wilkins: Quail's Egg"),
+          _buildIndividualRoomAssignments("Amanda & Derek: Murphey's Run"),
+          _buildIndividualRoomAssignments('Rachel & Chris: Covey Suite'),
+          _buildIndividualRoomAssignments('Jared, Lindsey, & Nathan: 4-bunk'),
         ],
       ),
     );
