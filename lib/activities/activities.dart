@@ -64,26 +64,24 @@ class Activities extends StatelessWidget {
                   fontFamily: 'Marcellus',
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 36),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       _buildActivityLink(context, 'Trails'),
-                      _buildActivityLink(context, 'Restaurants'),
-                      _buildActivityLink(context, 'Wineries'),
-                      _buildActivityLink(context, 'Breweries'),
+                      _buildActivityLink(context, 'Food'),
+                      _buildActivityLink(context, 'Drinks'),
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      _buildActivityLink(context, 'Spa'),
-                      _buildActivityLink(context, 'Golf'),
-                      _buildActivityLink(context, 'Garden'),
                       _buildActivityLink(context, 'Day Trips'),
+                      _buildActivityLink(context, 'Other'),
                     ],
                   ),
                 ],
