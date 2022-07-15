@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wedding_bingo/activities/activity_details.dart';
 import 'package:wedding_bingo/activities/activity_stack.dart';
 import 'package:wedding_bingo/theme/colors.dart';
+import 'package:wedding_bingo/widgets/widgets.dart';
 
 class Food extends StatelessWidget {
   const Food({super.key});
@@ -49,8 +50,7 @@ class Food extends StatelessWidget {
               buildActivityLabel(
                   'Bavarian Bakery', WeddingColors.mushroom, Colors.white70),
               buildActivityDetails(<String>[], Colors.white70),
-              const SizedBox(height: 24),
-              const SizedBox(height: 48),
+              buildBottomPadding(),
             ],
           ),
         ),

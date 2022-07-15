@@ -5,6 +5,7 @@ Links
 */
 import 'package:flutter/material.dart';
 import 'package:wedding_bingo/theme/colors.dart';
+import 'package:wedding_bingo/widgets/widgets.dart';
 
 class Schedule extends StatelessWidget {
   const Schedule({super.key});
@@ -171,7 +172,7 @@ class Schedule extends StatelessWidget {
                   '\u2022 Check-out before 11am',
                 ],
               ),
-              const SizedBox(height: 24),
+              buildBottomPadding(),
             ],
           ),
         ),

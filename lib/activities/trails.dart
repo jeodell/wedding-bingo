@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:wedding_bingo/activities/activity_details.dart';
 import 'package:wedding_bingo/activities/activity_stack.dart';
 import 'package:wedding_bingo/theme/colors.dart';
+import 'package:wedding_bingo/widgets/widgets.dart';
 
 class Trails extends StatelessWidget {
   const Trails({super.key});
@@ -56,7 +57,7 @@ class Trails extends StatelessWidget {
                   WeddingColors.tahoe),
               buildActivityDetails(<String>[
                 '3.4 miles',
-                '800ft elevation gain',
+                '800 ft elevation gain',
                 '15 min drive from house',
                 'Steep at the beginning but levels off with amazing views of Leavenworth and the surrounding mountains',
                 'Not well marked so bring map',
@@ -72,7 +73,7 @@ class Trails extends StatelessWidget {
                   WeddingColors.tahoe),
               buildActivityDetails(<String>[
                 '2 miles',
-                '100ft elevation gain',
+                '100 ft elevation gain',
                 '7 min drive from house',
                 'River and mountain views from beautiful park in town',
               ], WeddingColors.tahoe),
@@ -86,22 +87,23 @@ class Trails extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 64),
                 child: InkWell(
-                    child: const Text(
-                      '\u2022 The 7 Best Leavenworth Hikes (Besides the Enchantments)',
-                      style: TextStyle(
-                        color: WeddingColors.tahoe,
-                        fontSize: 18,
-                        decoration: TextDecoration.underline,
-                      ),
+                  child: const Text(
+                    '\u2022 The 7 Best Leavenworth Hikes (Besides the Enchantments)',
+                    style: TextStyle(
+                      color: WeddingColors.tahoe,
+                      fontSize: 18,
+                      decoration: TextDecoration.underline,
                     ),
-                    onTap: () {
-                      final Uri trailsUri = Uri.parse(
-                          'https://smalltownwashington.com/leavenworth-hikes/');
-                      launchUrl(trailsUri);
-                      return;
-                    }),
+                  ),
+                  onTap: () {
+                    final Uri trailsUri = Uri.parse(
+                        'https://smalltownwashington.com/leavenworth-hikes/');
+                    launchUrl(trailsUri);
+                    return;
+                  },
+                ),
               ),
-              const SizedBox(height: 48),
+              buildBottomPadding(),
             ],
           ),
         ),

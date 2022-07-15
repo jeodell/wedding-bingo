@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wedding_bingo/activities/activity_details.dart';
 import 'package:wedding_bingo/activities/activity_stack.dart';
 import 'package:wedding_bingo/theme/colors.dart';
+import 'package:wedding_bingo/widgets/widgets.dart';
 
 class Drinks extends StatelessWidget {
   const Drinks({super.key});
@@ -72,7 +73,7 @@ class Drinks extends StatelessWidget {
                 'Great Reviews',
                 'Outdoor seating',
                 '3 min from house',
-                'Open 12-5 everyday',
+                'Open 12-5 every day',
               ], Colors.white70),
               buildActivityReadMore('https://www.silvarawine.com/',
                   'https://g.page/silvarawine?share', Colors.white70),
@@ -88,7 +89,7 @@ class Drinks extends StatelessWidget {
               buildActivityDetails(<String>[], Colors.white70),
               buildActivityReadMore('https://icicleridgewinery.com/',
                   'https://goo.gl/maps/6fYQgR7FECZ7CnRe6', Colors.white70),
-              const SizedBox(height: 48),
+              buildBottomPadding(),
             ],
           ),
         ),

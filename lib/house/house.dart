@@ -9,6 +9,7 @@ Link to VRBO listing
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wedding_bingo/theme/colors.dart';
+import 'package:wedding_bingo/widgets/widgets.dart';
 
 class House extends StatelessWidget {
   const House({super.key});
@@ -308,7 +309,7 @@ class House extends StatelessWidget {
         '\u2022 $label',
         style: const TextStyle(
           color: WeddingColors.mushroom,
-          fontSize: 14,
+          fontSize: 16,
           fontWeight: FontWeight.w300,
         ),
       ),
@@ -374,7 +375,7 @@ class House extends StatelessWidget {
                               'Ceremony Attire:',
                               style: TextStyle(
                                 color: WeddingColors.mushroom,
-                                fontSize: 16,
+                                fontSize: 18,
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -390,7 +391,7 @@ class House extends StatelessWidget {
                               'Items to Pack:',
                               style: TextStyle(
                                 color: WeddingColors.mushroom,
-                                fontSize: 16,
+                                fontSize: 18,
                               ),
                             ),
                             const SizedBox(height: 6),
@@ -398,7 +399,17 @@ class House extends StatelessWidget {
                             _buildPackingListItem('Swim Suit'),
                             _buildPackingListItem('Hiking Shoes'),
                             _buildPackingListItem('Water Shoes'),
-                            const SizedBox(height: 72),
+                            const SizedBox(height: 16),
+                            const Text(
+                              'Color Palette:',
+                              style: TextStyle(
+                                color: WeddingColors.mushroom,
+                                fontSize: 18,
+                              ),
+                            ),
+                            const SizedBox(height: 18),
+                            Image.asset('assets/images/colors.jpg'),
+                            buildBottomPadding(),
                           ],
                         ),
                       ),
