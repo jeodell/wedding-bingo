@@ -1,14 +1,11 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:wedding_bingo/activities/activities.dart';
-import 'package:wedding_bingo/activities/breweries.dart';
 import 'package:wedding_bingo/activities/daytrips.dart';
-import 'package:wedding_bingo/activities/garden.dart';
-import 'package:wedding_bingo/activities/golf.dart';
-import 'package:wedding_bingo/activities/restaurants.dart';
-import 'package:wedding_bingo/activities/spa.dart';
+import 'package:wedding_bingo/activities/drinks.dart';
+import 'package:wedding_bingo/activities/food.dart';
+import 'package:wedding_bingo/activities/other.dart';
 import 'package:wedding_bingo/activities/trails.dart';
-import 'package:wedding_bingo/activities/wineries.dart';
 import 'package:wedding_bingo/base.dart';
 import 'package:wedding_bingo/bingo/bingo.dart';
 import 'package:wedding_bingo/house/house.dart';
@@ -51,28 +48,16 @@ import 'package:wedding_bingo/welcome/welcome.dart';
               page: Trails,
             ),
             AutoRoute(
-              path: 'restaurants',
-              page: Restaurants,
+              path: 'food',
+              page: Food,
             ),
             AutoRoute(
-              path: 'wineries',
-              page: Wineries,
+              path: 'drinks',
+              page: Drinks,
             ),
             AutoRoute(
-              path: 'breweries',
-              page: Breweries,
-            ),
-            AutoRoute(
-              path: 'spa',
-              page: Spa,
-            ),
-            AutoRoute(
-              path: 'golf',
-              page: Golf,
-            ),
-            AutoRoute(
-              path: 'garden',
-              page: Garden,
+              path: 'other',
+              page: Other,
             ),
             AutoRoute(
               path: 'daytrips',

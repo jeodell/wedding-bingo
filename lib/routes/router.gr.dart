@@ -11,17 +11,14 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i6;
-import 'package:flutter/material.dart' as _i16;
+import 'package:flutter/material.dart' as _i13;
 
 import '../activities/activities.dart' as _i7;
-import '../activities/breweries.dart' as _i11;
-import '../activities/daytrips.dart' as _i15;
-import '../activities/garden.dart' as _i14;
-import '../activities/golf.dart' as _i13;
-import '../activities/restaurants.dart' as _i9;
-import '../activities/spa.dart' as _i12;
+import '../activities/daytrips.dart' as _i12;
+import '../activities/drinks.dart' as _i10;
+import '../activities/food.dart' as _i9;
+import '../activities/other.dart' as _i11;
 import '../activities/trails.dart' as _i8;
-import '../activities/wineries.dart' as _i10;
 import '../base.dart' as _i1;
 import '../bingo/bingo.dart' as _i3;
 import '../house/house.dart' as _i4;
@@ -29,7 +26,7 @@ import '../schedule/schedule.dart' as _i5;
 import '../welcome/welcome.dart' as _i2;
 
 class AppRouter extends _i6.RootStackRouter {
-  AppRouter([_i16.GlobalKey<_i16.NavigatorState>? navigatorKey])
+  AppRouter([_i13.GlobalKey<_i13.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
@@ -66,33 +63,21 @@ class AppRouter extends _i6.RootStackRouter {
       return _i6.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i8.Trails());
     },
-    Restaurants.name: (routeData) {
+    Food.name: (routeData) {
       return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i9.Restaurants());
+          routeData: routeData, child: const _i9.Food());
     },
-    Wineries.name: (routeData) {
+    Drinks.name: (routeData) {
       return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i10.Wineries());
+          routeData: routeData, child: const _i10.Drinks());
     },
-    Breweries.name: (routeData) {
+    Other.name: (routeData) {
       return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i11.Breweries());
-    },
-    Spa.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i12.Spa());
-    },
-    Golf.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i13.Golf());
-    },
-    Garden.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i14.Garden());
+          routeData: routeData, child: const _i11.Other());
     },
     DayTrips.name: (routeData) {
       return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i15.DayTrips());
+          routeData: routeData, child: const _i12.DayTrips());
     }
   };
 
@@ -111,18 +96,12 @@ class AppRouter extends _i6.RootStackRouter {
                     path: '', parent: EmptyRouterRoute.name),
                 _i6.RouteConfig(Trails.name,
                     path: 'trails', parent: EmptyRouterRoute.name),
-                _i6.RouteConfig(Restaurants.name,
-                    path: 'restaurants', parent: EmptyRouterRoute.name),
-                _i6.RouteConfig(Wineries.name,
-                    path: 'wineries', parent: EmptyRouterRoute.name),
-                _i6.RouteConfig(Breweries.name,
-                    path: 'breweries', parent: EmptyRouterRoute.name),
-                _i6.RouteConfig(Spa.name,
-                    path: 'spa', parent: EmptyRouterRoute.name),
-                _i6.RouteConfig(Golf.name,
-                    path: 'golf', parent: EmptyRouterRoute.name),
-                _i6.RouteConfig(Garden.name,
-                    path: 'garden', parent: EmptyRouterRoute.name),
+                _i6.RouteConfig(Food.name,
+                    path: 'food', parent: EmptyRouterRoute.name),
+                _i6.RouteConfig(Drinks.name,
+                    path: 'drinks', parent: EmptyRouterRoute.name),
+                _i6.RouteConfig(Other.name,
+                    path: 'other', parent: EmptyRouterRoute.name),
                 _i6.RouteConfig(DayTrips.name,
                     path: 'daytrips', parent: EmptyRouterRoute.name)
               ])
@@ -198,55 +177,31 @@ class Trails extends _i6.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.Restaurants]
-class Restaurants extends _i6.PageRouteInfo<void> {
-  const Restaurants() : super(Restaurants.name, path: 'restaurants');
+/// [_i9.Food]
+class Food extends _i6.PageRouteInfo<void> {
+  const Food() : super(Food.name, path: 'food');
 
-  static const String name = 'Restaurants';
+  static const String name = 'Food';
 }
 
 /// generated route for
-/// [_i10.Wineries]
-class Wineries extends _i6.PageRouteInfo<void> {
-  const Wineries() : super(Wineries.name, path: 'wineries');
+/// [_i10.Drinks]
+class Drinks extends _i6.PageRouteInfo<void> {
+  const Drinks() : super(Drinks.name, path: 'drinks');
 
-  static const String name = 'Wineries';
+  static const String name = 'Drinks';
 }
 
 /// generated route for
-/// [_i11.Breweries]
-class Breweries extends _i6.PageRouteInfo<void> {
-  const Breweries() : super(Breweries.name, path: 'breweries');
+/// [_i11.Other]
+class Other extends _i6.PageRouteInfo<void> {
+  const Other() : super(Other.name, path: 'other');
 
-  static const String name = 'Breweries';
+  static const String name = 'Other';
 }
 
 /// generated route for
-/// [_i12.Spa]
-class Spa extends _i6.PageRouteInfo<void> {
-  const Spa() : super(Spa.name, path: 'spa');
-
-  static const String name = 'Spa';
-}
-
-/// generated route for
-/// [_i13.Golf]
-class Golf extends _i6.PageRouteInfo<void> {
-  const Golf() : super(Golf.name, path: 'golf');
-
-  static const String name = 'Golf';
-}
-
-/// generated route for
-/// [_i14.Garden]
-class Garden extends _i6.PageRouteInfo<void> {
-  const Garden() : super(Garden.name, path: 'garden');
-
-  static const String name = 'Garden';
-}
-
-/// generated route for
-/// [_i15.DayTrips]
+/// [_i12.DayTrips]
 class DayTrips extends _i6.PageRouteInfo<void> {
   const DayTrips() : super(DayTrips.name, path: 'daytrips');
 
