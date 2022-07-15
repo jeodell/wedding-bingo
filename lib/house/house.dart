@@ -191,7 +191,7 @@ class House extends StatelessWidget {
         children: <Widget>[
           _buildFloorHeaders('Main Floor'),
           _buildIndividualRoomAssignments('J&B: River King'),
-          _buildIndividualRoomAssignments('Janice: The Creset'),
+          _buildIndividualRoomAssignments('Janice: The Crest'),
           _buildIndividualRoomAssignments('Larry & Tracy: The Plume'),
           _buildFloorHeaders('Upper Floor'),
           _buildIndividualRoomAssignments('Steve & Rhonda: The Grand Suite'),
