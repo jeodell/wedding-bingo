@@ -196,7 +196,7 @@ class House extends StatelessWidget {
           _buildFloorHeaders('Upper Floor'),
           _buildIndividualRoomAssignments('Steve & Rhonda: The Grand Suite'),
           _buildIndividualRoomAssignments("Grandma Wilkins: Quail's Egg"),
-          _buildIndividualRoomAssignments("Amanda & Derek: Murphey's Run"),
+          _buildIndividualRoomAssignments("Amanda & Derek: Murphy's Run"),
           _buildIndividualRoomAssignments('Rachel & Chris: Covey Suite'),
           _buildIndividualRoomAssignments('Jared, Lindsey, & Nathan: 4-bunk'),
         ],
