@@ -49,19 +49,27 @@ class Drinks extends StatelessWidget {
               const SizedBox(height: 24),
               buildActivityLabel(
                   'Doghaus Brewery', WeddingColors.sky, Colors.white70),
-              buildActivityDetails(<String>[], Colors.white70),
+              buildActivityDetails(<String>[
+                'Nano-craft brewery with a micro-sized taproom',
+                'Basement bar',
+              ], Colors.white70),
               buildActivityReadMore('https://www.doghausbrewery.com/',
                   'https://goo.gl/maps/yxiYpBb7VPKsWEFx7', Colors.white70),
               const SizedBox(height: 24),
               buildActivityLabel(
                   'Blewett Brewing Company', WeddingColors.sky, Colors.white70),
-              buildActivityDetails(<String>[], Colors.white70),
+              buildActivityDetails(<String>[
+                'Linked with Idlewild Pizza',
+              ], Colors.white70),
               buildActivityReadMore('https://www.blewettbrew.com/',
                   'https://goo.gl/maps/Q7hjXzJHFjefybEz5', Colors.white70),
               const SizedBox(height: 24),
               buildActivityLabel(
                   'Bushel and Bee Taproom', WeddingColors.sky, Colors.white70),
-              buildActivityDetails(<String>[], Colors.white70),
+              buildActivityDetails(<String>[
+                'Unique selection of ciders, beers, and meads',
+                'Outdoor seating',
+              ], Colors.white70),
               buildActivityReadMore(
                   'https://www.bushelandbee.com/',
                   'https://g.page/Bushel-and-Bee-Taproom?share',
@@ -78,17 +86,30 @@ class Drinks extends StatelessWidget {
               buildActivityReadMore('https://www.silvarawine.com/',
                   'https://g.page/silvarawine?share', Colors.white70),
               const SizedBox(height: 24),
+              buildActivityLabel(
+                  'Icicle Ridge Winery', WeddingColors.sky, Colors.white70),
+              buildActivityDetails(<String>[
+                'Uptown, Downtown, and Log Home locations',
+              ], Colors.white70),
+              buildActivityReadMore('https://icicleridgewinery.com/',
+                  'https://goo.gl/maps/6fYQgR7FECZ7CnRe6', Colors.white70),
+              const SizedBox(height: 24),
               buildActivityLabel('Boudreaux Cellars Tasting Room',
                   WeddingColors.sky, Colors.white70),
-              buildActivityDetails(<String>[], Colors.white70),
+              buildActivityDetails(<String>[
+                'Downtown location only',
+              ], Colors.white70),
               buildActivityReadMore('https://www.boudreauxcellars.com/taste/',
                   'https://goo.gl/maps/vJsMFCDSfjj4kYjH7', Colors.white70),
               const SizedBox(height: 24),
-              buildActivityLabel('Icicle Ridge Winery: Downtown',
-                  WeddingColors.sky, Colors.white70),
-              buildActivityDetails(<String>[], Colors.white70),
-              buildActivityReadMore('https://icicleridgewinery.com/',
-                  'https://goo.gl/maps/6fYQgR7FECZ7CnRe6', Colors.white70),
+              buildActivityLabel(
+                  'Argonaut Coffee', WeddingColors.sky, Colors.white70),
+              buildActivityDetails(<String>[
+                'Coffee, pastries, biscuits, and more',
+              ], Colors.white70),
+              buildActivityReadMore('https://www.argocoffeeandbiscuits.com/#/',
+                  'https://goo.gl/maps/YAWNhV7LVzKzaSURA', Colors.white70),
+              const SizedBox(height: 24),
               buildBottomPadding(),
             ],
           ),

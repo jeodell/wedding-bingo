@@ -19,6 +19,12 @@ class House extends StatelessWidget {
       children: <Widget>[
         Container(
           decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: WeddingColors.sage,
+                width: 0,
+              ),
+            ),
             image: DecorationImage(
                 image: AssetImage(
                   'assets/images/map.jpg',
@@ -116,12 +122,21 @@ class House extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(
               vertical: 8, horizontal: MediaQuery.of(context).size.width * 0.2),
-          child: const Text(
-            '9515 Lone Pine Orchard Rd, Leavenworth, WA 98826',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16,
-              color: WeddingColors.maine,
+          child: InkWell(
+            onTap: () {
+              final Uri houseUri =
+                  Uri.parse('https://goo.gl/maps/qxsfkWwP2Hj8oLw77');
+              launchUrl(houseUri);
+              return;
+            },
+            child: const Text(
+              '9515 Lone Pine Orchard Rd, Leavenworth, WA 98826',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                color: WeddingColors.maine,
+                decoration: TextDecoration.underline,
+              ),
             ),
           ),
         ),
@@ -375,7 +390,7 @@ class House extends StatelessWidget {
                               'Ceremony Attire:',
                               style: TextStyle(
                                 color: WeddingColors.mushroom,
-                                fontSize: 18,
+                                fontSize: 20,
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -391,7 +406,7 @@ class House extends StatelessWidget {
                               'Items to Pack:',
                               style: TextStyle(
                                 color: WeddingColors.mushroom,
-                                fontSize: 18,
+                                fontSize: 20,
                               ),
                             ),
                             const SizedBox(height: 6),
@@ -404,7 +419,7 @@ class House extends StatelessWidget {
                               'Color Palette:',
                               style: TextStyle(
                                 color: WeddingColors.mushroom,
-                                fontSize: 18,
+                                fontSize: 20,
                               ),
                             ),
                             const SizedBox(height: 18),

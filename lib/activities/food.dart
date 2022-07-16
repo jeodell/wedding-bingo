@@ -42,14 +42,51 @@ class Food extends StatelessWidget {
                 'Farm to Table',
                 'Pacific Northwest Cuisine',
                 'Downtown Leavenworth',
-                'Dinner Only, closed Tues & Wed',
+                'Dinner Only',
+                'Closed Tues & Wed',
               ], Colors.white70),
               buildActivityReadMore('https://www.watershedpnw.com/',
                   'https://g.page/WatershedPNW?share', Colors.white70),
               const SizedBox(height: 24),
               buildActivityLabel(
+                  "Visconti's", WeddingColors.mushroom, Colors.white70),
+              buildActivityDetails(<String>[
+                'Fancy Italian',
+              ], Colors.white70),
+              buildActivityReadMore('https://www.viscontis.com/home',
+                  'https://goo.gl/maps/LcXmTHP1Gs2fHHVE6', Colors.white70),
+              const SizedBox(height: 24),
+              buildActivityLabel(
+                  'Valley Cafe', WeddingColors.mushroom, Colors.white70),
+              buildActivityDetails(<String>[
+                'Bouygues',
+              ], Colors.white70),
+              buildActivityReadMore('https://valleycafeleavenworth.com/menu/',
+                  'https://goo.gl/maps/oZnVTHV6ypuceSL17', Colors.white70),
+              const SizedBox(height: 24),
+              buildActivityLabel(
+                  'South', WeddingColors.mushroom, Colors.white70),
+              buildActivityDetails(<String>[
+                'Latin American',
+              ], Colors.white70),
+              buildActivityReadMore('https://www.southrestaurants.com/',
+                  'https://goo.gl/maps/uMU9LHvqE5NcBpZs7', Colors.white70),
+              const SizedBox(height: 24),
+              buildActivityLabel(
+                  'Munchen Haus', WeddingColors.mushroom, Colors.white70),
+              buildActivityDetails(<String>['Nice patio'], Colors.white70),
+              buildActivityReadMore('https://www.munchenhaus.com/',
+                  'https://goo.gl/maps/ur8RMnwdB2wNJfJM7', Colors.white70),
+              const SizedBox(height: 24),
+              buildActivityLabel(
                   'Bavarian Bakery', WeddingColors.mushroom, Colors.white70),
-              buildActivityDetails(<String>[], Colors.white70),
+              buildActivityDetails(<String>[
+                'Strudels, danishes, pretzels, cakes, and more',
+              ], Colors.white70),
+              buildActivityReadMore(
+                  'https://www.facebook.com/bavarianbakeryofwa/',
+                  'https://goo.gl/maps/EcC6NT6EEb2c9yiw7',
+                  Colors.white70),
               buildBottomPadding(),
             ],
           ),

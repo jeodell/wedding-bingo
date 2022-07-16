@@ -82,6 +82,17 @@ class Trails extends StatelessWidget {
                   'https://goo.gl/maps/75UCrprMdpztqoxV8',
                   WeddingColors.tahoe),
               const SizedBox(height: 24),
+              buildActivityLabel('South Wedge Mountain Trail',
+                  WeddingColors.sage, WeddingColors.tahoe),
+              buildActivityDetails(<String>[
+                '3 miles',
+                '1700 ft elevation gain',
+              ], WeddingColors.tahoe),
+              buildActivityReadMore(
+                  'https://www.alltrails.com/trail/us/washington/south-wedge-mountain-trail',
+                  'https://goo.gl/maps/D4dzpGac3sVBZE6j7',
+                  WeddingColors.tahoe),
+              const SizedBox(height: 24),
               buildActivityLabel(
                   'MORE Trail Guides', WeddingColors.sage, WeddingColors.tahoe),
               Padding(
