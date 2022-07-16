@@ -26,10 +26,11 @@ class House extends StatelessWidget {
               ),
             ),
             image: DecorationImage(
-                image: AssetImage(
-                  'assets/images/map.jpg',
-                ),
-                fit: BoxFit.fill),
+              image: AssetImage(
+                'assets/images/map.jpg',
+              ),
+              fit: BoxFit.cover,
+            ),
           ),
           child: Container(
             alignment: Alignment.bottomCenter,

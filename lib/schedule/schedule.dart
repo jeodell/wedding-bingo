@@ -130,8 +130,8 @@ class Schedule extends StatelessWidget {
               _buildHeaderWithDivider('Tuesday | 9/13', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
-                  '\u2022 Optional Enchantments Hikes for the Masochistic',
-                  '\u2022 Rafting Tour',
+                  '\u2022 Optional Enchantments hike for the masochistic',
+                  '\u2022 Rafting tour',
                   '\u2022 Lake Chelan',
                 ],
               ),
