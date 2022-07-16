@@ -18,7 +18,7 @@ class DayTrips extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Image.asset(
-                'assets/images/coast.jpg',
+                'assets/images/twins.jpg',
               ),
               const SizedBox(height: 24),
               Row(
