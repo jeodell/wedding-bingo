@@ -20,7 +20,7 @@ class Food extends StatelessWidget {
               Image.asset(
                 'assets/images/coast.jpg',
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               Row(
                 children: const <Widget>[
                   Spacer(),
@@ -35,58 +35,115 @@ class Food extends StatelessWidget {
                   Spacer(),
                 ],
               ),
-              const SizedBox(height: 24),
               buildActivityLabel(
-                  'The Watershed Cafe', WeddingColors.mushroom, Colors.white70),
-              buildActivityDetails(<String>[
-                'Farm to Table',
-                'Pacific Northwest Cuisine',
-                'Downtown Leavenworth',
-                'Dinner Only',
-                'Closed Tues & Wed',
-              ], Colors.white70),
-              buildActivityReadMore('https://www.watershedpnw.com/',
-                  'https://g.page/WatershedPNW?share', Colors.white70),
-              const SizedBox(height: 24),
+                'Yodelin',
+                WeddingColors.mushroom,
+                Colors.white70,
+              ),
+              buildSpacer(),
               buildActivityLabel(
-                  "Visconti's", WeddingColors.mushroom, Colors.white70),
-              buildActivityDetails(<String>[
-                'Fancy Italian',
-              ], Colors.white70),
-              buildActivityReadMore('https://www.viscontis.com/home',
-                  'https://goo.gl/maps/LcXmTHP1Gs2fHHVE6', Colors.white70),
-              const SizedBox(height: 24),
-              buildActivityLabel(
-                  'Valley Cafe', WeddingColors.mushroom, Colors.white70),
-              buildActivityDetails(<String>[
-                'Bouygues',
-              ], Colors.white70),
-              buildActivityReadMore('https://valleycafeleavenworth.com/menu/',
-                  'https://goo.gl/maps/oZnVTHV6ypuceSL17', Colors.white70),
-              const SizedBox(height: 24),
-              buildActivityLabel(
-                  'South', WeddingColors.mushroom, Colors.white70),
-              buildActivityDetails(<String>[
-                'Latin American',
-              ], Colors.white70),
-              buildActivityReadMore('https://www.southrestaurants.com/',
-                  'https://goo.gl/maps/uMU9LHvqE5NcBpZs7', Colors.white70),
-              const SizedBox(height: 24),
-              buildActivityLabel(
-                  'Munchen Haus', WeddingColors.mushroom, Colors.white70),
-              buildActivityDetails(<String>['Nice patio'], Colors.white70),
-              buildActivityReadMore('https://www.munchenhaus.com/',
-                  'https://goo.gl/maps/ur8RMnwdB2wNJfJM7', Colors.white70),
-              const SizedBox(height: 24),
-              buildActivityLabel(
-                  'Bavarian Bakery', WeddingColors.mushroom, Colors.white70),
-              buildActivityDetails(<String>[
-                'Strudels, danishes, pretzels, cakes, and more',
-              ], Colors.white70),
+                'The Watershed Cafe',
+                WeddingColors.mushroom,
+                Colors.white70,
+              ),
+              buildActivityDetails(
+                <String>[
+                  'Farm to Table',
+                  'Pacific Northwest Cuisine',
+                  'Downtown Leavenworth',
+                  'Dinner Only',
+                  'Closed Tues & Wed',
+                ],
+                Colors.white70,
+              ),
               buildActivityReadMore(
-                  'https://www.facebook.com/bavarianbakeryofwa/',
-                  'https://goo.gl/maps/EcC6NT6EEb2c9yiw7',
-                  Colors.white70),
+                'https://www.watershedpnw.com/',
+                'https://goo.gl/maps/YUJVg1cCiqrsgoV49',
+                Colors.white70,
+              ),
+              buildSpacer(),
+              buildActivityLabel(
+                "Visconti's",
+                WeddingColors.mushroom,
+                Colors.white70,
+              ),
+              buildActivityDetails(
+                <String>[
+                  'Fancy Italian',
+                ],
+                Colors.white70,
+              ),
+              buildActivityReadMore(
+                'https://www.viscontis.com/home',
+                'https://goo.gl/maps/LcXmTHP1Gs2fHHVE6',
+                Colors.white70,
+              ),
+              buildSpacer(),
+              buildActivityLabel(
+                'Valley Cafe',
+                WeddingColors.mushroom,
+                Colors.white70,
+              ),
+              buildActivityDetails(
+                <String>[
+                  'Bouygues',
+                ],
+                Colors.white70,
+              ),
+              buildActivityReadMore(
+                'https://valleycafeleavenworth.com/menu/',
+                'https://goo.gl/maps/oZnVTHV6ypuceSL17',
+                Colors.white70,
+              ),
+              buildSpacer(),
+              buildActivityLabel(
+                'South',
+                WeddingColors.mushroom,
+                Colors.white70,
+              ),
+              buildActivityDetails(
+                <String>[
+                  'Latin American',
+                ],
+                Colors.white70,
+              ),
+              buildActivityReadMore(
+                'https://www.southrestaurants.com/',
+                'https://goo.gl/maps/uMU9LHvqE5NcBpZs7',
+                Colors.white70,
+              ),
+              buildSpacer(),
+              buildActivityLabel(
+                'Munchen Haus',
+                WeddingColors.mushroom,
+                Colors.white70,
+              ),
+              buildActivityDetails(
+                <String>['Nice patio'],
+                Colors.white70,
+              ),
+              buildActivityReadMore(
+                'https://www.munchenhaus.com/',
+                'https://goo.gl/maps/ur8RMnwdB2wNJfJM7',
+                Colors.white70,
+              ),
+              buildSpacer(),
+              buildActivityLabel(
+                'Bavarian Bakery',
+                WeddingColors.mushroom,
+                Colors.white70,
+              ),
+              buildActivityDetails(
+                <String>[
+                  'Strudels, danishes, pretzels, cakes, and more',
+                ],
+                Colors.white70,
+              ),
+              buildActivityReadMore(
+                'https://www.facebook.com/bavarianbakeryofwa/',
+                'https://goo.gl/maps/EcC6NT6EEb2c9yiw7',
+                Colors.white70,
+              ),
               buildBottomPadding(),
             ],
           ),

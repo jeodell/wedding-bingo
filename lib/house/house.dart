@@ -99,10 +99,14 @@ class House extends StatelessWidget {
           'assets/images/house.jpg',
           fit: BoxFit.cover,
         ),
-        onTap: () {
+        onTap: () async {
           final Uri vrboUri = Uri.parse(
               'https://www.vrbo.com/631085?noDates=true&unitId=1178866');
-          launchUrl(vrboUri);
+          if (await canLaunchUrl(vrboUri)) {
+            launchUrl(vrboUri);
+          } else {
+            throw 'Could not launch $vrboUri';
+          }
           return;
         },
       ),
@@ -127,7 +131,10 @@ class House extends StatelessWidget {
             onTap: () {
               final Uri houseUri =
                   Uri.parse('https://goo.gl/maps/qxsfkWwP2Hj8oLw77');
-              launchUrl(houseUri);
+              launchUrl(
+                houseUri,
+                mode: LaunchMode.externalApplication,
+              );
               return;
             },
             child: const Text(
@@ -187,16 +194,23 @@ class House extends StatelessWidget {
     );
   }
 
-  Widget _buildIndividualRoomAssignments(String guests) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2),
-      child: Text(
-        '\u2022 $guests',
-        style: const TextStyle(
-          color: WeddingColors.maine,
-          fontSize: 16,
-        ),
-      ),
+  Widget _buildBulletedList(List<String> listItems) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: listItems
+          .map(
+            (String item) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: Text(
+                '\u2022 $item',
+                style: const TextStyle(
+                  color: WeddingColors.maine,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -207,15 +221,19 @@ class House extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           _buildFloorHeaders('Main Floor'),
-          _buildIndividualRoomAssignments('J&B: River King'),
-          _buildIndividualRoomAssignments('Janice: The Crest'),
-          _buildIndividualRoomAssignments('Larry & Tracy: The Plume'),
+          _buildBulletedList(<String>[
+            'J&B: River King',
+            'Janice: The Crest',
+            'Larry & Tracy: The Plume'
+          ]),
           _buildFloorHeaders('Upper Floor'),
-          _buildIndividualRoomAssignments('Steve & Rhonda: The Grand Suite'),
-          _buildIndividualRoomAssignments("Grandma Wilkins: Quail's Egg"),
-          _buildIndividualRoomAssignments("Amanda & Derek: Murphy's Run"),
-          _buildIndividualRoomAssignments('Rachel & Chris: Covey Suite'),
-          _buildIndividualRoomAssignments('Jared, Lindsey, & Nathan: 4-bunk'),
+          _buildBulletedList(<String>[
+            'Steve & Rhonda: The Grand Suite',
+            "Grandma Wilkins: Quail's Egg",
+            "Amanda & Derek: Murphy's Run",
+            'Rachel & Chris: Covey Suite',
+            'Jared, Lindsey, & Nathan: 4-bunk'
+          ])
         ],
       ),
     );
@@ -279,6 +297,33 @@ class House extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+
+  Widget _buildAmenities() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          _buildBulletedList(<String>[
+            'Private Beach on the Wenatchee River',
+            'Wrap around outdoor deck with seating & fire pit',
+            'Hot tub',
+            'Putting & chipping green',
+            'Outdoor basketball hoop',
+            'Volleyball',
+            'Bocce Ball',
+            'Game room with pool table, poker table, bar, keg, and giant wall Scrabble',
+            'Hammock',
+            'Gourmet kitchen',
+            'Gas grill & smoker',
+            'Theater with candy at the ready',
+            'Washer & dryer',
+            'Internet',
+          ]),
+        ],
+      ),
     );
   }
 
@@ -353,11 +398,20 @@ class House extends StatelessWidget {
                 _buildHouseImage(),
                 _buildHouseAddress(context),
                 const SizedBox(height: 36),
-                _buildHeaderWithDivider('YOUR ROOM', Colors.white70),
+                _buildHeaderWithDivider(
+                  'YOUR ROOM',
+                  Colors.white70,
+                ),
                 _buildRoomAssignments(),
-                const SizedBox(height: 18),
+                buildSpacer(),
                 _buildFloorplanImages(context),
-                const SizedBox(height: 72),
+                buildSpacer(),
+                _buildHeaderWithDivider(
+                  'AMENITIES',
+                  Colors.white70,
+                ),
+                _buildAmenities(),
+                const SizedBox(height: 36),
                 Container(
                   color: WeddingColors.birch,
                   child: Column(
@@ -368,7 +422,7 @@ class House extends StatelessWidget {
                         'PACKING NOTES',
                         WeddingColors.mushroom,
                       ),
-                      const SizedBox(height: 24),
+                      buildSpacer(),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 48),
                         alignment: Alignment.centerLeft,
@@ -379,9 +433,9 @@ class House extends StatelessWidget {
                               color: WeddingColors.mushroom, fontSize: 16),
                         ),
                       ),
-                      const SizedBox(height: 24),
+                      buildSpacer(),
                       _buildTemperatureBox(),
-                      const SizedBox(height: 24),
+                      buildSpacer(),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 48),
                         child: Column(
@@ -402,7 +456,7 @@ class House extends StatelessWidget {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300),
                             ),
-                            const SizedBox(height: 16),
+                            buildSpacer(),
                             const Text(
                               'Items to Pack:',
                               style: TextStyle(
@@ -415,7 +469,7 @@ class House extends StatelessWidget {
                             _buildPackingListItem('Swim Suit'),
                             _buildPackingListItem('Hiking Shoes'),
                             _buildPackingListItem('Water Shoes'),
-                            const SizedBox(height: 16),
+                            buildSpacer(),
                             const Text(
                               'Color Palette:',
                               style: TextStyle(
@@ -423,8 +477,9 @@ class House extends StatelessWidget {
                                 fontSize: 20,
                               ),
                             ),
-                            const SizedBox(height: 18),
-                            Image.asset('assets/images/colors.jpg'),
+                            const SizedBox(height: 12),
+                            Center(
+                                child: Image.asset('assets/images/colors.jpg')),
                             buildBottomPadding(),
                           ],
                         ),

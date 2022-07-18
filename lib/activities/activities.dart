@@ -5,6 +5,7 @@ List of suggestions
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:wedding_bingo/theme/colors.dart';
+import 'package:wedding_bingo/widgets/widgets.dart';
 
 class Activities extends StatelessWidget {
   const Activities({super.key});
@@ -55,7 +56,7 @@ class Activities extends StatelessWidget {
               Image.asset(
                 'assets/images/jnb.jpg',
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               const Text(
                 'Activities',
                 style: TextStyle(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:wedding_bingo/widgets/widgets.dart';
 
 Widget buildActivityLabel(
     String activityLabel, Color labelColor, Color textColor) {
@@ -64,9 +65,13 @@ Widget buildActivityReadMore(String website, String maps, Color textColor) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             InkWell(
-              onTap: () {
+              onTap: () async {
                 final Uri activityUri = Uri.parse(website);
-                launchUrl(activityUri);
+                if (await canLaunchUrl(activityUri)) {
+                  launchUrl(activityUri);
+                } else {
+                  throw 'Could not launch $activityUri';
+                }
               },
               child: Text(
                 'READ MORE',
@@ -77,9 +82,16 @@ Widget buildActivityReadMore(String website, String maps, Color textColor) {
               ),
             ),
             InkWell(
-              onTap: () {
-                final Uri activityUri = Uri.parse(maps);
-                launchUrl(activityUri);
+              onTap: () async {
+                final Uri mapsUri = Uri.parse(maps);
+                if (await canLaunchUrl(mapsUri)) {
+                  launchUrl(
+                    mapsUri,
+                    mode: LaunchMode.externalApplication,
+                  );
+                } else {
+                  throw 'Could not launch $mapsUri';
+                }
               },
               child: Padding(
                 padding: const EdgeInsets.only(left: 8),
@@ -99,7 +111,7 @@ Widget buildActivityReadMore(String website, String maps, Color textColor) {
           color: textColor,
           thickness: 2,
         ),
-        const SizedBox(height: 16)
+        buildSpacer(),
       ],
     ),
   );

@@ -20,7 +20,7 @@ class DayTrips extends StatelessWidget {
               Image.asset(
                 'assets/images/twins.jpg',
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               Row(
                 children: const <Widget>[
                   Spacer(),
@@ -35,27 +35,43 @@ class DayTrips extends StatelessWidget {
                   Spacer(),
                 ],
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               buildActivityLabel(
-                  'Lake Chelan', WeddingColors.rain, Colors.white70),
-              buildActivityDetails(<String>[
-                '1 hr away',
-                'Boat rentals',
-              ], Colors.white70),
-              buildActivityReadMore('https://www.parks.wa.gov/531/Lake-Chelan',
-                  'https://goo.gl/maps/daEMRgMZnJkNRu4k6', Colors.white70),
-              const SizedBox(height: 24),
-              buildActivityLabel('Lake Wenatchee State Park',
-                  WeddingColors.rain, Colors.white70),
-              buildActivityDetails(<String>[
-                'Nice beach area',
-                'Shorter trails',
-                'Kayaking',
-              ], Colors.white70),
+                'Lake Chelan',
+                WeddingColors.rain,
+                Colors.white70,
+              ),
+              buildActivityDetails(
+                <String>[
+                  '1 hr away',
+                  'Boat rentals',
+                ],
+                Colors.white70,
+              ),
               buildActivityReadMore(
-                  'https://www.parks.wa.gov/535/Lake-Wenatchee',
-                  'https://goo.gl/maps/aEcvyBBdnEv9fZKP9',
-                  Colors.white70),
+                'https://www.parks.wa.gov/531/Lake-Chelan',
+                'https://goo.gl/maps/daEMRgMZnJkNRu4k6',
+                Colors.white70,
+              ),
+              buildSpacer(),
+              buildActivityLabel(
+                'Lake Wenatchee State Park',
+                WeddingColors.rain,
+                Colors.white70,
+              ),
+              buildActivityDetails(
+                <String>[
+                  'Nice beach area',
+                  'Shorter trails',
+                  'Kayaking',
+                ],
+                Colors.white70,
+              ),
+              buildActivityReadMore(
+                'https://www.parks.wa.gov/535/Lake-Wenatchee',
+                'https://goo.gl/maps/aEcvyBBdnEv9fZKP9',
+                Colors.white70,
+              ),
               buildBottomPadding(),
             ],
           ),

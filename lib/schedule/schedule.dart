@@ -47,7 +47,7 @@ class Schedule extends StatelessWidget {
 
   Widget _buildDailySchedule(List<String> dailyActivities) {
     final List<Widget> dailyActivitiesWidgets = <Widget>[];
-    dailyActivitiesWidgets.add(const SizedBox(height: 24));
+    dailyActivitiesWidgets.add(buildSpacer());
     for (final String activity in dailyActivities) {
       dailyActivitiesWidgets.add(
         Text(
@@ -82,7 +82,7 @@ class Schedule extends StatelessWidget {
               Image.asset(
                 'assets/images/mountain.jpg',
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               Row(
                 children: const <Widget>[
                   Spacer(),
@@ -116,56 +116,66 @@ class Schedule extends StatelessWidget {
               _buildDailySchedule(
                 <String>[
                   '\u2022 Check-in after 4pm',
+                  '\u2022 Grocery shopping (Costco in Wenatchee)',
+                  '\u2022 Order pizza for dinner',
                 ],
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               _buildHeaderWithDivider('Monday | 9/12', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
                   '\u2022 J&B go to Chelan Register of Deeds',
                   '\u2022 Electric Bicycle Winery Tour',
+                  '\u2022 Steak dinner (Steve, Rhonda, Rachel, and Chris)',
                 ],
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               _buildHeaderWithDivider('Tuesday | 9/13', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
                   '\u2022 Optional Enchantments hike for the masochistic',
                   '\u2022 Rafting tour',
                   '\u2022 Lake Chelan',
+                  '\u2022 Lasagna for dinner (Amanda, Derek, and Janice)',
                 ],
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               _buildHeaderWithDivider('Wednesday | 9/14', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
-                  '\u2022 Spa Day',
-                  '\u2022 Ohme Garden',
+                  '\u2022 Spa day (mani-pedis)',
+                  '\u2022 Ohme Gardens',
+                  '\u2022 Taco night (Jared, Lindsey, and Nathan)',
                 ],
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               _buildHeaderWithDivider('Thursday | 9/15', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
-                  '\u2022 Hiking',
-                  '\u2022 Massages',
+                  '\u2022 Hiking in the morning/early afternoon',
+                  '\u2022 Massages late afternoon',
+                  '\u2022 Going out for dinner',
                 ],
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               _buildHeaderWithDivider('Friday | 9/16', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
-                  '\u2022 Wedding!',
+                  '\u2022 Wedding day!',
+                  '\u2022 Ceremony around 4pm',
+                  '\u2022 Pictures with the whole group',
+                  '\u2022 Dinner from Yodelin around 7pm',
                 ],
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               _buildHeaderWithDivider('Saturday | 9/17', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
                   '\u2022 Olympics',
+                  '\u2022 Shawarma for dinner (Jared, Lindsey, J, and B)',
                 ],
               ),
-              const SizedBox(height: 24),
+              buildSpacer(),
               _buildHeaderWithDivider('Sunday | 9/18', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
