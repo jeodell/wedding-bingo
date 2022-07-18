@@ -1,5 +1,5 @@
 /*
-"Are you sure?" with picture of them
+Olympic sports scoreboard - rock stacking, veggie eating contest, putting, trivia, bocce ball, pool trick shots, corn hole, HORSE, disc accuracy, hidden immunity items
 */
 import 'dart:math';
 import 'package:flutter/material.dart';
