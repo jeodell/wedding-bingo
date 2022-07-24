@@ -40,6 +40,19 @@ class Food extends StatelessWidget {
                 WeddingColors.mushroom,
                 Colors.white70,
               ),
+              buildActivityDetails(
+                <String>[
+                  'Meal for the Reception',
+                  'Rice Bowls and Soups',
+                  'Burgers and Sandwiches',
+                ],
+                Colors.white70,
+              ),
+              buildActivityReadMore(
+                'https://yodelinbroth.com/',
+                'https://goo.gl/maps/ic848o1n56tycNwYA',
+                Colors.white70,
+              ),
               buildSpacer(),
               buildActivityLabel(
                 'The Watershed Cafe',
