@@ -46,36 +46,36 @@ class House extends StatelessWidget {
                 child: Container(
                   color: WeddingColors.sage,
                   child: Column(
-                    children: const <Widget>[
-                      SizedBox(height: 36),
-                      Text(
+                    children: <Widget>[
+                      const SizedBox(height: 36),
+                      buildText(
                         'Our Stay',
-                        style: TextStyle(
+                        const TextStyle(
                           fontSize: 40,
                           fontFamily: 'Marcellus',
                           color: Colors.white70,
                         ),
                       ),
-                      SizedBox(height: 12),
-                      Text(
+                      const SizedBox(height: 12),
+                      buildText(
                         'The Grand River Lodge',
-                        style: TextStyle(
+                        const TextStyle(
                           fontSize: 18,
                           color: WeddingColors.maine,
                         ),
                       ),
-                      SizedBox(height: 12),
-                      Text(
+                      const SizedBox(height: 12),
+                      buildText(
                         'LEAVENWORTH, WA',
-                        style: TextStyle(
+                        const TextStyle(
                           fontSize: 18,
                           color: WeddingColors.maine,
                         ),
                       ),
-                      SizedBox(height: 24),
-                      Text(
+                      const SizedBox(height: 24),
+                      buildText(
                         'Approximately 2.5 Hours from Seattle',
-                        style: TextStyle(
+                        const TextStyle(
                           fontSize: 14,
                           color: WeddingColors.maine,
                         ),
@@ -116,10 +116,10 @@ class House extends StatelessWidget {
   Widget _buildHouseAddress(BuildContext context) {
     return Column(
       children: <Widget>[
-        const Text(
+        buildText(
           'ADDRESS',
-          style: TextStyle(
-            fontSize: 16,
+          const TextStyle(
+            fontSize: 18,
             color: WeddingColors.maine,
           ),
         ),
@@ -137,14 +137,14 @@ class House extends StatelessWidget {
               );
               return;
             },
-            child: const Text(
+            child: buildText(
               '9515 Lone Pine Orchard Rd, Leavenworth, WA 98826',
-              textAlign: TextAlign.center,
-              style: TextStyle(
+              const TextStyle(
                 fontSize: 16,
                 color: WeddingColors.maine,
                 decoration: TextDecoration.underline,
               ),
+              TextAlign.center,
             ),
           ),
         ),
@@ -168,9 +168,9 @@ class House extends StatelessWidget {
     return Row(
       children: <Widget>[
         _buildDivider(color),
-        Text(
+        buildText(
           text,
-          style: TextStyle(
+          TextStyle(
             color: color,
             fontSize: 28,
             fontFamily: 'Marcellus',
@@ -184,9 +184,9 @@ class House extends StatelessWidget {
   Widget _buildFloorHeaders(String floorLevel) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
-      child: Text(
+      child: buildText(
         floorLevel,
-        style: const TextStyle(
+        const TextStyle(
           color: WeddingColors.maine,
           fontSize: 20,
         ),
@@ -201,9 +201,9 @@ class House extends StatelessWidget {
           .map(
             (String item) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 2),
-              child: Text(
+              child: buildText(
                 '\u2022 $item',
-                style: const TextStyle(
+                const TextStyle(
                   color: WeddingColors.maine,
                   fontSize: 18,
                 ),
@@ -333,14 +333,14 @@ class House extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Text(
+          buildText(
             label,
-            style: const TextStyle(
+            const TextStyle(
                 fontSize: 20, fontWeight: FontWeight.w300, color: Colors.white),
           ),
-          Text(
+          buildText(
             range,
-            style: const TextStyle(
+            const TextStyle(
                 fontSize: 24, fontWeight: FontWeight.w300, color: Colors.white),
           ),
         ],
@@ -366,11 +366,11 @@ class House extends StatelessWidget {
   Widget _buildPackingListItem(String label) {
     return Padding(
       padding: const EdgeInsets.only(top: 2),
-      child: Text(
+      child: buildText(
         '\u2022 $label',
-        style: const TextStyle(
+        const TextStyle(
           color: WeddingColors.mushroom,
-          fontSize: 16,
+          fontSize: 18,
           fontWeight: FontWeight.w300,
         ),
       ),
@@ -427,10 +427,10 @@ class House extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 48),
                         alignment: Alignment.centerLeft,
                         width: 275,
-                        child: const Text(
+                        child: buildText(
                           'Average Temperature Range in September:',
-                          style: TextStyle(
-                              color: WeddingColors.mushroom, fontSize: 16),
+                          const TextStyle(
+                              color: WeddingColors.mushroom, fontSize: 18),
                         ),
                       ),
                       buildSpacer(),
@@ -441,25 +441,25 @@ class House extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            const Text(
+                            buildText(
                               'Ceremony Attire:',
-                              style: TextStyle(
+                              const TextStyle(
                                 color: WeddingColors.mushroom,
                                 fontSize: 20,
                               ),
                             ),
                             const SizedBox(height: 8),
-                            const Text(
+                            buildText(
                               'Please wear Cocktail Formals attire in earthy colors',
-                              style: TextStyle(
+                              const TextStyle(
                                   color: WeddingColors.mushroom,
-                                  fontSize: 16,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.w300),
                             ),
                             buildSpacer(),
-                            const Text(
+                            buildText(
                               'Items to Pack:',
-                              style: TextStyle(
+                              const TextStyle(
                                 color: WeddingColors.mushroom,
                                 fontSize: 20,
                               ),
@@ -470,9 +470,9 @@ class House extends StatelessWidget {
                             _buildPackingListItem('Hiking Shoes'),
                             _buildPackingListItem('Water Shoes'),
                             buildSpacer(),
-                            const Text(
+                            buildText(
                               'Color Palette:',
-                              style: TextStyle(
+                              const TextStyle(
                                 color: WeddingColors.mushroom,
                                 fontSize: 20,
                               ),

@@ -6,6 +6,7 @@ Pics
 */
 import 'package:flutter/material.dart';
 import 'package:wedding_bingo/theme/colors.dart';
+import 'package:wedding_bingo/widgets/widgets.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -29,35 +30,35 @@ class Welcome extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(36, 36, 0, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const <Widget>[
-                Text(
+              children: <Widget>[
+                buildText(
                   'Welcome',
-                  style: TextStyle(
+                  const TextStyle(
                     color: WeddingColors.maine,
                     fontSize: 48,
                     fontFamily: 'Marcellus',
                   ),
                 ),
-                SizedBox(height: 24),
-                Text(
+                const SizedBox(height: 24),
+                buildText(
                   "We can't wait to see you at",
-                  style: TextStyle(
+                  const TextStyle(
                     color: WeddingColors.maine,
                     fontSize: 14,
                   ),
                 ),
-                SizedBox(height: 12),
-                Text(
+                const SizedBox(height: 12),
+                buildText(
                   'A Bug Wedding',
-                  style: TextStyle(
+                  const TextStyle(
                     color: WeddingColors.maine,
                     fontSize: 28,
                   ),
                 ),
-                SizedBox(height: 36),
-                Text(
+                const SizedBox(height: 36),
+                buildText(
                   'September 11-18, 2022',
-                  style: TextStyle(
+                  const TextStyle(
                     color: WeddingColors.maine,
                     fontSize: 16,
                   ),

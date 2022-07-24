@@ -33,9 +33,9 @@ class Schedule extends StatelessWidget {
     return Row(
       children: <Widget>[
         _buildDivider(color, 'left'),
-        Text(
+        buildText(
           text,
-          style: TextStyle(
+          TextStyle(
             color: color,
             fontSize: 24,
           ),
@@ -50,9 +50,9 @@ class Schedule extends StatelessWidget {
     dailyActivitiesWidgets.add(buildSpacer());
     for (final String activity in dailyActivities) {
       dailyActivitiesWidgets.add(
-        Text(
+        buildText(
           activity,
-          style: const TextStyle(
+          const TextStyle(
             color: WeddingColors.pine,
             fontSize: 18,
           ),
@@ -84,31 +84,31 @@ class Schedule extends StatelessWidget {
               ),
               buildSpacer(),
               Row(
-                children: const <Widget>[
-                  Spacer(),
-                  Text(
+                children: <Widget>[
+                  const Spacer(),
+                  buildText(
                     'Trip Schedule',
-                    style: TextStyle(
+                    const TextStyle(
                       color: Colors.white70,
                       fontSize: 48,
                       fontFamily: 'Marcellus',
                     ),
                   ),
-                  Spacer()
+                  const Spacer()
                 ],
               ),
               const SizedBox(height: 12),
               Row(
-                children: const <Widget>[
-                  Spacer(),
-                  Text(
+                children: <Widget>[
+                  const Spacer(),
+                  buildText(
                     'Sunday 9/11 - Sunday 9/18',
-                    style: TextStyle(
+                    const TextStyle(
                       color: WeddingColors.pine,
                       fontSize: 16,
                     ),
                   ),
-                  Spacer()
+                  const Spacer()
                 ],
               ),
               const SizedBox(height: 48),
@@ -136,16 +136,16 @@ class Schedule extends StatelessWidget {
                   '\u2022 Optional Enchantments hike for the masochistic',
                   '\u2022 Rafting tour',
                   '\u2022 Lake Chelan',
-                  '\u2022 Lasagna for dinner (Amanda, Derek, and Janice)',
+                  '\u2022 Lasagna for dinner (Steve and Rhonda - Meat) (Janice, Amanda, and Derek - Veggie)',
                 ],
               ),
               buildSpacer(),
               _buildHeaderWithDivider('Wednesday | 9/14', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
-                  '\u2022 Spa day (mani-pedis)',
+                  '\u2022 Mani-pedis',
                   '\u2022 Ohme Gardens',
-                  '\u2022 Taco night (Jared, Lindsey, and Nathan)',
+                  '\u2022 Shawarma for dinner (Jared, Lindsey, J, and B)',
                 ],
               ),
               buildSpacer(),
@@ -172,7 +172,7 @@ class Schedule extends StatelessWidget {
               _buildDailySchedule(
                 <String>[
                   '\u2022 Olympics',
-                  '\u2022 Shawarma for dinner (Jared, Lindsey, J, and B)',
+                  '\u2022 Taco night (Rachel, Chris, and Nathan)',
                 ],
               ),
               buildSpacer(),

@@ -23,17 +23,17 @@ class Other extends StatelessWidget {
               ),
               buildSpacer(),
               Row(
-                children: const <Widget>[
-                  Spacer(),
-                  Text(
+                children: <Widget>[
+                  const Spacer(),
+                  buildText(
                     'Other',
-                    style: TextStyle(
+                    const TextStyle(
                       color: WeddingColors.tahoe,
                       fontSize: 48,
                       fontFamily: 'Marcellus',
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
               buildSpacer(),
@@ -145,15 +145,16 @@ class Other extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(64, 4, 8, 0),
                   child: Row(
-                    children: const <Widget>[
-                      Text('\u2022 ',
-                          style: TextStyle(
+                    children: <Widget>[
+                      buildText(
+                          '\u2022 ',
+                          const TextStyle(
                               color: WeddingColors.tahoe,
                               fontSize: 18,
                               fontWeight: FontWeight.w500)),
-                      Text(
+                      buildText(
                         '41 bouldering routes',
-                        style: TextStyle(
+                        const TextStyle(
                           color: WeddingColors.tahoe,
                           fontSize: 18,
                           decoration: TextDecoration.underline,

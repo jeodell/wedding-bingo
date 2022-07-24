@@ -22,17 +22,17 @@ class DayTrips extends StatelessWidget {
               ),
               buildSpacer(),
               Row(
-                children: const <Widget>[
-                  Spacer(),
-                  Text(
+                children: <Widget>[
+                  const Spacer(),
+                  buildText(
                     'Day Trips',
-                    style: TextStyle(
+                    const TextStyle(
                       color: Colors.white70,
                       fontSize: 48,
                       fontFamily: 'Marcellus',
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
               buildSpacer(),

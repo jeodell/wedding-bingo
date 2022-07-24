@@ -16,9 +16,9 @@ Widget buildActivityLabel(
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(left: 8),
-            child: Text(
+            child: buildText(
               activityLabel,
-              style: TextStyle(
+              TextStyle(
                 color: textColor,
                 fontSize: 24,
               ),
@@ -36,9 +36,9 @@ Widget buildActivityDetails(List<String> details, Color textColor) {
   for (final String detail in details) {
     children.add(Padding(
       padding: const EdgeInsets.only(top: 4),
-      child: Text(
+      child: buildText(
         '\u2022 $detail',
-        style: TextStyle(
+        TextStyle(
           color: textColor,
           fontSize: 18,
         ),
@@ -73,9 +73,9 @@ Widget buildActivityReadMore(String website, String maps, Color textColor) {
                   throw 'Could not launch $activityUri';
                 }
               },
-              child: Text(
+              child: buildText(
                 'READ MORE',
-                style: TextStyle(
+                TextStyle(
                   color: textColor,
                   fontSize: 16,
                 ),
@@ -95,9 +95,9 @@ Widget buildActivityReadMore(String website, String maps, Color textColor) {
               },
               child: Padding(
                 padding: const EdgeInsets.only(left: 8),
-                child: Text(
+                child: buildText(
                   'OPEN IN MAPS',
-                  style: TextStyle(
+                  TextStyle(
                     color: textColor,
                     fontSize: 16,
                   ),

@@ -31,9 +31,9 @@ class Activities extends StatelessWidget {
                 ),
               ),
             ),
-            child: Text(
+            child: buildText(
               activity,
-              style: const TextStyle(
+              const TextStyle(
                 color: WeddingColors.tahoe,
                 fontSize: 24,
               ),
@@ -57,9 +57,9 @@ class Activities extends StatelessWidget {
                 'assets/images/jnb.jpg',
               ),
               buildSpacer(),
-              const Text(
+              buildText(
                 'Activities',
-                style: TextStyle(
+                const TextStyle(
                   color: WeddingColors.tahoe,
                   fontSize: 48,
                   fontFamily: 'Marcellus',

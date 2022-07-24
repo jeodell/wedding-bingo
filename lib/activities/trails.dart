@@ -23,17 +23,17 @@ class Trails extends StatelessWidget {
               ),
               buildSpacer(),
               Row(
-                children: const <Widget>[
-                  Spacer(),
-                  Text(
+                children: <Widget>[
+                  const Spacer(),
+                  buildText(
                     'Trails',
-                    style: TextStyle(
+                    const TextStyle(
                       color: WeddingColors.tahoe,
                       fontSize: 48,
                       fontFamily: 'Marcellus',
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
               buildSpacer(),
@@ -125,9 +125,9 @@ class Trails extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 64),
                 child: InkWell(
-                  child: const Text(
+                  child: buildText(
                     '\u2022 The 7 Best Leavenworth Hikes (Besides the Enchantments)',
-                    style: TextStyle(
+                    const TextStyle(
                       color: WeddingColors.tahoe,
                       fontSize: 18,
                       decoration: TextDecoration.underline,

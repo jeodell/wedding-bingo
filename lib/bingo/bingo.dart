@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wedding_bingo/data/bingo_data.dart';
 import 'package:wedding_bingo/theme/colors.dart';
+import 'package:wedding_bingo/widgets/widgets.dart';
 
 class Bingo extends StatefulWidget {
   const Bingo({Key? key}) : super(key: key);
@@ -80,10 +81,12 @@ class _BingoState extends State<Bingo> {
               case ConnectionState.done:
                 if (snapshot.data == '' && dropdownItems.isEmpty) {
                   for (final String name in BingoData.guestList) {
-                    dropdownItems.add(DropdownMenuItem<String>(
-                      value: name,
-                      child: Text(name),
-                    ));
+                    dropdownItems.add(
+                      DropdownMenuItem<String>(
+                        value: name,
+                        child: buildText(name),
+                      ),
+                    );
                   }
                 }
                 if (_confirmGuestState == true) {
@@ -97,12 +100,7 @@ class _BingoState extends State<Bingo> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          const Text('Are you sure this is you?',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: 'Marcellus',
-                                color: Colors.black87,
-                              )),
+                          buildText('Are you sure this is you?'),
                           Container(
                             padding: const EdgeInsets.symmetric(vertical: 24),
                             child: ClipRRect(
@@ -132,7 +130,7 @@ class _BingoState extends State<Bingo> {
                                     ),
                                     primary: WeddingColors.maine,
                                     backgroundColor: Colors.white),
-                                child: const Text('Deny'),
+                                child: buildText('Deny'),
                                 onPressed: () {
                                   _denyGuestSelection();
                                 },
@@ -149,7 +147,7 @@ class _BingoState extends State<Bingo> {
                                     ),
                                     primary: Colors.white,
                                     backgroundColor: WeddingColors.maine),
-                                child: const Text('Confirm'),
+                                child: buildText('Confirm'),
                                 onPressed: () {
                                   _confirmGuestSelection(_confirmGuestName);
                                 },
@@ -166,9 +164,7 @@ class _BingoState extends State<Bingo> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text(
-                          'Who Are You?',
-                        ),
+                        buildText('Who Are You?'),
                         Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal:
@@ -186,15 +182,19 @@ class _BingoState extends State<Bingo> {
                     padding: const EdgeInsets.all(1),
                     child: Column(
                       children: <Widget>[
-                        const Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 32, vertical: 32),
-                            child: Text('Wedding Bingo',
-                                style: TextStyle(
-                                  fontSize: 48,
-                                  fontFamily: 'Marcellus',
-                                  color: Colors.white,
-                                ))),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 32, vertical: 32),
+                          child: buildText(
+                            'Wedding Bingo',
+                            const TextStyle(
+                              fontSize: 48,
+                              fontFamily: 'Marcellus',
+                              color: Colors.white,
+                            ),
+                            TextAlign.center,
+                          ),
+                        ),
                         Expanded(
                           child: SizedBox(
                             child: GridView.count(
@@ -231,10 +231,9 @@ class _BingoState extends State<Bingo> {
                                             4, 4, 4, 0),
                                         alignment: Alignment.topCenter,
                                         color: Colors.black.withOpacity(0.4),
-                                        child: Text(
+                                        child: buildText(
                                           currentCondition!,
-                                          textAlign: TextAlign.center,
-                                          style: const TextStyle(
+                                          const TextStyle(
                                             color: Colors.white,
                                             shadows: <Shadow>[
                                               Shadow(
@@ -244,6 +243,7 @@ class _BingoState extends State<Bingo> {
                                             ],
                                             fontSize: 10,
                                           ),
+                                          TextAlign.center,
                                         ),
                                       )
                                     ],
