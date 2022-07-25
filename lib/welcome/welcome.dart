@@ -1,9 +1,3 @@
-/*
-Welcome to our wedding
-Picture of us
-Our story
-Pics
-*/
 import 'package:flutter/material.dart';
 import 'package:wedding_bingo/theme/colors.dart';
 import 'package:wedding_bingo/widgets/widgets.dart';

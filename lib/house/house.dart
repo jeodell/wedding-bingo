@@ -1,11 +1,3 @@
-/*
-Map of house location
-Name of house
-Address
-Picture of house
-Link to VRBO listing
-*/
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wedding_bingo/theme/colors.dart';

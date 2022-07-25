@@ -1,8 +1,3 @@
-/*
-Day select
-List of activites
-Links
-*/
 import 'package:flutter/material.dart';
 import 'package:wedding_bingo/theme/colors.dart';
 import 'package:wedding_bingo/widgets/widgets.dart';
