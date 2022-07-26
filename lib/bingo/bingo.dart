@@ -3,7 +3,9 @@ Olympic sports scoreboard - rock stacking, veggie eating contest, putting, trivi
 When bingo square clicked, replace photo with happy photo and apply green filter
 */
 import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wedding_bingo/data/bingo_data.dart';
 import 'package:wedding_bingo/theme/colors.dart';
@@ -16,20 +18,42 @@ class Bingo extends StatefulWidget {
   State<Bingo> createState() => _BingoState();
 }
 
-class _BingoState extends State<Bingo> {
+class _BingoState extends State<Bingo> with TickerProviderStateMixin {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late Future<String> _currentGuest;
   late List<DropdownMenuItem<String>> dropdownItems =
       <DropdownMenuItem<String>>[];
   bool _confirmGuestState = false;
   String _confirmGuestName = '';
+  late List<Map<String, dynamic>> squaresInfo = <Map<String, dynamic>>[];
+  List<AnimationController> lottieControllers = <AnimationController>[];
+  List<Animation<double>> fadeAnimations = <Animation<double>>[];
 
   @override
   void initState() {
-    super.initState();
+    for (int index = 0; index < 25; index++) {
+      lottieControllers.add(AnimationController(
+        vsync: this,
+      ));
+      fadeAnimations.add(Tween<double>(begin: 1.0, end: 0.0).animate(
+        CurvedAnimation(
+          parent: lottieControllers[index],
+          curve: Curves.easeInCubic,
+        ),
+      ));
+    }
     _currentGuest = _prefs.then((SharedPreferences prefs) {
       return prefs.getString('currentGuest') ?? '';
     });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    for (int index = 0; index < 25; index++) {
+      lottieControllers[index].dispose();
+    }
+    super.dispose();
   }
 
   Future<void> _onGuestSelection(String? value) async {
@@ -60,6 +84,19 @@ class _BingoState extends State<Bingo> {
         return '';
       });
     });
+  }
+
+  void _completeSquare(int index) {
+    if (squaresInfo[index]['completed'] == true) {
+      setState(() {
+        squaresInfo[index]['completed'] = false;
+      });
+    } else {
+      setState(() {
+        squaresInfo[index]['completed'] = true;
+        lottieControllers[index].reset();
+      });
+    }
   }
 
   @override
@@ -177,6 +214,27 @@ class _BingoState extends State<Bingo> {
                     ),
                   );
                 } else {
+                  String currentVictim = '';
+                  String currentCondition = '';
+
+                  if (squaresInfo.isEmpty) {
+                    final List<Map<String, String>> conditions =
+                        BingoData.conditions;
+                    final int conditionsLength = conditions.length;
+                    for (int i = 0; i < 25; i++) {
+                      final Map<String, String> currentMap = conditions
+                          .elementAt(Random().nextInt(conditionsLength - i));
+                      currentVictim = currentMap.keys.first;
+                      currentCondition = currentMap[currentVictim]!;
+                      squaresInfo.add(<String, dynamic>{
+                        'name': currentVictim,
+                        'condition': currentCondition,
+                        'completed': false,
+                      });
+                      conditions.remove(currentMap);
+                    }
+                  }
+
                   return Container(
                     color: WeddingColors.sage,
                     padding: const EdgeInsets.all(1),
@@ -203,36 +261,61 @@ class _BingoState extends State<Bingo> {
                               crossAxisSpacing: 2,
                               children:
                                   List<TextButton>.generate(25, (int index) {
-                                final List<Map<String, String>> conditions =
-                                    BingoData.conditions;
-                                final Map<String, String> currentMap =
-                                    conditions.elementAt(
-                                        Random().nextInt(conditions.length));
-                                final String currentVictim =
-                                    currentMap.keys.first;
-                                final String? currentCondition =
-                                    currentMap[currentVictim];
                                 return TextButton(
                                   style: TextButton.styleFrom(
                                       padding: EdgeInsets.zero),
-                                  onPressed: () => <Future<void>>{
-                                    _denyGuestSelection(),
+                                  onPressed: () {
+                                    _completeSquare(index);
                                   },
                                   child: Stack(
                                     fit: StackFit.expand,
                                     children: <Widget>[
-                                      Image.asset(
-                                        'assets/images/$currentVictim.jpg',
-                                        width: double.infinity,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      Container(
+                                      if (squaresInfo[index]['completed'] ==
+                                          false)
+                                        Image.asset(
+                                          'assets/images/${squaresInfo[index]['name']}.jpg',
+                                          width: double.infinity,
+                                          fit: BoxFit.cover,
+                                        )
+                                      else
+                                        Stack(
+                                          children: <Widget>[
+                                            Image.asset(
+                                              'assets/images/${squaresInfo[index]['name']}-happy.jpg',
+                                              width: double.infinity,
+                                              fit: BoxFit.cover,
+                                            ),
+                                            FadeTransition(
+                                              opacity: fadeAnimations[index],
+                                              child: Lottie.asset(
+                                                'assets/json/confetti.json',
+                                                onLoaded: (LottieComposition
+                                                    composition) {
+                                                  lottieControllers[index]
+                                                    ..duration =
+                                                        composition.duration
+                                                    ..forward();
+                                                },
+                                                repeat: false,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      AnimatedContainer(
+                                        duration:
+                                            const Duration(milliseconds: 500),
                                         padding: const EdgeInsets.fromLTRB(
                                             4, 4, 4, 0),
-                                        alignment: Alignment.topCenter,
-                                        color: Colors.black.withOpacity(0.4),
+                                        alignment: Alignment.bottomCenter,
+                                        color: squaresInfo[index]
+                                                    ['completed'] ==
+                                                true
+                                            ? const Color.fromARGB(
+                                                75, 0, 171, 77)
+                                            : Colors.black.withOpacity(0.4),
                                         child: buildText(
-                                          currentCondition!,
+                                          squaresInfo[index]['condition']!,
                                           const TextStyle(
                                             color: Colors.white,
                                             shadows: <Shadow>[
