@@ -4,6 +4,7 @@ When bingo square clicked, replace photo with happy photo and apply green filter
 */
 import 'dart:math';
 
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,9 +24,12 @@ class _BingoState extends State<Bingo> with TickerProviderStateMixin {
   late Future<String> _currentGuest;
   late List<DropdownMenuItem<String>> dropdownItems =
       <DropdownMenuItem<String>>[];
+  late List<Map<String, dynamic>> squaresInfo = <Map<String, dynamic>>[];
+  late ConfettiController confettiController = ConfettiController();
+  bool confettiPlaying = false;
   bool _confirmGuestState = false;
   String _confirmGuestName = '';
-  late List<Map<String, dynamic>> squaresInfo = <Map<String, dynamic>>[];
+  bool _winner = false;
   List<AnimationController> lottieControllers = <AnimationController>[];
   List<Animation<double>> fadeAnimations = <Animation<double>>[];
 
@@ -42,6 +46,12 @@ class _BingoState extends State<Bingo> with TickerProviderStateMixin {
         ),
       ));
     }
+    confettiController.addListener(() {
+      setState(() {
+        confettiPlaying =
+            confettiController.state == ConfettiControllerState.playing;
+      });
+    });
     _currentGuest = _prefs.then((SharedPreferences prefs) {
       return prefs.getString('currentGuest') ?? '';
     });
@@ -86,6 +96,38 @@ class _BingoState extends State<Bingo> with TickerProviderStateMixin {
     });
   }
 
+  bool _checkForWinner() {
+    int numCompletedRow = 0;
+    int numCompletedCol = 0;
+    int numCompletedDiagLeft = 0;
+    int numCompletedDiagRight = 0;
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 5; j++) {
+        if (squaresInfo[i * 5 + j]['completed'] == true) {
+          numCompletedRow++;
+        }
+        if (squaresInfo[i + j * 5]['completed'] == true) {
+          numCompletedCol++;
+        }
+        if (i == j && squaresInfo[i * 5 + j]['completed'] == true) {
+          numCompletedDiagLeft++;
+        }
+        if (i + j == 4 && squaresInfo[i * 5 + j]['completed'] == true) {
+          numCompletedDiagRight++;
+        }
+        if (numCompletedRow == 5 ||
+            numCompletedCol == 5 ||
+            numCompletedDiagLeft == 5 ||
+            numCompletedDiagRight == 5) {
+          return true;
+        }
+      }
+      numCompletedRow = 0;
+      numCompletedCol = 0;
+    }
+    return false;
+  }
+
   void _completeSquare(int index) {
     if (squaresInfo[index]['completed'] == true) {
       setState(() {
@@ -95,6 +137,13 @@ class _BingoState extends State<Bingo> with TickerProviderStateMixin {
       setState(() {
         squaresInfo[index]['completed'] = true;
         lottieControllers[index].reset();
+        if (_checkForWinner()) {
+          setState(() {
+            _winner = true;
+          });
+          confettiController.play();
+          print('YOU WIN!');
+        }
       });
     }
   }
@@ -254,86 +303,111 @@ class _BingoState extends State<Bingo> with TickerProviderStateMixin {
                           ),
                         ),
                         Expanded(
-                          child: SizedBox(
-                            child: GridView.count(
-                              crossAxisCount: 5,
-                              mainAxisSpacing: 2,
-                              crossAxisSpacing: 2,
-                              children:
-                                  List<TextButton>.generate(25, (int index) {
-                                return TextButton(
-                                  style: TextButton.styleFrom(
-                                      padding: EdgeInsets.zero),
-                                  onPressed: () {
-                                    _completeSquare(index);
-                                  },
-                                  child: Stack(
-                                    fit: StackFit.expand,
-                                    children: <Widget>[
-                                      if (squaresInfo[index]['completed'] ==
-                                          false)
-                                        Image.asset(
-                                          'assets/images/${squaresInfo[index]['name']}.jpg',
-                                          width: double.infinity,
-                                          fit: BoxFit.cover,
-                                        )
-                                      else
-                                        Stack(
-                                          children: <Widget>[
+                          child: Stack(
+                            alignment: Alignment.topCenter,
+                            children: [
+                              SizedBox(
+                                child: GridView.count(
+                                  crossAxisCount: 5,
+                                  mainAxisSpacing: 2,
+                                  crossAxisSpacing: 2,
+                                  children: List<TextButton>.generate(25,
+                                      (int index) {
+                                    return TextButton(
+                                      style: TextButton.styleFrom(
+                                          padding: EdgeInsets.zero),
+                                      onPressed: () {
+                                        _completeSquare(index);
+                                      },
+                                      child: Stack(
+                                        fit: StackFit.expand,
+                                        children: <Widget>[
+                                          if (squaresInfo[index]['completed'] ==
+                                              false)
                                             Image.asset(
-                                              'assets/images/${squaresInfo[index]['name']}-happy.jpg',
+                                              'assets/images/${squaresInfo[index]['name']}.jpg',
                                               width: double.infinity,
                                               fit: BoxFit.cover,
+                                            )
+                                          else
+                                            Stack(
+                                              children: <Widget>[
+                                                Image.asset(
+                                                  'assets/images/${squaresInfo[index]['name']}-happy.jpg',
+                                                  width: double.infinity,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                                FadeTransition(
+                                                  opacity:
+                                                      fadeAnimations[index],
+                                                  child: Lottie.asset(
+                                                    'assets/json/confetti.json',
+                                                    onLoaded: (LottieComposition
+                                                        composition) {
+                                                      lottieControllers[index]
+                                                        ..duration =
+                                                            composition.duration
+                                                        ..forward();
+                                                    },
+                                                    repeat: false,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                            FadeTransition(
-                                              opacity: fadeAnimations[index],
-                                              child: Lottie.asset(
-                                                'assets/json/confetti.json',
-                                                onLoaded: (LottieComposition
-                                                    composition) {
-                                                  lottieControllers[index]
-                                                    ..duration =
-                                                        composition.duration
-                                                    ..forward();
-                                                },
-                                                repeat: false,
-                                                fit: BoxFit.cover,
+                                          AnimatedContainer(
+                                            duration: const Duration(
+                                                milliseconds: 500),
+                                            padding: const EdgeInsets.fromLTRB(
+                                                4, 4, 4, 0),
+                                            alignment: Alignment.bottomCenter,
+                                            color: squaresInfo[index]
+                                                        ['completed'] ==
+                                                    true
+                                                ? const Color.fromARGB(
+                                                    75, 0, 171, 77)
+                                                : Colors.black.withOpacity(0.4),
+                                            child: buildText(
+                                              squaresInfo[index]['condition']!,
+                                              const TextStyle(
+                                                color: Colors.white,
+                                                shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(1, 1),
+                                                    blurRadius: 2,
+                                                  ),
+                                                ],
+                                                fontSize: 10,
                                               ),
+                                              TextAlign.center,
                                             ),
-                                          ],
-                                        ),
-                                      AnimatedContainer(
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        padding: const EdgeInsets.fromLTRB(
-                                            4, 4, 4, 0),
-                                        alignment: Alignment.bottomCenter,
-                                        color: squaresInfo[index]
-                                                    ['completed'] ==
-                                                true
-                                            ? const Color.fromARGB(
-                                                75, 0, 171, 77)
-                                            : Colors.black.withOpacity(0.4),
-                                        child: buildText(
-                                          squaresInfo[index]['condition']!,
-                                          const TextStyle(
-                                            color: Colors.white,
-                                            shadows: <Shadow>[
-                                              Shadow(
-                                                offset: Offset(1, 1),
-                                                blurRadius: 2,
-                                              ),
-                                            ],
-                                            fontSize: 10,
-                                          ),
-                                          TextAlign.center,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              }),
-                            ),
+                                          )
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                ),
+                              ),
+                              if (_winner)
+                                ConfettiWidget(
+                                  colors: const <Color>[
+                                    WeddingColors.birch,
+                                    WeddingColors.maine,
+                                    WeddingColors.pine,
+                                    WeddingColors.sage,
+                                    WeddingColors.sky,
+                                    WeddingColors.tahoe,
+                                    WeddingColors.terracotta,
+                                  ],
+                                  confettiController: confettiController,
+                                  blastDirectionality:
+                                      BlastDirectionality.explosive,
+                                  numberOfParticles: 20,
+                                  minBlastForce: 1,
+                                  maxBlastForce: 10,
+                                  emissionFrequency: 0.05,
+                                ),
+                            ],
                           ),
                         ),
                       ],
