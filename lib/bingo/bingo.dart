@@ -132,6 +132,9 @@ class _BingoState extends State<Bingo> with TickerProviderStateMixin {
     if (squaresInfo[index]['completed'] == true) {
       setState(() {
         squaresInfo[index]['completed'] = false;
+        if (confettiPlaying) {
+          confettiController.stop();
+        }
       });
     } else {
       setState(() {
@@ -305,7 +308,7 @@ class _BingoState extends State<Bingo> with TickerProviderStateMixin {
                         Expanded(
                           child: Stack(
                             alignment: Alignment.topCenter,
-                            children: [
+                            children: <Widget>[
                               SizedBox(
                                 child: GridView.count(
                                   crossAxisCount: 5,
