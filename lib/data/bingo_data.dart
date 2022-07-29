@@ -18,8 +18,6 @@ mixin BingoData {
   ];
 
   static final List<Map<String, String>> conditions = <Map<String, String>>[
-    // Janice
-
     // Steve
     <String, String>{'steve': "Steve says 'Nice.'"},
     <String, String>{'steve': "Steve mentions Jason's 'Big Brain'"},
@@ -37,6 +35,7 @@ mixin BingoData {
     <String, String>{'jason': 'Jason has late night chocolate snack'},
     // Brianna
     <String, String>{'brianna': 'Brianna cries'},
+    <String, String>{'brianna': 'Brianna falls off her electric bike'},
     // Jared
     <String, String>{'jared': 'Jared hug squeezes or bounce hugs someone'},
     <String, String>{'jared': 'Jared complains about old person pains'},
@@ -71,6 +70,9 @@ mixin BingoData {
     // Derek
     <String, String>{'derek': 'Derek makes an obscure movie/tv reference'},
     <String, String>{'derek': 'Derek asks to toss the disk'},
+    <String, String>{'derek': 'Derek wears a metal band shirt'},
+    // Janice
+    <String, String>{'janice': 'Janice says something about Costco'},
     // Larry
     <String, String>{'larry': 'Larry twirls his eyeglass arm in his ear'},
     <String, String>{'larry': 'Larry references something he saw on Facebook'},
