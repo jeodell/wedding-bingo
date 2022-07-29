@@ -33,17 +33,14 @@ mixin BingoData {
     <String, String>{
       'nathan': 'Nathan makes a joke about sloppy steaks on steak night'
     },
-    <String, String>{'nathan': 'Nathan gets too far ahead on a hike'},
     // Jason
     <String, String>{'jason': 'Jason has late night chocolate snack'},
     // Brianna
     <String, String>{'brianna': 'Brianna cries'},
     // Jared
-    <String, String>{'jared': 'Jared hug squeezes or bounce hugs someone.'},
+    <String, String>{'jared': 'Jared hug squeezes or bounce hugs someone'},
     <String, String>{'jared': 'Jared complains about old person pains'},
-    <String, String>{
-      'jared': 'Jared picks at the skin on his hands and fingers'
-    },
+    <String, String>{'jared': 'Jared picks at the skin on his hands'},
     <String, String>{
       'jared':
           'Jared says his catchphrase - "You\'re pretty good for someone without a tank top'
@@ -52,6 +49,7 @@ mixin BingoData {
     <String, String>{'lindsey': "Lindsey finds a bug in J's app"},
     <String, String>{'lindsey': 'Lindsey boxes Jared'},
     <String, String>{'lindsey': 'Lindsey starts beating up on Nathan'},
+    <String, String>{'lindsey': 'Lindsey sneezes more than twice in a row'},
     // Rhonda
     <String, String>{'rhonda': 'Rhonda laughs hysterically'},
     <String, String>{'rhonda': 'Rhonda plays non-bingo games on her phone'},
@@ -61,17 +59,18 @@ mixin BingoData {
     <String, String>{'rachel': 'Rachel has a breakfast beer'},
     <String, String>{'rachel': 'Rachel has a salad for breakfast'},
     <String, String>{'rachel': 'Rachel plays punk music'},
-    <String, String>{'rachel': 'Rachel says "Umm" in a high pitched voice'},
+    <String, String>{'rachel': 'Rachel says "Umm" in a high pitch'},
     // Chris
-    <String, String>{'chris': 'Chris cheers his diet coke with Rhonda'},
+    <String, String>{'chris': 'Chris asks Rhonda if she wants a diet coke'},
     <String, String>{'chris': 'Chris wears something with a spider on it'},
-    <String, String>{'chris': 'Chris fixes something'},
+    <String, String>{'chris': 'Chris sneezes absurdly'},
+    <String, String>{'chris': 'Chris says "Well you know what, Haferman..."'},
     // Amanda
     <String, String>{'amanda': 'Amanda talks about missing Porter'},
     <String, String>{'amanda': 'Amanda winks while poking fun at someone'},
     // Derek
     <String, String>{'derek': 'Derek makes an obscure movie/tv reference'},
-    <String, String>{'derek': 'Derek asks to play dick'},
+    <String, String>{'derek': 'Derek asks to toss the disk'},
     // Larry
     <String, String>{'larry': 'Larry twirls his eyeglass arm in his ear'},
     <String, String>{'larry': 'Larry references something he saw on Facebook'},
@@ -82,7 +81,28 @@ mixin BingoData {
     // Mary
     <String, String>{'mary': 'Mary winks while poking fun at someone'},
     <String, String>{'mary': 'Mary wears a floral shirt'},
+    <String, String>{
+      'mary': 'Mary gets up from the floor faster than someone younger than her'
+    },
   ];
+
+  static final Map<String, int> numPhotos = <String, int>{
+    'jason': 1,
+    'brianna': 1,
+    'nathan': 1,
+    'jared': 1,
+    'lindsey': 1,
+    'rachel': 1,
+    'chris': 1,
+    'steve': 1,
+    'rhonda': 1,
+    'mary': 1,
+    'larry': 1,
+    'tracy': 1,
+    'janice': 1,
+    'amanda': 1,
+    'derek': 1,
+  };
 
   static final List<Map<String, Map<String, String>>> quiz =
       <Map<String, Map<String, String>>>[
