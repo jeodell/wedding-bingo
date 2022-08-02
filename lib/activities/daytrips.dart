@@ -42,9 +42,9 @@ class DayTrips extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  '1 hr away',
-                  'Boat rentals',
+                <Map<String, String>>[
+                  <String, String>{'text': '1 hr away'},
+                  <String, String>{'text': 'Boat rentals'},
                 ],
                 Colors.white70,
               ),
@@ -60,10 +60,10 @@ class DayTrips extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Nice beach area',
-                  'Shorter trails',
-                  'Kayaking',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Nice beach area'},
+                  <String, String>{'text': 'Shorter trails'},
+                  <String, String>{'text': 'Kayaking'},
                 ],
                 Colors.white70,
               ),

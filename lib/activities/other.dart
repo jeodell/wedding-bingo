@@ -49,10 +49,10 @@ class Other extends StatelessWidget {
                 WeddingColors.tahoe,
               ),
               buildActivityDetails(
-                <String>[
-                  r'9 Holes M-Th  - $30',
-                  r'18 Holes M-Th - $40',
-                  r'18 Holes F-Su  - $55',
+                <Map<String, String>>[
+                  <String, String>{'text': r'9 Holes M-Th  - $30'},
+                  <String, String>{'text': r'18 Holes M-Th - $40'},
+                  <String, String>{'text': r'18 Holes F-Su  - $55'},
                 ],
                 WeddingColors.tahoe,
               ),
@@ -68,9 +68,9 @@ class Other extends StatelessWidget {
                 WeddingColors.tahoe,
               ),
               buildActivityDetails(
-                <String>[
-                  'Open 9-6 every day',
-                  r'$8 per person',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Open 9-6 every day'},
+                  <String, String>{'text': r'$8 per person'},
                 ],
                 WeddingColors.tahoe,
               ),
@@ -86,8 +86,8 @@ class Other extends StatelessWidget {
                 WeddingColors.tahoe,
               ),
               buildActivityDetails(
-                <String>[
-                  'Mani-Pedi',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Mani-Pedi'},
                 ],
                 WeddingColors.tahoe,
               ),
@@ -103,15 +103,15 @@ class Other extends StatelessWidget {
                 WeddingColors.tahoe,
               ),
               buildActivityDetails(
-                <String>[
-                  'Bavarian',
-                  'Civil War',
-                  'Roaring 20s',
-                  'Pioneer',
-                  'Saloon',
-                  'Victorian',
-                  'Wild Wild West',
-                  'Wedding'
+                <Map<String, String>>[
+                  <String, String>{'text': 'Bavarian'},
+                  <String, String>{'text': 'Civil War'},
+                  <String, String>{'text': 'Roaring 20s'},
+                  <String, String>{'text': 'Pioneer'},
+                  <String, String>{'text': 'Saloon'},
+                  <String, String>{'text': 'Victorian'},
+                  <String, String>{'text': 'Wild Wild West'},
+                  <String, String>{'text': 'Wedding'},
                 ],
                 WeddingColors.tahoe,
               ),
@@ -127,8 +127,14 @@ class Other extends StatelessWidget {
                 WeddingColors.tahoe,
               ),
               buildActivityDetails(
-                <String>[
-                  r'$5 per day',
+                <Map<String, String>>[
+                  <String, String>{'text': r'$5 per day'},
+                  <String, String>{
+                    'before': 'Worth every ',
+                    'linkText': 'penny',
+                    'after': '',
+                    'link': 'https://www.youtube.com/watch?v=CbhkSFzd2n4',
+                  },
                 ],
                 WeddingColors.tahoe,
               ),
@@ -176,10 +182,15 @@ class Other extends StatelessWidget {
                 WeddingColors.tahoe,
               ),
               buildActivityDetails(
-                <String>[
-                  'Great climbing!',
-                  '200-foot sandstone spires of Peshastin Pinnacles with sweeping views of the Cascade Range and Wenatchee River Valley',
-                  'Beacon Rock above the lower Columbia River',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Great climbing!'},
+                  <String, String>{
+                    'text':
+                        '200-foot sandstone spires of Peshastin Pinnacles with sweeping views of the Cascade Range and Wenatchee River Valley'
+                  },
+                  <String, String>{
+                    'text': 'Beacon Rock above the lower Columbia River'
+                  },
                 ],
                 WeddingColors.tahoe,
               ),

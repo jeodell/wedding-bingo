@@ -42,11 +42,11 @@ class Drinks extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Beer cocktails',
-                  'Pints',
-                  'Small menu of great bar bites',
-                  'Downtown Leavenworth',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Beer cocktails'},
+                  <String, String>{'text': 'Pints'},
+                  <String, String>{'text': 'Small menu of great bar bites'},
+                  <String, String>{'text': 'Downtown Leavenworth'},
                 ],
                 Colors.white70,
               ),
@@ -62,9 +62,11 @@ class Drinks extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Nano-craft brewery with a micro-sized taproom',
-                  'Basement bar',
+                <Map<String, String>>[
+                  <String, String>{
+                    'text': 'Nano-craft brewery with a micro-sized taproom'
+                  },
+                  <String, String>{'text': 'Basement bar'},
                 ],
                 Colors.white70,
               ),
@@ -80,8 +82,8 @@ class Drinks extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Linked with Idlewild Pizza',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Linked with Idlewild Pizza'},
                 ],
                 Colors.white70,
               ),
@@ -97,9 +99,11 @@ class Drinks extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Unique selection of ciders, beers, and meads',
-                  'Outdoor seating',
+                <Map<String, String>>[
+                  <String, String>{
+                    'text': 'Unique selection of ciders, beers, and meads'
+                  },
+                  <String, String>{'text': 'Outdoor seating'},
                 ],
                 Colors.white70,
               ),
@@ -115,11 +119,11 @@ class Drinks extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Great Reviews',
-                  'Outdoor seating',
-                  '3 min from house',
-                  'Open 12-5 every day',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Great Reviews'},
+                  <String, String>{'text': 'Outdoor seating'},
+                  <String, String>{'text': '3 min from house'},
+                  <String, String>{'text': 'Open 12-5 every day'},
                 ],
                 Colors.white70,
               ),
@@ -135,8 +139,10 @@ class Drinks extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Uptown, Downtown, and Log Home locations',
+                <Map<String, String>>[
+                  <String, String>{
+                    'text': 'Uptown, Downtown, and Log Home locations'
+                  },
                 ],
                 Colors.white70,
               ),
@@ -152,8 +158,8 @@ class Drinks extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Downtown location only',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Downtown location only'},
                 ],
                 Colors.white70,
               ),
@@ -169,8 +175,10 @@ class Drinks extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Coffee, pastries, biscuits, and more',
+                <Map<String, String>>[
+                  <String, String>{
+                    'text': 'Coffee, pastries, biscuits, and more'
+                  },
                 ],
                 Colors.white70,
               ),

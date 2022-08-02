@@ -43,12 +43,12 @@ class Trails extends StatelessWidget {
                 WeddingColors.tahoe,
               ),
               buildActivityDetails(
-                <String>[
-                  '4.2 miles',
-                  '150 ft elevation gain',
-                  '35 min drive from house',
-                  'Impressive rushing creek',
-                  'Popular, easy hike'
+                <Map<String, String>>[
+                  <String, String>{'text': '4.2 miles'},
+                  <String, String>{'text': '150 ft elevation gain'},
+                  <String, String>{'text': '35 min drive from house'},
+                  <String, String>{'text': 'Impressive rushing creek'},
+                  <String, String>{'text': 'Popular, easy hike'},
                 ],
                 WeddingColors.tahoe,
               ),
@@ -64,12 +64,15 @@ class Trails extends StatelessWidget {
                 WeddingColors.tahoe,
               ),
               buildActivityDetails(
-                <String>[
-                  '3.4 miles',
-                  '800 ft elevation gain',
-                  '15 min drive from house',
-                  'Steep at the beginning but levels off with amazing views of Leavenworth and the surrounding mountains',
-                  'Not well marked so bring map',
+                <Map<String, String>>[
+                  <String, String>{'text': '3.4 miles'},
+                  <String, String>{'text': '800 ft elevation gain'},
+                  <String, String>{'text': '15 min drive from house'},
+                  <String, String>{
+                    'text':
+                        'Steep at the beginning but levels off with amazing views of Leavenworth and the surrounding mountains'
+                  },
+                  <String, String>{'text': 'Not well marked so bring map'},
                 ],
                 WeddingColors.tahoe,
               ),
@@ -85,11 +88,14 @@ class Trails extends StatelessWidget {
                 WeddingColors.tahoe,
               ),
               buildActivityDetails(
-                <String>[
-                  '2 miles',
-                  '100 ft elevation gain',
-                  '7 min drive from house',
-                  'River and mountain views from beautiful park in town',
+                <Map<String, String>>[
+                  <String, String>{'text': '2 miles'},
+                  <String, String>{'text': '100 ft elevation gain'},
+                  <String, String>{'text': '7 min drive from house'},
+                  <String, String>{
+                    'text':
+                        'River and mountain views from beautiful park in town'
+                  },
                 ],
                 WeddingColors.tahoe,
               ),
@@ -105,9 +111,9 @@ class Trails extends StatelessWidget {
                 WeddingColors.tahoe,
               ),
               buildActivityDetails(
-                <String>[
-                  '3 miles',
-                  '1700 ft elevation gain',
+                <Map<String, String>>[
+                  <String, String>{'text': '3 miles'},
+                  <String, String>{'text': '1700 ft elevation gain'},
                 ],
                 WeddingColors.tahoe,
               ),

@@ -1,3 +1,11 @@
+/*
+raptor egg - eggs for breakfast
+kylo ren - visconti's
+smell pennies - worth every penny somewhere
+trombone - double oven amenity
+batman - movie theatre amenity
+tuco infinity stones - tuco night
+*/
 import 'package:flutter/material.dart';
 import 'package:wedding_bingo/activities/activity_details.dart';
 import 'package:wedding_bingo/activities/activity_stack.dart';
@@ -41,10 +49,10 @@ class Food extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Meal for the Reception',
-                  'Rice Bowls and Soups',
-                  'Burgers and Sandwiches',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Meal for the Reception'},
+                  <String, String>{'text': 'Rice Bowls and Soups'},
+                  <String, String>{'text': 'Burgers and Sandwiches'},
                 ],
                 Colors.white70,
               ),
@@ -60,12 +68,12 @@ class Food extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Farm to Table',
-                  'Pacific Northwest Cuisine',
-                  'Downtown Leavenworth',
-                  'Dinner Only',
-                  'Closed Tues & Wed',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Farm to Table'},
+                  <String, String>{'text': 'Pacific Northwest Cuisine'},
+                  <String, String>{'text': 'Downtown Leavenworth'},
+                  <String, String>{'text': 'Dinner Only'},
+                  <String, String>{'text': 'Closed Tues & Wed'},
                 ],
                 Colors.white70,
               ),
@@ -81,8 +89,14 @@ class Food extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Fancy Italian',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Fancy Italian'},
+                  <String, String>{
+                    'before': 'Better than ',
+                    'linkText': 'Olive Garden',
+                    'after': '',
+                    'link': 'https://www.youtube.com/watch?v=ow-na1zDdQw'
+                  },
                 ],
                 Colors.white70,
               ),
@@ -98,8 +112,8 @@ class Food extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Bouygues',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Bouygues'},
                 ],
                 Colors.white70,
               ),
@@ -115,8 +129,8 @@ class Food extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Latin American',
+                <Map<String, String>>[
+                  <String, String>{'text': 'Latin American'},
                 ],
                 Colors.white70,
               ),
@@ -132,7 +146,16 @@ class Food extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>['Nice patio'],
+                <Map<String, String>>[
+                  <String, String>{'text': 'Nice patio'},
+                  <String, String>{
+                    'before': 'Brats, bocks, franks, ',
+                    'linkText': 'dogs',
+                    'after': ', and sausages',
+                    'link':
+                        'https://youtube.com/shorts/tRHhyocsbv8?feature=share'
+                  },
+                ],
                 Colors.white70,
               ),
               buildActivityReadMore(
@@ -147,14 +170,39 @@ class Food extends StatelessWidget {
                 Colors.white70,
               ),
               buildActivityDetails(
-                <String>[
-                  'Strudels, danishes, pretzels, cakes, and more',
+                <Map<String, String>>[
+                  <String, String>{
+                    'text': 'Strudels, danishes, pretzels, cakes, and more'
+                  },
                 ],
                 Colors.white70,
               ),
               buildActivityReadMore(
                 'https://www.facebook.com/bavarianbakeryofwa/',
                 'https://goo.gl/maps/EcC6NT6EEb2c9yiw7',
+                Colors.white70,
+              ),
+              buildSpacer(),
+              buildActivityLabel(
+                'Whistlepunk Ice Cream Co.',
+                WeddingColors.mushroom,
+                Colors.white70,
+              ),
+              buildActivityDetails(
+                <Map<String, String>>[
+                  <String, String>{
+                    'before': '',
+                    'linkText': '10/10',
+                    'after':
+                        ' ice cream you wont find anything better I guarantee is like Jos A',
+                    'link': 'https://youtu.be/SLP9mbCuhJc?t=2',
+                  },
+                ],
+                Colors.white70,
+              ),
+              buildActivityReadMore(
+                'https://whistlepunkicecream.com/',
+                'https://goo.gl/maps/ekzkAJJPC5ri2uf47',
                 Colors.white70,
               ),
               buildBottomPadding(),
