@@ -384,6 +384,12 @@ class House extends StatelessWidget {
             <String, String>{
               'text': 'Wrap around outdoor deck with seating & fire pit'
             },
+            <String, String>{
+              'before': 'Large dining room table with 16 ',
+              'linkText': 'chairs',
+              'after': '',
+              'link': 'https://www.youtube.com/watch?v=D3f7JpRPSCs'
+            },
             <String, String>{'text': 'Hot tub'},
             <String, String>{'text': 'Putting & chipping green'},
             <String, String>{'text': 'Outdoor basketball hoop'},

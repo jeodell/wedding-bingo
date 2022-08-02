@@ -71,6 +71,12 @@ class Other extends StatelessWidget {
                 <Map<String, String>>[
                   <String, String>{'text': 'Open 9-6 every day'},
                   <String, String>{'text': r'$8 per person'},
+                  <String, String>{
+                    'before': '',
+                    'linkText': 'Let there be a thousand blossoms bloom',
+                    'after': '',
+                    'link': 'https://youtu.be/_ih1EuMLspY?t=6'
+                  }
                 ],
                 WeddingColors.tahoe,
               ),
