@@ -42,7 +42,9 @@ class Schedule extends StatelessWidget {
 
   Widget _buildDailySchedule(List<String> dailyActivities) {
     final List<Widget> dailyActivitiesWidgets = <Widget>[];
+
     dailyActivitiesWidgets.add(buildSpacer());
+
     for (final String activity in dailyActivities) {
       dailyActivitiesWidgets.add(
         buildText(

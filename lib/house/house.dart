@@ -121,13 +121,17 @@ class House extends StatelessWidget {
           padding: EdgeInsets.symmetric(
               vertical: 8, horizontal: MediaQuery.of(context).size.width * 0.2),
           child: InkWell(
-            onTap: () {
+            onTap: () async {
               final Uri houseUri =
                   Uri.parse('https://goo.gl/maps/qxsfkWwP2Hj8oLw77');
-              launchUrl(
-                houseUri,
-                mode: LaunchMode.externalApplication,
-              );
+              if (await canLaunchUrl(houseUri)) {
+                launchUrl(
+                  houseUri,
+                  mode: LaunchMode.externalApplication,
+                );
+              } else {
+                throw 'Could not launch $houseUri';
+              }
               return;
             },
             child: buildText(
@@ -251,7 +255,10 @@ class House extends StatelessWidget {
                       ..onTap = () async {
                         final Uri linkUri = Uri.parse(listItem['link']!);
                         if (await canLaunchUrl(linkUri)) {
-                          launchUrl(linkUri);
+                          launchUrl(
+                            linkUri,
+                            mode: LaunchMode.externalApplication,
+                          );
                         } else {
                           throw 'Could not launch $linkUri';
                         }
@@ -369,9 +376,9 @@ class House extends StatelessWidget {
           _buildBulletedListWithLinks(<Map<String, String>>[
             <String, String>{
               'before':
-                  'Private Beach on the Wenatchee River with access to kayak or ',
+                  'Private Beach on the Wenatchee River where we can rent tubes and ',
               'after': '',
-              'linkText': 'raft',
+              'linkText': 'rafts',
               'link': 'https://youtu.be/6jjzNsDAOgQ',
             },
             <String, String>{
@@ -384,8 +391,7 @@ class House extends StatelessWidget {
             <String, String>{'text': 'Bocce Ball'},
             <String, String>{
               'text':
-                  'Game room with pool table, poker table, bar, keg, and, link: '
-                      ' giant wall Scrabble'
+                  'Game room with pool table, poker table, bar, keg, and giant wall Scrabble'
             },
             <String, String>{'text': 'Hammock'},
             <String, String>{

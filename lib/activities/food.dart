@@ -113,7 +113,7 @@ class Food extends StatelessWidget {
               ),
               buildActivityDetails(
                 <Map<String, String>>[
-                  <String, String>{'text': 'Bouygues'},
+                  <String, String>{'text': 'Burgers and smoothies'},
                 ],
                 Colors.white70,
               ),
@@ -147,7 +147,6 @@ class Food extends StatelessWidget {
               ),
               buildActivityDetails(
                 <Map<String, String>>[
-                  <String, String>{'text': 'Nice patio'},
                   <String, String>{
                     'before': 'Brats, bocks, franks, ',
                     'linkText': 'dogs',
@@ -155,6 +154,7 @@ class Food extends StatelessWidget {
                     'link':
                         'https://youtube.com/shorts/tRHhyocsbv8?feature=share'
                   },
+                  <String, String>{'text': 'Nice patio'},
                 ],
                 Colors.white70,
               ),
@@ -193,8 +193,7 @@ class Food extends StatelessWidget {
                   <String, String>{
                     'before': '',
                     'linkText': '10/10',
-                    'after':
-                        ' ice cream you wont find anything better I guarantee is like Jos A',
+                    'after': ' ice cream',
                     'link': 'https://youtu.be/SLP9mbCuhJc?t=2',
                   },
                 ],

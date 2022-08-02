@@ -87,7 +87,7 @@ class Other extends StatelessWidget {
               ),
               buildActivityDetails(
                 <Map<String, String>>[
-                  <String, String>{'text': 'Mani-Pedi'},
+                  <String, String>{'text': 'Mani-Pedis'},
                 ],
                 WeddingColors.tahoe,
               ),
@@ -112,6 +112,12 @@ class Other extends StatelessWidget {
                   <String, String>{'text': 'Victorian'},
                   <String, String>{'text': 'Wild Wild West'},
                   <String, String>{'text': 'Wedding'},
+                  <String, String>{
+                    'before': 'Worth every ',
+                    'linkText': 'penny',
+                    'after': '',
+                    'link': 'https://www.youtube.com/watch?v=CbhkSFzd2n4',
+                  },
                 ],
                 WeddingColors.tahoe,
               ),
@@ -129,12 +135,6 @@ class Other extends StatelessWidget {
               buildActivityDetails(
                 <Map<String, String>>[
                   <String, String>{'text': r'$5 per day'},
-                  <String, String>{
-                    'before': 'Worth every ',
-                    'linkText': 'penny',
-                    'after': '',
-                    'link': 'https://www.youtube.com/watch?v=CbhkSFzd2n4',
-                  },
                 ],
                 WeddingColors.tahoe,
               ),

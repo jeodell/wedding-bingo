@@ -76,7 +76,10 @@ Widget buildActivityDetails(
                     ..onTap = () async {
                       final Uri linkUri = Uri.parse(detail['link']!);
                       if (await canLaunchUrl(linkUri)) {
-                        launchUrl(linkUri);
+                        launchUrl(
+                          linkUri,
+                          mode: LaunchMode.externalApplication,
+                        );
                       } else {
                         throw 'Could not launch $linkUri';
                       }
