@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wedding_bingo/widgets/widgets.dart';
@@ -30,20 +31,66 @@ Widget buildActivityLabel(
   );
 }
 
-Widget buildActivityDetails(List<String> details, Color textColor) {
+Widget buildActivityDetails(
+    List<Map<String, String>> details, Color textColor) {
   final List<Widget> children = <Widget>[];
 
-  for (final String detail in details) {
-    children.add(Padding(
-      padding: const EdgeInsets.only(top: 4),
-      child: buildText(
-        '\u2022 $detail',
-        TextStyle(
-          color: textColor,
-          fontSize: 18,
+  for (final Map<String, String> detail in details) {
+    if (detail['text'] != null) {
+      children.add(
+        Padding(
+          padding: const EdgeInsets.only(top: 4),
+          child: buildText(
+            '\u2022 ${detail['text']}',
+            TextStyle(
+              color: textColor,
+              fontSize: 18,
+            ),
+          ),
         ),
-      ),
-    ));
+      );
+    } else {
+      children.add(
+        Padding(
+          padding: const EdgeInsets.only(top: 4),
+          child: RichText(
+            text: TextSpan(
+              style: TextStyle(
+                fontFamily: 'JosefinSans',
+                fontSize: 18,
+                color: textColor,
+              ),
+              children: <TextSpan>[
+                const TextSpan(
+                  text: '\u2022 ',
+                ),
+                TextSpan(
+                  text: detail['before'],
+                ),
+                TextSpan(
+                  text: detail['linkText'],
+                  style: const TextStyle(
+                    decoration: TextDecoration.underline,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      final Uri linkUri = Uri.parse(detail['link']!);
+                      if (await canLaunchUrl(linkUri)) {
+                        launchUrl(linkUri);
+                      } else {
+                        throw 'Could not launch $linkUri';
+                      }
+                    },
+                ),
+                TextSpan(
+                  text: detail['after'],
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
   }
 
   return Padding(
