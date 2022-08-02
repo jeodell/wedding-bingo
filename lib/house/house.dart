@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wedding_bingo/theme/colors.dart';
@@ -206,6 +207,73 @@ class House extends StatelessWidget {
     );
   }
 
+  Widget _buildBulletedListWithLinks(List<Map<String, String>> listItems) {
+    final List<Widget> children = <Widget>[];
+
+    for (final Map<String, String> listItem in listItems) {
+      if (listItem['text'] != null) {
+        children.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: buildText(
+              '\u2022 ${listItem['text']}',
+              const TextStyle(
+                color: WeddingColors.maine,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        );
+      } else {
+        children.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: RichText(
+              text: TextSpan(
+                style: const TextStyle(
+                  fontFamily: 'JosefinSans',
+                  fontSize: 18,
+                  color: WeddingColors.maine,
+                ),
+                children: <TextSpan>[
+                  const TextSpan(
+                    text: '\u2022 ',
+                  ),
+                  TextSpan(
+                    text: listItem['before'],
+                  ),
+                  TextSpan(
+                    text: listItem['linkText'],
+                    style: const TextStyle(
+                      decoration: TextDecoration.underline,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () async {
+                        final Uri linkUri = Uri.parse(listItem['link']!);
+                        if (await canLaunchUrl(linkUri)) {
+                          launchUrl(linkUri);
+                        } else {
+                          throw 'Could not launch $linkUri';
+                        }
+                      },
+                  ),
+                  TextSpan(
+                    text: listItem['after'],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      }
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: children,
+    );
+  }
+
   Widget _buildRoomAssignments() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 32),
@@ -294,25 +362,47 @@ class House extends StatelessWidget {
 
   Widget _buildAmenities() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
+      padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 32),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          _buildBulletedList(<String>[
-            'Private Beach on the Wenatchee River',
-            'Wrap around outdoor deck with seating & fire pit',
-            'Hot tub',
-            'Putting & chipping green',
-            'Outdoor basketball hoop',
-            'Volleyball',
-            'Bocce Ball',
-            'Game room with pool table, poker table, bar, keg, and giant wall Scrabble',
-            'Hammock',
-            'Gourmet kitchen',
-            'Gas grill & smoker',
-            'Theater with candy at the ready',
-            'Washer & dryer',
-            'Internet',
+          _buildBulletedListWithLinks(<Map<String, String>>[
+            <String, String>{
+              'before':
+                  'Private Beach on the Wenatchee River with access to kayak or ',
+              'after': '',
+              'linkText': 'raft',
+              'link': 'https://youtu.be/6jjzNsDAOgQ',
+            },
+            <String, String>{
+              'text': 'Wrap around outdoor deck with seating & fire pit'
+            },
+            <String, String>{'text': 'Hot tub'},
+            <String, String>{'text': 'Putting & chipping green'},
+            <String, String>{'text': 'Outdoor basketball hoop'},
+            <String, String>{'text': 'Volleyball'},
+            <String, String>{'text': 'Bocce Ball'},
+            <String, String>{
+              'text':
+                  'Game room with pool table, poker table, bar, keg, and, link: '
+                      ' giant wall Scrabble'
+            },
+            <String, String>{'text': 'Hammock'},
+            <String, String>{
+              'before': 'Gourmet kitchen with viking duel ',
+              'linkText': 'oven',
+              'after': '',
+              'link': 'https://youtu.be/CgHW02YF50s'
+            },
+            <String, String>{'text': 'Gas grill & smoker'},
+            <String, String>{
+              'before': '',
+              'linkText': 'Movie theatre',
+              'after': ' with candy at the ready',
+              'link': 'https://youtu.be/c91XhgrTGBA?t=194'
+            },
+            <String, String>{'text': 'Washer & dryer'},
+            <String, String>{'text': 'Internet'},
           ]),
         ],
       ),
