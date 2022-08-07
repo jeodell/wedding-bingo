@@ -14,7 +14,7 @@ class Home extends StatelessWidget {
       child: AutoTabsScaffold(
         routes: const <PageRouteInfo<dynamic>>[
           Welcome(),
-          Bingo(),
+          Games(),
           House(),
           Schedule(),
           EmptyRouterRoute(),
@@ -30,8 +30,8 @@ class Home extends StatelessWidget {
               label: 'Welcome',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.grid_on),
-              label: 'Bingo',
+              icon: Icon(Icons.games),
+              label: 'Games',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.home),

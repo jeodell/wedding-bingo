@@ -20,7 +20,7 @@ import '../activities/food.dart' as _i9;
 import '../activities/other.dart' as _i11;
 import '../activities/trails.dart' as _i8;
 import '../base.dart' as _i1;
-import '../bingo/bingo.dart' as _i3;
+import '../games/games.dart' as _i3;
 import '../house/house.dart' as _i4;
 import '../schedule/schedule.dart' as _i5;
 import '../welcome/welcome.dart' as _i2;
@@ -39,9 +39,9 @@ class AppRouter extends _i6.RootStackRouter {
       return _i6.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i2.Welcome());
     },
-    Bingo.name: (routeData) {
+    Games.name: (routeData) {
       return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i3.Bingo());
+          routeData: routeData, child: const _i3.Games());
     },
     House.name: (routeData) {
       return _i6.MaterialPageX<dynamic>(
@@ -85,7 +85,7 @@ class AppRouter extends _i6.RootStackRouter {
   List<_i6.RouteConfig> get routes => [
         _i6.RouteConfig(Home.name, path: '/', children: [
           _i6.RouteConfig(Welcome.name, path: 'welcome', parent: Home.name),
-          _i6.RouteConfig(Bingo.name, path: 'bingo', parent: Home.name),
+          _i6.RouteConfig(Games.name, path: 'games', parent: Home.name),
           _i6.RouteConfig(House.name, path: 'house', parent: Home.name),
           _i6.RouteConfig(Schedule.name, path: 'schedule', parent: Home.name),
           _i6.RouteConfig(EmptyRouterRoute.name,
@@ -127,11 +127,11 @@ class Welcome extends _i6.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.Bingo]
-class Bingo extends _i6.PageRouteInfo<void> {
-  const Bingo() : super(Bingo.name, path: 'bingo');
+/// [_i3.Games]
+class Games extends _i6.PageRouteInfo<void> {
+  const Games() : super(Games.name, path: 'games');
 
-  static const String name = 'Bingo';
+  static const String name = 'Games';
 }
 
 /// generated route for

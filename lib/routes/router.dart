@@ -7,7 +7,7 @@ import 'package:wedding_bingo/activities/food.dart';
 import 'package:wedding_bingo/activities/other.dart';
 import 'package:wedding_bingo/activities/trails.dart';
 import 'package:wedding_bingo/base.dart';
-import 'package:wedding_bingo/bingo/bingo.dart';
+import 'package:wedding_bingo/games/games.dart';
 import 'package:wedding_bingo/house/house.dart';
 import 'package:wedding_bingo/schedule/schedule.dart';
 import 'package:wedding_bingo/welcome/welcome.dart';
@@ -24,8 +24,8 @@ import 'package:wedding_bingo/welcome/welcome.dart';
           page: Welcome,
         ),
         AutoRoute(
-          path: 'bingo',
-          page: Bingo,
+          path: 'games',
+          page: Games,
         ),
         AutoRoute(
           path: 'house',
