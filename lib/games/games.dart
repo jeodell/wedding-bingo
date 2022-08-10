@@ -36,7 +36,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
   List<AnimationController> lottieControllers = <AnimationController>[];
   List<Animation<double>> fadeAnimations = <Animation<double>>[];
 
-  List _scoreTracker = [];
+  List<Icon> _scoreTracker = <Icon>[];
   int _questionIndex = 0;
   int _totalScore = 0;
   bool answerWasSelected = false;
@@ -291,7 +291,8 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildAnswer(quiz, answer, textColor, backgroundColor) {
+  Widget _buildAnswer(List<Map<String, dynamic>> quiz,
+      Map<String, dynamic> answer, Color? textColor, Color? backgroundColor) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 4),
       child: InkWell(
@@ -321,11 +322,13 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     );
   }
 
-  void _questionAnswered(List quiz, answer) {
+  void _questionAnswered(
+      List<Map<String, dynamic>> quiz, Map<String, dynamic> answer) {
     setState(
       () {
         answerWasSelected = true;
-        List<Map<String, dynamic>> answers = quiz[_questionIndex]['answers'];
+        final List<Map<String, dynamic>> answers =
+            quiz[_questionIndex]['answers'];
         for (int i = 0; i < answers.length; i++) {
           if (answers[i]['answerText'] == answer['answerText']) {
             answerSelectedIndex = i;
@@ -351,7 +354,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     );
   }
 
-  void _nextQuestion(List quiz) {
+  void _nextQuestion(List<Map<String, dynamic>> quiz) {
     setState(() {
       _questionIndex++;
       answerWasSelected = false;
@@ -369,13 +372,13 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     setState(() {
       _questionIndex = 0;
       _totalScore = 0;
-      _scoreTracker = [];
+      _scoreTracker = <Icon>[];
       endOfQuiz = false;
       lastQuestion = false;
     });
   }
 
-  Widget _buildNextButton(quiz) {
+  Widget _buildNextButton(List<Map<String, dynamic>> quiz) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: ElevatedButton(
@@ -401,7 +404,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildRestartButton(quiz) {
+  Widget _buildRestartButton(List<Map<String, dynamic>> quiz) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: ElevatedButton(
@@ -466,10 +469,10 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
               ),
               const SizedBox(height: 20),
               _buildRestartButton(quiz),
-            ] else ...[
+            ] else ...<Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: <Widget>[
                   if (_scoreTracker.isEmpty)
                     const SizedBox(
                       height: 24,
@@ -491,7 +494,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: <Widget>[
                     Text(
                       quiz[_questionIndex]['question'],
                       textAlign: TextAlign.center,
@@ -685,7 +688,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                     child: Scaffold(
                       appBar: AppBar(
                         title: const TabBar(
-                          tabs: [
+                          tabs: <Tab>[
                             Tab(
                               child: Text(
                                 'Bingo',
@@ -702,7 +705,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                         ),
                       ),
                       body: TabBarView(
-                        children: [
+                        children: <Widget>[
                           _buildBingo(),
                           _buildQuiz(),
                         ],
