@@ -93,7 +93,7 @@ class Other extends StatelessWidget {
               ),
               buildActivityDetails(
                 <Map<String, String>>[
-                  <String, String>{'text': 'Mani-Pedis'},
+                  <String, String>{'text': 'Massages'},
                 ],
                 WeddingColors.tahoe,
               ),
