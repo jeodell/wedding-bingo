@@ -14,7 +14,6 @@ mixin BingoData {
     'Janice',
     'Larry',
     'Tracy',
-    'Mary',
   ];
 
   static final List<Map<String, String>> conditions = <Map<String, String>>[
@@ -50,9 +49,8 @@ mixin BingoData {
     <String, String>{'lindsey': 'Lindsey starts beating up on Nathan'},
     <String, String>{'lindsey': 'Lindsey sneezes more than twice in a row'},
     // Rhonda
-    <String, String>{'rhonda': 'Rhonda laughs hysterically'},
+    <String, String>{'rhonda': 'Rhonda looks for her glasses'},
     <String, String>{'rhonda': 'Rhonda plays non-bingo games on her phone'},
-    <String, String>{'rhonda': 'Rhonda makes a covert dig'},
     <String, String>{'rhonda': 'Rhonda stops to take pictures of wildflowers'},
     // Rachel
     <String, String>{'rachel': 'Rachel has a breakfast beer'},
@@ -80,12 +78,6 @@ mixin BingoData {
     // Tracy
     <String, String>{'tracy': 'Tracy says "I will blaze you up"'},
     <String, String>{'tracy': 'Tracy threatens violence against Larry'},
-    // Mary
-    <String, String>{'mary': 'Mary winks while poking fun at someone'},
-    <String, String>{'mary': 'Mary wears a floral shirt'},
-    <String, String>{
-      'mary': 'Mary gets up from the floor faster than someone younger than her'
-    },
   ];
 
   static final Map<String, int> numPhotos = <String, int>{
@@ -98,7 +90,6 @@ mixin BingoData {
     'chris': 1,
     'steve': 1,
     'rhonda': 1,
-    'mary': 1,
     'larry': 1,
     'tracy': 1,
     'janice': 1,
