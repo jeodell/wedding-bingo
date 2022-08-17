@@ -551,172 +551,177 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: double.infinity,
-        color: WeddingColors.rain,
-        child: FutureBuilder<String?>(
-          future: _currentGuest,
-          builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return const CircularProgressIndicator();
-              case ConnectionState.none:
-                return const CircularProgressIndicator();
-              case ConnectionState.active:
-                return const CircularProgressIndicator();
-              case ConnectionState.done:
-                if (snapshot.data == '' && dropdownItems.isEmpty) {
-                  for (final String name in BingoData.guestList) {
-                    dropdownItems.add(
-                      DropdownMenuItem<String>(
-                        value: name,
-                        child: buildText(name),
-                      ),
-                    );
-                  }
-                }
-                if (_confirmGuestState == true) {
-                  return Dialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    elevation: 4,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 32),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          buildText('Are you sure this is you?'),
-                          Container(
-                            padding: const EdgeInsets.symmetric(vertical: 24),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                'assets/images/${_confirmGuestName.toLowerCase()}.jpg',
-                                width: 200,
-                                height: 200,
-                              ),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(0),
-                                    ),
-                                    side: const BorderSide(
-                                      color: WeddingColors.pine,
-                                      width: 2,
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 32,
-                                      vertical: 8,
-                                    ),
-                                    primary: WeddingColors.pine,
-                                    backgroundColor: Colors.white),
-                                child: buildText('Deny'),
-                                onPressed: () {
-                                  _denyGuestSelection();
-                                },
-                              ),
-                              const SizedBox(width: 16),
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(0),
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 32,
-                                      vertical: 8,
-                                    ),
-                                    primary: Colors.white,
-                                    backgroundColor: WeddingColors.maine),
-                                child: buildText('Confirm'),
-                                onPressed: () {
-                                  _confirmGuestSelection(_confirmGuestName);
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                }
-                if (snapshot.data == '') {
-                  return Center(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          buildText('Who Are You?'),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    MediaQuery.of(context).size.width * 0.25),
-                            child: DropdownButtonFormField<String>(
-                                items: dropdownItems,
-                                onChanged: _onGuestSelection),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                } else {
-                  if (squaresInfo.isEmpty) {
-                    final List<Map<String, String>> conditions =
-                        BingoData.conditions;
-                    final int conditionsLength = conditions.length;
-                    for (int i = 0; i < 25; i++) {
-                      final Map<String, String> currentMap = conditions
-                          .elementAt(Random().nextInt(conditionsLength - i));
-                      currentVictim = currentMap.keys.first;
-                      currentCondition = currentMap[currentVictim]!;
-                      squaresInfo.add(<String, dynamic>{
-                        'name': currentVictim,
-                        'condition': currentCondition,
-                        'completed': false,
-                      });
-                      conditions.remove(currentMap);
-                    }
-                  }
-                  return DefaultTabController(
-                    length: 2,
-                    child: Scaffold(
-                      appBar: AppBar(
-                        title: const TabBar(
-                          tabs: <Tab>[
-                            Tab(
-                              child: Text(
-                                'Bingo',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                            ),
-                            Tab(
-                              child: Text(
-                                'Quiz',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      body: TabBarView(
-                        children: <Widget>[
-                          _buildBingo(),
-                          _buildQuiz(),
-                        ],
-                      ),
-                    ),
-                  );
-                }
-            }
-          },
-        ),
-      ),
-    );
+    return const Center(child: Text('Bingo page coming soon!'));
   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Container(
+//         height: double.infinity,
+//         color: WeddingColors.rain,
+//         child: FutureBuilder<String?>(
+//           future: _currentGuest,
+//           builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
+//             switch (snapshot.connectionState) {
+//               case ConnectionState.waiting:
+//                 return const CircularProgressIndicator();
+//               case ConnectionState.none:
+//                 return const CircularProgressIndicator();
+//               case ConnectionState.active:
+//                 return const CircularProgressIndicator();
+//               case ConnectionState.done:
+//                 if (snapshot.data == '' && dropdownItems.isEmpty) {
+//                   for (final String name in BingoData.guestList) {
+//                     dropdownItems.add(
+//                       DropdownMenuItem<String>(
+//                         value: name,
+//                         child: buildText(name),
+//                       ),
+//                     );
+//                   }
+//                 }
+//                 if (_confirmGuestState == true) {
+//                   return Dialog(
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(8),
+//                     ),
+//                     elevation: 4,
+//                     child: Container(
+//                       padding: const EdgeInsets.symmetric(vertical: 32),
+//                       child: Column(
+//                         mainAxisSize: MainAxisSize.min,
+//                         children: <Widget>[
+//                           buildText('Are you sure this is you?'),
+//                           Container(
+//                             padding: const EdgeInsets.symmetric(vertical: 24),
+//                             child: ClipRRect(
+//                               borderRadius: BorderRadius.circular(8),
+//                               child: Image.asset(
+//                                 'assets/images/${_confirmGuestName.toLowerCase()}.jpg',
+//                                 width: 200,
+//                                 height: 200,
+//                               ),
+//                             ),
+//                           ),
+//                           Row(
+//                             mainAxisAlignment: MainAxisAlignment.center,
+//                             children: <Widget>[
+//                               TextButton(
+//                                 style: TextButton.styleFrom(
+//                                     shape: RoundedRectangleBorder(
+//                                       borderRadius: BorderRadius.circular(0),
+//                                     ),
+//                                     side: const BorderSide(
+//                                       color: WeddingColors.pine,
+//                                       width: 2,
+//                                     ),
+//                                     padding: const EdgeInsets.symmetric(
+//                                       horizontal: 32,
+//                                       vertical: 8,
+//                                     ),
+//                                     primary: WeddingColors.pine,
+//                                     backgroundColor: Colors.white),
+//                                 child: buildText('Deny'),
+//                                 onPressed: () {
+//                                   _denyGuestSelection();
+//                                 },
+//                               ),
+//                               const SizedBox(width: 16),
+//                               TextButton(
+//                                 style: TextButton.styleFrom(
+//                                     shape: RoundedRectangleBorder(
+//                                       borderRadius: BorderRadius.circular(0),
+//                                     ),
+//                                     padding: const EdgeInsets.symmetric(
+//                                       horizontal: 32,
+//                                       vertical: 8,
+//                                     ),
+//                                     primary: Colors.white,
+//                                     backgroundColor: WeddingColors.maine),
+//                                 child: buildText('Confirm'),
+//                                 onPressed: () {
+//                                   _confirmGuestSelection(_confirmGuestName);
+//                                 },
+//                               ),
+//                             ],
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   );
+//                 }
+//                 if (snapshot.data == '') {
+//                   return Center(
+//                     child: SingleChildScrollView(
+//                       child: Column(
+//                         mainAxisAlignment: MainAxisAlignment.center,
+//                         children: <Widget>[
+//                           buildText('Who Are You?'),
+//                           Padding(
+//                             padding: EdgeInsets.symmetric(
+//                                 horizontal:
+//                                     MediaQuery.of(context).size.width * 0.25),
+//                             child: DropdownButtonFormField<String>(
+//                                 items: dropdownItems,
+//                                 onChanged: _onGuestSelection),
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   );
+//                 } else {
+//                   if (squaresInfo.isEmpty) {
+//                     final List<Map<String, String>> conditions =
+//                         BingoData.conditions;
+//                     final int conditionsLength = conditions.length;
+//                     for (int i = 0; i < 25; i++) {
+//                       final Map<String, String> currentMap = conditions
+//                           .elementAt(Random().nextInt(conditionsLength - i));
+//                       currentVictim = currentMap.keys.first;
+//                       currentCondition = currentMap[currentVictim]!;
+//                       squaresInfo.add(<String, dynamic>{
+//                         'name': currentVictim,
+//                         'condition': currentCondition,
+//                         'completed': false,
+//                       });
+//                       conditions.remove(currentMap);
+//                     }
+//                   }
+//                   return DefaultTabController(
+//                     length: 2,
+//                     child: Scaffold(
+//                       appBar: AppBar(
+//                         title: const TabBar(
+//                           tabs: <Tab>[
+//                             Tab(
+//                               child: Text(
+//                                 'Bingo',
+//                                 style: TextStyle(fontSize: 18),
+//                               ),
+//                             ),
+//                             Tab(
+//                               child: Text(
+//                                 'Quiz',
+//                                 style: TextStyle(fontSize: 18),
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       ),
+//                       body: TabBarView(
+//                         children: <Widget>[
+//                           _buildBingo(),
+//                           _buildQuiz(),
+//                         ],
+//                       ),
+//                     ),
+//                   );
+//                 }
+//             }
+//           },
+//         ),
+//       ),
+//     );
+//   }
 }
