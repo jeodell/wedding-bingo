@@ -296,10 +296,10 @@ class House extends StatelessWidget {
           _buildFloorHeaders('Upper Floor'),
           _buildBulletedList(<String>[
             'Steve & Rhonda: The Grand Suite',
-            "Grandma Wilkins: Quail's Egg",
+            "Jared & Lindsey: Quail's Egg",
             "Amanda & Derek: Murphy's Run",
             'Rachel & Chris: Covey Suite',
-            'Jared, Lindsey, & Nathan: 4-bunk'
+            'Nathan: 4-bunk'
           ])
         ],
       ),
