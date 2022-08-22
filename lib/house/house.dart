@@ -291,7 +291,7 @@ class House extends StatelessWidget {
           _buildBulletedList(<String>[
             'J&B: River King',
             'Janice: The Crest',
-            'Larry & Tracy: The Plume'
+            'Larry: The Plume'
           ]),
           _buildFloorHeaders('Upper Floor'),
           _buildBulletedList(<String>[
