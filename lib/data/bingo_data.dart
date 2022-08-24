@@ -5,6 +5,7 @@ mixin BingoData {
     'Jared',
     'Lindsey',
     'Nathan',
+    'Jennifer',
     'Rachel',
     'Chris',
     'Amanda',
@@ -29,6 +30,7 @@ mixin BingoData {
     <String, String>{
       'nathan': 'Nathan makes a joke about sloppy steaks on steak night'
     },
+    // Jennifer
     // Jason
     <String, String>{'jason': 'Jason has late night chocolate snack'},
     // Brianna
@@ -80,6 +82,7 @@ mixin BingoData {
     'jason': 1,
     'brianna': 1,
     'nathan': 1,
+    'jennifer': 1,
     'jared': 1,
     'lindsey': 1,
     'rachel': 1,
