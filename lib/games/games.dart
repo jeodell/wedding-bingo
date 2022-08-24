@@ -2,6 +2,7 @@
 Olympic sports scoreboard - rock stacking, veggie eating contest, putting, trivia, bocce ball, pool trick shots, corn hole, HORSE, disc accuracy, hidden immunity items
 */
 import 'dart:math';
+import 'dart:convert';
 
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
@@ -69,6 +70,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     _currentGuest = _prefs.then((SharedPreferences prefs) {
       return prefs.getString('currentGuest') ?? '';
     });
+    _fetchBingoBoard();
     super.initState();
   }
 
@@ -78,6 +80,41 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
       lottieControllers[index].dispose();
     }
     super.dispose();
+  }
+
+  Future<void> _fetchBingoBoard() async {
+    for (int index = 0; index < 25; index++) {
+      final String currentSquareInfo =
+          await _prefs.then((SharedPreferences prefs) {
+        return prefs.getString('square$index') ?? '';
+      });
+      if (currentSquareInfo != '') {
+        squaresInfo.add(json.decode(currentSquareInfo));
+      }
+    }
+  }
+
+  Future<void> _createBingoBoard() async {
+    if (squaresInfo.isEmpty) {
+      final List<Map<String, String>> conditions = BingoData.conditions;
+      final int conditionsLength = conditions.length;
+      for (int i = 0; i < 25; i++) {
+        final Map<String, String> currentMap =
+            conditions.elementAt(Random().nextInt(conditionsLength - i));
+        currentVictim = currentMap.keys.first;
+        currentCondition = currentMap[currentVictim]!;
+        squaresInfo.add(<String, dynamic>{
+          'name': currentVictim,
+          'condition': currentCondition,
+          'completed': false,
+        });
+        // add to shared preferences
+        _prefs.then((SharedPreferences prefs) {
+          prefs.setString('square$i', json.encode(squaresInfo[i]));
+        });
+        conditions.remove(currentMap);
+      }
+    }
   }
 
   Future<void> _onGuestSelection(String? value) async {
@@ -96,6 +133,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
           prefs.setString('currentGuest', value!).then((bool success) {
         return value;
       });
+      _createBingoBoard();
     });
   }
 
@@ -146,6 +184,10 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     if (squaresInfo[index]['completed'] == true) {
       setState(() {
         squaresInfo[index]['completed'] = false;
+        _prefs.then((SharedPreferences prefs) {
+          final String encodedString = json.encode(squaresInfo[index]);
+          prefs.setString('square$index', encodedString);
+        });
         if (confettiPlaying) {
           confettiController.stop();
         }
@@ -153,6 +195,10 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     } else {
       setState(() {
         squaresInfo[index]['completed'] = true;
+        _prefs.then((SharedPreferences prefs) {
+          final String encodedString = json.encode(squaresInfo[index]);
+          prefs.setString('square$index', encodedString);
+        });
         lottieControllers[index].reset();
         if (_checkForWinner()) {
           setState(() {
@@ -167,7 +213,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
 
   Widget _buildBingo() {
     return Container(
-      color: WeddingColors.rain,
+      color: WeddingColors.sage,
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -279,11 +325,65 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                   ),
               ],
             ),
-            const SizedBox(height: 100),
+            const SizedBox(height: 36),
             const Text(
-              'YOOOOOOO!',
+              'Rules/Info',
               style: TextStyle(
                   fontSize: 48, fontFamily: 'Marcellus', color: Colors.white),
+            ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: buildText(
+                      '\u2022 Bingo will be played on the honor system. The prize is cool but not cool enough to lie for.',
+                      const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Josefin Sans',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: buildText(
+                      '\u2022 Players cannot purposefully influence others to perform their -isms',
+                      const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Josefin Sans',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: buildText(
+                      '\u2022 Players must be able to account for when and where their wining -isms occurred',
+                      const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Josefin Sans',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: buildText(
+                      '\u2022 If you get Bingo, let J or B know and they will review your board and determine if you have won',
+                      const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Josefin Sans',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  buildBottomPadding(),
+                ],
+              ),
             ),
           ],
         ),
@@ -448,10 +548,9 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
               Container(
                 width: double.infinity,
                 height: 130,
-                margin: const EdgeInsets.only(
-                    bottom: 10.0, left: 30.0, right: 30.0),
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 50.0, vertical: 20.0),
+                margin: const EdgeInsets.only(bottom: 10, left: 30, right: 30),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 decoration: BoxDecoration(
                   color: WeddingColors.pine,
                   borderRadius: BorderRadius.circular(8),
@@ -536,8 +635,8 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                                   quiz[_questionIndex]['answers']
                                       [answerSelectedIndex]
                               ? Colors.red[900]
-                              : WeddingColors.birch
-                      : WeddingColors.birch,
+                              : Colors.white.withOpacity(0.75)
+                      : Colors.white.withOpacity(0.75),
                 ),
               ),
               const SizedBox(height: 20),
@@ -549,179 +648,162 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     );
   }
 
+  // @override
+  // Widget build(BuildContext context) {
+  //   return const Center(child: Text('Bingo page coming soon!'));
+  // }
+
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Bingo page coming soon!'));
+    return Scaffold(
+      body: Container(
+        height: double.infinity,
+        color: WeddingColors.sage,
+        child: FutureBuilder<String?>(
+          future: _currentGuest,
+          builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                return const CircularProgressIndicator();
+              case ConnectionState.none:
+                return const CircularProgressIndicator();
+              case ConnectionState.active:
+                return const CircularProgressIndicator();
+              case ConnectionState.done:
+                if (snapshot.data == '' && dropdownItems.isEmpty) {
+                  for (final String name in BingoData.guestList) {
+                    dropdownItems.add(
+                      DropdownMenuItem<String>(
+                        value: name,
+                        child: buildText(name),
+                      ),
+                    );
+                  }
+                }
+                if (_confirmGuestState == true) {
+                  return Dialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 4,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 32),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          buildText('Are you sure this is you?'),
+                          Container(
+                            padding: const EdgeInsets.symmetric(vertical: 24),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.asset(
+                                'assets/images/${_confirmGuestName.toLowerCase()}.jpg',
+                                width: 200,
+                                height: 200,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(0),
+                                    ),
+                                    side: const BorderSide(
+                                      color: WeddingColors.pine,
+                                      width: 2,
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 32,
+                                      vertical: 8,
+                                    ),
+                                    primary: WeddingColors.pine,
+                                    backgroundColor: Colors.white),
+                                child: buildText('Deny'),
+                                onPressed: () {
+                                  _denyGuestSelection();
+                                },
+                              ),
+                              const SizedBox(width: 16),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(0),
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 32,
+                                      vertical: 8,
+                                    ),
+                                    primary: Colors.white,
+                                    backgroundColor: WeddingColors.maine),
+                                child: buildText('Confirm'),
+                                onPressed: () {
+                                  _confirmGuestSelection(_confirmGuestName);
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                if (snapshot.data == '') {
+                  return Center(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          buildText('Who Are You?'),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.25),
+                            child: DropdownButtonFormField<String>(
+                                items: dropdownItems,
+                                onChanged: _onGuestSelection),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                } else {
+                  return DefaultTabController(
+                    length: 2,
+                    child: Scaffold(
+                      appBar: AppBar(
+                        title: const TabBar(
+                          tabs: <Tab>[
+                            Tab(
+                              child: Text(
+                                'Bingo',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ),
+                            Tab(
+                              child: Text(
+                                'Quiz',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      body: TabBarView(
+                        children: <Widget>[
+                          _buildBingo(),
+                          _buildQuiz(),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+            }
+          },
+        ),
+      ),
+    );
   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//         height: double.infinity,
-//         color: WeddingColors.rain,
-//         child: FutureBuilder<String?>(
-//           future: _currentGuest,
-//           builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
-//             switch (snapshot.connectionState) {
-//               case ConnectionState.waiting:
-//                 return const CircularProgressIndicator();
-//               case ConnectionState.none:
-//                 return const CircularProgressIndicator();
-//               case ConnectionState.active:
-//                 return const CircularProgressIndicator();
-//               case ConnectionState.done:
-//                 if (snapshot.data == '' && dropdownItems.isEmpty) {
-//                   for (final String name in BingoData.guestList) {
-//                     dropdownItems.add(
-//                       DropdownMenuItem<String>(
-//                         value: name,
-//                         child: buildText(name),
-//                       ),
-//                     );
-//                   }
-//                 }
-//                 if (_confirmGuestState == true) {
-//                   return Dialog(
-//                     shape: RoundedRectangleBorder(
-//                       borderRadius: BorderRadius.circular(8),
-//                     ),
-//                     elevation: 4,
-//                     child: Container(
-//                       padding: const EdgeInsets.symmetric(vertical: 32),
-//                       child: Column(
-//                         mainAxisSize: MainAxisSize.min,
-//                         children: <Widget>[
-//                           buildText('Are you sure this is you?'),
-//                           Container(
-//                             padding: const EdgeInsets.symmetric(vertical: 24),
-//                             child: ClipRRect(
-//                               borderRadius: BorderRadius.circular(8),
-//                               child: Image.asset(
-//                                 'assets/images/${_confirmGuestName.toLowerCase()}.jpg',
-//                                 width: 200,
-//                                 height: 200,
-//                               ),
-//                             ),
-//                           ),
-//                           Row(
-//                             mainAxisAlignment: MainAxisAlignment.center,
-//                             children: <Widget>[
-//                               TextButton(
-//                                 style: TextButton.styleFrom(
-//                                     shape: RoundedRectangleBorder(
-//                                       borderRadius: BorderRadius.circular(0),
-//                                     ),
-//                                     side: const BorderSide(
-//                                       color: WeddingColors.pine,
-//                                       width: 2,
-//                                     ),
-//                                     padding: const EdgeInsets.symmetric(
-//                                       horizontal: 32,
-//                                       vertical: 8,
-//                                     ),
-//                                     primary: WeddingColors.pine,
-//                                     backgroundColor: Colors.white),
-//                                 child: buildText('Deny'),
-//                                 onPressed: () {
-//                                   _denyGuestSelection();
-//                                 },
-//                               ),
-//                               const SizedBox(width: 16),
-//                               TextButton(
-//                                 style: TextButton.styleFrom(
-//                                     shape: RoundedRectangleBorder(
-//                                       borderRadius: BorderRadius.circular(0),
-//                                     ),
-//                                     padding: const EdgeInsets.symmetric(
-//                                       horizontal: 32,
-//                                       vertical: 8,
-//                                     ),
-//                                     primary: Colors.white,
-//                                     backgroundColor: WeddingColors.maine),
-//                                 child: buildText('Confirm'),
-//                                 onPressed: () {
-//                                   _confirmGuestSelection(_confirmGuestName);
-//                                 },
-//                               ),
-//                             ],
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                   );
-//                 }
-//                 if (snapshot.data == '') {
-//                   return Center(
-//                     child: SingleChildScrollView(
-//                       child: Column(
-//                         mainAxisAlignment: MainAxisAlignment.center,
-//                         children: <Widget>[
-//                           buildText('Who Are You?'),
-//                           Padding(
-//                             padding: EdgeInsets.symmetric(
-//                                 horizontal:
-//                                     MediaQuery.of(context).size.width * 0.25),
-//                             child: DropdownButtonFormField<String>(
-//                                 items: dropdownItems,
-//                                 onChanged: _onGuestSelection),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                   );
-//                 } else {
-//                   if (squaresInfo.isEmpty) {
-//                     final List<Map<String, String>> conditions =
-//                         BingoData.conditions;
-//                     final int conditionsLength = conditions.length;
-//                     for (int i = 0; i < 25; i++) {
-//                       final Map<String, String> currentMap = conditions
-//                           .elementAt(Random().nextInt(conditionsLength - i));
-//                       currentVictim = currentMap.keys.first;
-//                       currentCondition = currentMap[currentVictim]!;
-//                       squaresInfo.add(<String, dynamic>{
-//                         'name': currentVictim,
-//                         'condition': currentCondition,
-//                         'completed': false,
-//                       });
-//                       conditions.remove(currentMap);
-//                     }
-//                   }
-//                   return DefaultTabController(
-//                     length: 2,
-//                     child: Scaffold(
-//                       appBar: AppBar(
-//                         title: const TabBar(
-//                           tabs: <Tab>[
-//                             Tab(
-//                               child: Text(
-//                                 'Bingo',
-//                                 style: TextStyle(fontSize: 18),
-//                               ),
-//                             ),
-//                             Tab(
-//                               child: Text(
-//                                 'Quiz',
-//                                 style: TextStyle(fontSize: 18),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       body: TabBarView(
-//                         children: <Widget>[
-//                           _buildBingo(),
-//                           _buildQuiz(),
-//                         ],
-//                       ),
-//                     ),
-//                   );
-//                 }
-//             }
-//           },
-//         ),
-//       ),
-//     );
-//   }
 }
