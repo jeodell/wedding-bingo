@@ -29,8 +29,8 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
   bool confettiPlaying = false;
   bool _confirmGuestState = false;
   String _confirmGuestName = '';
-  String currentVictim = '';
-  String currentCondition = '';
+  String _currentVictim = '';
+  String _currentCondition = '';
   bool _winner = false;
   late List<Map<String, dynamic>> squaresInfo = <Map<String, dynamic>>[];
   late ConfettiController confettiController = ConfettiController();
@@ -96,19 +96,24 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
 
   Future<void> _createBingoBoard() async {
     if (squaresInfo.isEmpty) {
+      final String currentGuest =
+          await _currentGuest.then((String currentGuest) {
+        return currentGuest.toLowerCase();
+      });
       final List<Map<String, String>> conditions = BingoData.conditions;
+      conditions.removeWhere(
+          (Map<String, String> element) => element['name'] == currentGuest);
       final int conditionsLength = conditions.length;
       for (int i = 0; i < 25; i++) {
         final Map<String, String> currentMap =
             conditions.elementAt(Random().nextInt(conditionsLength - i));
-        currentVictim = currentMap.keys.first;
-        currentCondition = currentMap[currentVictim]!;
+        _currentVictim = currentMap['name']!;
+        _currentCondition = currentMap['condition']!;
         squaresInfo.add(<String, dynamic>{
-          'name': currentVictim,
-          'condition': currentCondition,
+          'name': _currentVictim,
+          'condition': _currentCondition,
           'completed': false,
         });
-        // add to shared preferences
         _prefs.then((SharedPreferences prefs) {
           prefs.setString('square$i', json.encode(squaresInfo[i]));
         });
