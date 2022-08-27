@@ -140,7 +140,7 @@ class Schedule extends StatelessWidget {
               _buildHeaderWithDivider('Wednesday | 9/14', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
-                  '\u2022 Lake Chelan boat rental',
+                  '\u2022 Kayaking on Lake Wenatchee',
                   '\u2022 Ohme Gardens',
                   '\u2022 Shawarma for dinner (Jared, Lindsey, J, and B)',
                 ],
@@ -161,8 +161,8 @@ class Schedule extends StatelessWidget {
                 <String>[
                   '\u2022 Wedding day!',
                   '\u2022 Photographers arrive at 3:00',
-                  '\u2022 3:00 Getting ready shots',
-                  '\u2022 3:30 First look and 1.5 hours of portraits of bride & groom (including individual portraits)',
+                  '\u2022 3:00 J&B Getting ready shots',
+                  '\u2022 3:30 J&B First look and 1.5 hours of portraits around Leavenworth Area',
                   '\u2022 5:00 Breathing room (30 mins)',
                   '\u2022 5:30 Ceremony! (30 minutes)',
                   '\u2022 6:00 Family photos (30 minutes)',
@@ -177,7 +177,7 @@ class Schedule extends StatelessWidget {
               _buildDailySchedule(
                 <String>[
                   '\u2022 Olympics',
-                  '\u2022 Taco night (Rachel, Chris, and Nathan)',
+                  '\u2022 Taco night (Rachel, Chris, Nathan, and Jennifer)',
                 ],
               ),
               buildSpacer(),

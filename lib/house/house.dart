@@ -299,7 +299,7 @@ class House extends StatelessWidget {
             "Jared & Lindsey: Quail's Egg",
             "Amanda & Derek: Murphy's Run",
             'Rachel & Chris: Covey Suite',
-            'Nathan: 4-bunk'
+            'Nathan & Jennifer: 4-bunk'
           ])
         ],
       ),
