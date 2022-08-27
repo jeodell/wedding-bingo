@@ -1,5 +1,7 @@
 PODS:
   - Flutter (1.0.0)
+  - flutter_sms (1.1.0):
+    - Flutter
   - shared_preferences_ios (0.0.1):
     - Flutter
   - url_launcher_ios (0.0.1):
@@ -7,12 +9,15 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - flutter_sms (from `.symlinks/plugins/flutter_sms/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  flutter_sms:
+    :path: ".symlinks/plugins/flutter_sms/ios"
   shared_preferences_ios:
     :path: ".symlinks/plugins/shared_preferences_ios/ios"
   url_launcher_ios:
@@ -20,6 +25,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  flutter_sms: 91ce41530f55c85d6524d82307a5d555844c086a
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
 
