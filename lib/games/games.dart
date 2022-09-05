@@ -648,8 +648,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
               Container(
                 width: double.infinity,
                 height: 130,
-                margin: const EdgeInsets.only(
-                    bottom: 10.0, left: 30.0, right: 30.0),
+                margin: const EdgeInsets.fromLTRB(32, 0, 32, 8),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
                 ),
