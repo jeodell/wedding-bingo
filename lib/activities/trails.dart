@@ -145,7 +145,7 @@ class Trails extends StatelessWidget {
                     if (await canLaunchUrl(trailsUri)) {
                       launchUrl(trailsUri);
                     } else {
-                      throw 'Could not launch $trailsUri';
+                      throw Exception('Could not launch $trailsUri');
                     }
                     return;
                   },

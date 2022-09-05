@@ -26,7 +26,7 @@ Widget buildTextWithLink(String text, String link, Color color) {
       if (await canLaunchUrl(linkUri)) {
         launchUrl(linkUri);
       } else {
-        throw 'Could not launch $linkUri';
+        throw Exception('Could not launch $linkUri');
       }
     },
     child: Row(

@@ -151,7 +151,7 @@ class Other extends StatelessWidget {
                   if (await canLaunchUrl(boulderingUri)) {
                     launchUrl(boulderingUri);
                   } else {
-                    throw 'Could not launch $boulderingUri';
+                    throw Exception('Could not launch $boulderingUri');
                   }
                 },
                 child: Padding(

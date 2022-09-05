@@ -98,7 +98,7 @@ class House extends StatelessWidget {
           if (await canLaunchUrl(vrboUri)) {
             launchUrl(vrboUri);
           } else {
-            throw 'Could not launch $vrboUri';
+            throw Exception('Could not launch $vrboUri');
           }
           return;
         },
@@ -130,7 +130,7 @@ class House extends StatelessWidget {
                   mode: LaunchMode.externalApplication,
                 );
               } else {
-                throw 'Could not launch $houseUri';
+                throw Exception('Could not launch $houseUri');
               }
               return;
             },
@@ -260,7 +260,7 @@ class House extends StatelessWidget {
                             mode: LaunchMode.externalApplication,
                           );
                         } else {
-                          throw 'Could not launch $linkUri';
+                          throw Exception('Could not launch $linkUri');
                         }
                       },
                   ),

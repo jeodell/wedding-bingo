@@ -402,7 +402,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(top: 4),
                     child: buildText(
