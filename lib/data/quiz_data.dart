@@ -46,12 +46,24 @@ mixin QuizData {
       ],
     },
     <String, dynamic>{
-      'question': 'What was NOT on the first album J burned for B?',
+      'question': 'What was NOT on the first CD J burned for B?',
       'answers': <Map<String, dynamic>>[
-        <String, dynamic>{'answerText': 'Sk8r Boi', 'isCorrect': true},
-        <String, dynamic>{'answerText': '', 'isCorrect': false},
-        <String, dynamic>{'answerText': '', 'isCorrect': false},
-        <String, dynamic>{'answerText': '', 'isCorrect': false},
+        <String, dynamic>{
+          'answerText': 'Sk8r Boi by Avril Lavigne',
+          'isCorrect': true
+        },
+        <String, dynamic>{
+          'answerText': 'Mad World by Gary Jules',
+          'isCorrect': false
+        },
+        <String, dynamic>{
+          'answerText': 'Laundry Room by Avett Brothers',
+          'isCorrect': false
+        },
+        <String, dynamic>{
+          'answerText': 'Weird Fishes by Radiohead',
+          'isCorrect': false
+        },
       ],
     },
     <String, dynamic>{
