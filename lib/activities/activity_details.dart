@@ -81,7 +81,7 @@ Widget buildActivityDetails(
                           mode: LaunchMode.externalApplication,
                         );
                       } else {
-                        throw 'Could not launch $linkUri';
+                        throw Exception('Could not launch $linkUri');
                       }
                     },
                 ),
@@ -120,7 +120,7 @@ Widget buildActivityReadMore(String website, String maps, Color textColor) {
                 if (await canLaunchUrl(activityUri)) {
                   launchUrl(activityUri);
                 } else {
-                  throw 'Could not launch $activityUri';
+                  throw Exception('Could not launch $activityUri');
                 }
               },
               child: buildText(
@@ -140,7 +140,7 @@ Widget buildActivityReadMore(String website, String maps, Color textColor) {
                     mode: LaunchMode.externalApplication,
                   );
                 } else {
-                  throw 'Could not launch $mapsUri';
+                  throw Exception('Could not launch $mapsUri');
                 }
               },
               child: Padding(
