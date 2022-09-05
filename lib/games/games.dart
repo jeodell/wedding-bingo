@@ -1,8 +1,5 @@
-/*
-Olympic sports scoreboard - rock stacking, veggie eating contest, putting, trivia, bocce ball, pool trick shots, corn hole, HORSE, disc accuracy, hidden immunity items
-*/
-import 'dart:math';
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +23,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
   late Future<String> _currentGuest;
   late List<DropdownMenuItem<String>> dropdownItems =
       <DropdownMenuItem<String>>[];
+  Map<String, int> numSquaresPerGuest = <String, int>{};
   bool confettiPlaying = false;
   bool _confirmGuestState = false;
   String _confirmGuestName = '';
@@ -95,23 +93,42 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
   }
 
   Future<void> _createBingoBoard() async {
+    final Map<String, int> numPhotos = BingoData.numPhotos;
     if (squaresInfo.isEmpty) {
+      int maxSquares = 0;
       final String currentGuest =
           await _currentGuest.then((String currentGuest) {
         return currentGuest.toLowerCase();
       });
+      numSquaresPerGuest.remove(currentGuest);
       final List<Map<String, String>> conditions = BingoData.conditions;
       conditions.removeWhere(
           (Map<String, String> element) => element['name'] == currentGuest);
       final int conditionsLength = conditions.length;
       for (int i = 0; i < 25; i++) {
-        final Map<String, String> currentMap =
+        Map<String, String> currentMap =
             conditions.elementAt(Random().nextInt(conditionsLength - i));
+        final bool allNumSquaresEqual = numSquaresPerGuest.values
+            .every((int element) => element == maxSquares);
+        if (!allNumSquaresEqual) {
+          while (numSquaresPerGuest[currentMap['name']]! >= maxSquares) {
+            currentMap =
+                conditions.elementAt(Random().nextInt(conditionsLength - i));
+          }
+        }
+        numSquaresPerGuest[currentMap['name']!] =
+            numSquaresPerGuest[currentMap['name']!]! + 1;
+        if (numSquaresPerGuest[currentMap['name']]! > maxSquares) {
+          maxSquares = numSquaresPerGuest[currentMap['name']]!;
+        }
         _currentVictim = currentMap['name']!;
         _currentCondition = currentMap['condition']!;
+        final int numPhotosForName = numPhotos[_currentVictim]!;
+        final int imageIndex = Random().nextInt(numPhotosForName);
         squaresInfo.add(<String, dynamic>{
           'name': _currentVictim,
           'condition': _currentCondition,
+          'imageIndex': imageIndex,
           'completed': false,
         });
         _prefs.then((SharedPreferences prefs) {
@@ -216,6 +233,44 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     }
   }
 
+  void _zoomSquare(int index) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          final String name = squaresInfo[index]['name'];
+          final String condition = squaresInfo[index]['condition'];
+          final int imageIndex = squaresInfo[index]['imageIndex'];
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            elevation: 4,
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 24),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        'assets/images/$name$imageIndex.jpg',
+                        width: MediaQuery.of(context).size.width * 0.6,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(32, 0, 32, 16),
+                    child: buildText(condition, const TextStyle(fontSize: 18)),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   Widget _buildBingo() {
     return Container(
       color: WeddingColors.sage,
@@ -223,7 +278,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
               child: buildText(
                 'Wedding Bingo',
                 const TextStyle(
@@ -244,17 +299,23 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                     mainAxisSpacing: 2,
                     crossAxisSpacing: 2,
                     children: List<TextButton>.generate(25, (int index) {
+                      final String currentName = squaresInfo[index]['name']!;
+                      final int currentImageIndex =
+                          squaresInfo[index]['imageIndex']!;
                       return TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
                         onPressed: () {
                           _completeSquare(index);
+                        },
+                        onLongPress: () {
+                          _zoomSquare(index);
                         },
                         child: Stack(
                           fit: StackFit.expand,
                           children: <Widget>[
                             if (squaresInfo[index]['completed'] == false)
                               Image.asset(
-                                'assets/images/${squaresInfo[index]['name']}.jpg',
+                                'assets/images/$currentName$currentImageIndex.jpg',
                                 width: double.infinity,
                                 fit: BoxFit.cover,
                               )
@@ -683,6 +744,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                         child: buildText(name),
                       ),
                     );
+                    numSquaresPerGuest[name.toLowerCase()] = 0;
                   }
                 }
                 if (_confirmGuestState == true) {
@@ -702,7 +764,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
-                                'assets/images/${_confirmGuestName.toLowerCase()}.jpg',
+                                'assets/images/${_confirmGuestName.toLowerCase()}0.jpg',
                                 width: 200,
                                 height: 200,
                               ),

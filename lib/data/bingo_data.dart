@@ -1,19 +1,19 @@
 mixin BingoData {
   static final List<String> guestList = <String>[
+    'Amanda',
     'Brianna',
-    'Jason',
+    'Chris',
+    'Derek',
+    'Janice',
     'Jared',
+    'Jason',
+    'Jennifer',
+    'Larry',
     'Lindsey',
     'Nathan',
-    'Jennifer',
     'Rachel',
-    'Chris',
-    'Amanda',
-    'Derek',
-    'Steve',
     'Rhonda',
-    'Janice',
-    'Larry',
+    'Steve',
   ];
 
   static final List<Map<String, String>> conditions = <Map<String, String>>[
@@ -21,7 +21,7 @@ mixin BingoData {
     <String, String>{'name': 'steve', 'condition': "Steve says 'Nice.'"},
     <String, String>{
       'name': 'steve',
-      'condition': "Steve mentions Jason's 'Big Brain'"
+      'condition': 'Steve mentions Jason\'s "Big Brain"'
     },
     <String, String>{
       'name': 'steve',
@@ -35,22 +35,31 @@ mixin BingoData {
     },
     <String, String>{
       'name': 'nathan',
-      'condition': 'Nathan talks about crypto or NFTs'
-    },
-    <String, String>{
-      'name': 'nathan',
-      'condition': 'Nathan says his catchphrase - "Zip Zap Zop"'
-    },
-    <String, String>{
-      'name': 'nathan',
       'condition': 'Nathan is goaded into doing the splits'
     },
     <String, String>{
       'name': 'nathan',
       'condition': 'Nathan makes a joke about sloppy steaks on steak night'
     },
+    <String, String>{
+      'name': 'nathan',
+      'condition': 'Nathan tries to one-up Jared'
+    },
     // Jennifer
+    <String, String>{
+      'name': 'jennifer',
+      'condition': 'Jennifer eats a strange food combination'
+    },
+    <String, String>{
+      'name': 'jennifer',
+      'condition': 'Jennifer mentions outside germs'
+    },
+    <String, String>{'name': 'jennifer', 'condition': 'Jennifer says "oh wow"'},
     // Jason
+    <String, String>{
+      'name': 'jason',
+      'condition': 'Jason has late night chocolate snack'
+    },
     <String, String>{
       'name': 'jason',
       'condition': 'Jason has late night chocolate snack'
@@ -61,10 +70,14 @@ mixin BingoData {
       'name': 'brianna',
       'condition': 'Brianna falls off her electric bike'
     },
+    <String, String>{
+      'name': 'brianna',
+      'condition': 'Brianna makes non-human sounds back and forth with someone'
+    },
     // Jared
     <String, String>{
       'name': 'jared',
-      'condition': 'Jared hug squeezes or bounce hugs someone'
+      'condition': 'Jared squeeze hugs or bounce hugs someone'
     },
     <String, String>{
       'name': 'jared',
@@ -74,17 +87,11 @@ mixin BingoData {
       'name': 'jared',
       'condition': 'Jared picks at the skin on his hands'
     },
-    <String, String>{
-      'name': 'jared',
-      'condition':
-          'Jared says his catchphrase - "You\'re pretty good for someone without a tank top'
-    },
     // Lindsey
     <String, String>{
       'name': 'lindsey',
-      'condition': "Lindsey finds a bug in J's app"
+      'condition': 'Lindsey boxes with Jared'
     },
-    <String, String>{'name': 'lindsey', 'condition': 'Lindsey boxes Jared'},
     <String, String>{
       'name': 'lindsey',
       'condition': 'Lindsey starts beating up on Nathan'
@@ -100,7 +107,7 @@ mixin BingoData {
     },
     <String, String>{
       'name': 'rhonda',
-      'condition': 'Rhonda plays non-bingo games on her phone'
+      'condition': 'Rhonda mixes up a common word or phrase'
     },
     <String, String>{
       'name': 'rhonda',
@@ -111,14 +118,10 @@ mixin BingoData {
       'name': 'rachel',
       'condition': 'Rachel has a breakfast beer'
     },
-    <String, String>{
-      'name': 'rachel',
-      'condition': 'Rachel has a salad for breakfast'
-    },
     <String, String>{'name': 'rachel', 'condition': 'Rachel plays punk music'},
     <String, String>{
       'name': 'rachel',
-      'condition': 'Rachel says "Umm" in a high pitch'
+      'condition': 'Rachel says "Umm" in a high pitch voice'
     },
     // Chris
     <String, String>{
@@ -143,6 +146,10 @@ mixin BingoData {
       'name': 'amanda',
       'condition': 'Amanda winks while poking fun at someone'
     },
+    <String, String>{
+      'name': 'amanda',
+      'condition': 'Amanda runs away from an insect'
+    },
     // Derek
     <String, String>{
       'name': 'derek',
@@ -150,17 +157,18 @@ mixin BingoData {
     },
     <String, String>{
       'name': 'derek',
-      'condition': 'Derek asks to toss the disk'
+      'condition': 'Derek wears a metal band shirt'
     },
     <String, String>{
       'name': 'derek',
-      'condition': 'Derek wears a metal band shirt'
+      'condition': 'Derek shares an interesting nature fact'
     },
     // Janice
     <String, String>{
       'name': 'janice',
       'condition': 'Janice says something about Costco'
     },
+    <String, String>{'name': 'janice', 'condition': 'Janice TODO'},
     // Larry
     <String, String>{
       'name': 'larry',
@@ -174,19 +182,19 @@ mixin BingoData {
   ];
 
   static final Map<String, int> numPhotos = <String, int>{
-    'jason': 1,
-    'brianna': 1,
-    'nathan': 1,
-    'jennifer': 1,
-    'jared': 1,
-    'lindsey': 1,
-    'rachel': 1,
+    'amanda': 2,
+    'brianna': 4,
     'chris': 1,
-    'steve': 1,
-    'rhonda': 1,
-    'larry': 1,
-    'janice': 1,
-    'amanda': 1,
     'derek': 1,
+    'janice': 1,
+    'jared': 3,
+    'jason': 3,
+    'jennifer': 1,
+    'larry': 1,
+    'lindsey': 2,
+    'nathan': 5,
+    'rachel': 3,
+    'rhonda': 1,
+    'steve': 1,
   };
 }
