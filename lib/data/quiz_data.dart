@@ -164,7 +164,7 @@ mixin QuizData {
     },
     <String, dynamic>{
       'question':
-          'What famous dish did J make during his first Haferman Thanksgiving?',
+          'What famous dish did J make for his first Haferman Thanksgiving?',
       'answers': <Map<String, dynamic>>[
         <String, dynamic>{'answerText': 'Rolls', 'isCorrect': false},
         <String, dynamic>{'answerText': 'Mac n Cheese', 'isCorrect': true},

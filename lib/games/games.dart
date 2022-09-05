@@ -549,7 +549,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: WeddingColors.pine,
+          backgroundColor: WeddingColors.pine,
           minimumSize: const Size(double.infinity, 40),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -575,7 +575,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: WeddingColors.pine,
+          backgroundColor: WeddingColors.pine,
           minimumSize: const Size(double.infinity, 40),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -640,9 +640,15 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                 children: <Widget>[
                   if (_scoreTracker.isEmpty)
                     const SizedBox(
-                      height: 24,
+                      height: 40,
                     ),
-                  if (_scoreTracker.isNotEmpty) ..._scoreTracker
+                  if (_scoreTracker.isNotEmpty)
+                    Expanded(
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 32),
+                      child: Wrap(children: <Icon>[..._scoreTracker]),
+                    )),
                 ],
               ),
               Container(
@@ -679,7 +685,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              ...(quiz[_questionIndex]['answers'] as List<Map<String, Object>>)
+              ...(quiz[_questionIndex]['answers'] as List<Map<String, dynamic>>)
                   .map(
                 (Map<String, dynamic> answer) => _buildAnswer(
                   quiz,
@@ -704,7 +710,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                       : Colors.white.withOpacity(0.75),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 8),
               _buildNextButton(quiz),
             ],
           ],
@@ -774,6 +780,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                             children: <Widget>[
                               TextButton(
                                 style: TextButton.styleFrom(
+                                    foregroundColor: WeddingColors.pine,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(0),
                                     ),
@@ -785,7 +792,6 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                                       horizontal: 32,
                                       vertical: 8,
                                     ),
-                                    primary: WeddingColors.pine,
                                     backgroundColor: Colors.white),
                                 child: buildText('Deny'),
                                 onPressed: () {
@@ -795,6 +801,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                               const SizedBox(width: 16),
                               TextButton(
                                 style: TextButton.styleFrom(
+                                    foregroundColor: Colors.white,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(0),
                                     ),
@@ -802,7 +809,6 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                                       horizontal: 32,
                                       vertical: 8,
                                     ),
-                                    primary: Colors.white,
                                     backgroundColor: WeddingColors.maine),
                                 child: buildText('Confirm'),
                                 onPressed: () {
