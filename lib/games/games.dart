@@ -175,6 +175,9 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     int numCompletedCol = 0;
     int numCompletedDiagLeft = 0;
     int numCompletedDiagRight = 0;
+    int numBingos = 0;
+    bool diagLeftBingo = false;
+    bool diagRightBingo = false;
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 5; j++) {
         if (squaresInfo[i * 5 + j]['completed'] == true) {
@@ -189,17 +192,31 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
         if (i + j == 4 && squaresInfo[i * 5 + j]['completed'] == true) {
           numCompletedDiagRight++;
         }
-        if (numCompletedRow == 5 ||
-            numCompletedCol == 5 ||
-            numCompletedDiagLeft == 5 ||
-            numCompletedDiagRight == 5) {
-          return true;
+        if (numCompletedRow == 5 || numCompletedCol == 5) {
+          numBingos += 1;
+        }
+        if (numCompletedDiagLeft == 5) {
+          diagLeftBingo = true;
+        }
+        if (numCompletedDiagRight == 5) {
+          diagRightBingo = true;
         }
       }
       numCompletedRow = 0;
       numCompletedCol = 0;
     }
-    return false;
+
+    if (diagLeftBingo) {
+      numBingos += 1;
+    }
+    if (diagRightBingo) {
+      numBingos += 1;
+    }
+    if (numBingos >= 3) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void _completeSquare(int index) {
@@ -239,6 +256,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
         builder: (BuildContext context) {
           final String name = squaresInfo[index]['name'];
           final String condition = squaresInfo[index]['condition'];
+          final bool completed = squaresInfo[index]['completed'];
           final int imageIndex = squaresInfo[index]['imageIndex'];
           return Dialog(
             shape: RoundedRectangleBorder(
@@ -255,7 +273,9 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.asset(
-                        'assets/images/$name$imageIndex.jpg',
+                        completed
+                            ? 'assets/images/$name-happy.jpg'
+                            : 'assets/images/$name$imageIndex.jpg',
                         width: MediaQuery.of(context).size.width * 0.6,
                       ),
                     ),
@@ -406,6 +426,17 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                   Padding(
                     padding: const EdgeInsets.only(top: 4),
                     child: buildText(
+                      '\u2022 Wedding Bingo is won when someone completes a total of 3 rows, columns, or diagonals',
+                      const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Josefin Sans',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: buildText(
                       '\u2022 Bingo will be played on the honor system. The prize is cool but not cool enough to lie for.',
                       const TextStyle(
                         fontSize: 16,
@@ -440,6 +471,17 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                     padding: const EdgeInsets.only(top: 4),
                     child: buildText(
                       '\u2022 If you get Bingo, let J or B know and they will review your board and determine if you have won',
+                      const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Josefin Sans',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: buildText(
+                      '\u2022 Tap on a square to mark it as completed. Long press to zoom in on the image and condition',
                       const TextStyle(
                         fontSize: 16,
                         fontFamily: 'Josefin Sans',
