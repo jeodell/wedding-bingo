@@ -114,16 +114,19 @@ class Schedule extends StatelessWidget {
                 <String>[
                   '\u2022 Check-in after 4pm',
                   '\u2022 Grocery shopping (Costco in Wenatchee)',
-                  '\u2022 Order pizza for dinner',
+                  '\u2022 Order pizza and salads for dinner',
+                  '\u2022 House of the Dragon in theatre room',
                 ],
               ),
               buildSpacer(),
               _buildHeaderWithDivider('Monday | 9/12', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
+                  '\u2022 Breakfast (Amanda, Derek, and Janice)',
                   '\u2022 J&B go to Chelan Register of Deeds',
                   '\u2022 J&B tour Leavenworth Haus Apartments',
-                  '\u2022 Electric Bicycle Winery Tour',
+                  '\u2022 12:30 Electric Bicycle Tour to Winery (~2.5 hours)',
+                  '\u2022 Plain Cellars Wine and Charcuterie',
                   '\u2022 Steak dinner (Steve, Rhonda, Rachel, and Chris)',
                 ],
               ),
@@ -149,9 +152,9 @@ class Schedule extends StatelessWidget {
               _buildHeaderWithDivider('Thursday | 9/15', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
-                  '\u2022 Hiking or golfing',
                   '\u2022 Picking wedding flowers',
-                  '\u2022 Massages late afternoon',
+                  '\u2022 10:40 Golf (J, Jared, Nathan, Steve, and Chris)',
+                  '\u2022 Massages late afternoon (J, B, and Janice)',
                   '\u2022 Going out for dinner',
                 ],
               ),
