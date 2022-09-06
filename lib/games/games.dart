@@ -437,7 +437,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                   Padding(
                     padding: const EdgeInsets.only(top: 4),
                     child: buildText(
-                      '\u2022 Bingo will be played on the honor system. The prize is cool but not cool enough to lie for.',
+                      '\u2022 Bingo will be played on the honor system - the prize is cool but not cool enough to lie for',
                       const TextStyle(
                         fontSize: 16,
                         fontFamily: 'Josefin Sans',
