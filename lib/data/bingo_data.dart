@@ -35,7 +35,7 @@ mixin BingoData {
     },
     <String, String>{
       'name': 'nathan',
-      'condition': 'Nathan is goaded into doing the splits'
+      'condition': 'Nathan randomly starts stretching'
     },
     <String, String>{
       'name': 'nathan',
@@ -62,18 +62,34 @@ mixin BingoData {
     },
     <String, String>{
       'name': 'jason',
-      'condition': 'Jason has late night chocolate snack'
+      'condition':
+          'J gets into comfy clothes immediately after arriving back at the house'
+    },
+    <String, String>{
+      'name': 'jason',
+      'condition':
+          'J randomly headbangs/flips his hair up and down aggressively'
+    },
+    <String, String>{
+      'name': 'jason',
+      'condition': 'J makes a self deprecating joke'
     },
     // Brianna
     <String, String>{'name': 'brianna', 'condition': 'Brianna cries'},
     <String, String>{
       'name': 'brianna',
-      'condition': 'Brianna falls off her electric bike'
+      'condition': 'Brianna makes non-human sounds back and forth with someone'
     },
     <String, String>{
       'name': 'brianna',
-      'condition': 'Brianna makes non-human sounds back and forth with someone'
+      'condition':
+          'Brianna falls behind on a hike because she is taking pictures'
     },
+    <String, String>{
+      'name': 'brianna',
+      'condition': 'Brianna dominates in a board game'
+    },
+    <String, String>{'name': 'brianna', 'condition': 'Brianna tackles J'},
     // Jared
     <String, String>{
       'name': 'jared',
@@ -87,15 +103,16 @@ mixin BingoData {
       'name': 'jared',
       'condition': 'Jared picks at the skin on his hands'
     },
+    <String, String>{
+      'name': 'jared',
+      'condition': 'Jared participates in making a beat'
+    },
     // Lindsey
     <String, String>{
       'name': 'lindsey',
-      'condition': 'Lindsey boxes with Jared'
+      'condition': 'Lindsey starts boxing Jared'
     },
-    <String, String>{
-      'name': 'lindsey',
-      'condition': 'Lindsey starts beating up on Nathan'
-    },
+    <String, String>{'name': 'lindsey', 'condition': 'Lindsey insults Nathan'},
     <String, String>{
       'name': 'lindsey',
       'condition': 'Lindsey sneezes more than twice in a row'
@@ -168,7 +185,15 @@ mixin BingoData {
       'name': 'janice',
       'condition': 'Janice says something about Costco'
     },
-    <String, String>{'name': 'janice', 'condition': 'Janice TODO'},
+    <String, String>{
+      'name': 'janice',
+      'condition': 'Janice helps out and says "Tell me what you need me to do"'
+    },
+    <String, String>{
+      'name': 'janice',
+      'condition':
+          'Janice does a head tilt, smile, hand clasp, and says "Aww" at something adorable'
+    },
     // Larry
     <String, String>{
       'name': 'larry',
@@ -195,6 +220,6 @@ mixin BingoData {
     'nathan': 5,
     'rachel': 3,
     'rhonda': 1,
-    'steve': 1,
+    'steve': 3,
   };
 }
