@@ -212,7 +212,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
     if (diagRightBingo) {
       numBingos += 1;
     }
-    if (numBingos >= 3) {
+    if (numBingos >= 2) {
       return true;
     } else {
       return false;
@@ -426,7 +426,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                   Padding(
                     padding: const EdgeInsets.only(top: 4),
                     child: buildText(
-                      '\u2022 Wedding Bingo is won when someone completes a total of 3 rows, columns, or diagonals',
+                      '\u2022 Wedding Bingo is won when someone completes a total of 2 rows, columns, or diagonals',
                       const TextStyle(
                         fontSize: 16,
                         fontFamily: 'Josefin Sans',
