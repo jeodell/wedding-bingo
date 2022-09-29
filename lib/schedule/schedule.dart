@@ -125,7 +125,6 @@ class Schedule extends StatelessWidget {
                   '\u2022 Breakfast (Amanda, Derek, and Janice)',
                   '\u2022 J&B go to Chelan Register of Deeds',
                   '\u2022 J&B tour Leavenworth Haus Apartments',
-                  '\u2022 12:30 Electric Bicycle Tour to Winery (~2.5 hours)',
                   '\u2022 Plain Cellars Wine and Charcuterie',
                   '\u2022 Steak dinner (Steve, Rhonda, Rachel, and Chris)',
                 ],
@@ -134,8 +133,7 @@ class Schedule extends StatelessWidget {
               _buildHeaderWithDivider('Tuesday | 9/13', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
-                  '\u2022 Optional Enchantments hike for the masochistic',
-                  '\u2022 Optional hike to Colchuck lake for the sane',
+                  '\u2022 Massages for J&B',
                   '\u2022 Lasagna for dinner (Steve and Rhonda - Meat) (Janice, Amanda, and Derek - Veggie)',
                 ],
               ),
@@ -143,8 +141,8 @@ class Schedule extends StatelessWidget {
               _buildHeaderWithDivider('Wednesday | 9/14', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
+                  '\u2022 Hike to Colchuck Lake or Eight-Mile Lake',
                   '\u2022 Kayaking on Lake Wenatchee',
-                  '\u2022 Ohme Gardens',
                   '\u2022 Shawarma for dinner (Jared, Lindsey, J, and B)',
                 ],
               ),
@@ -153,8 +151,7 @@ class Schedule extends StatelessWidget {
               _buildDailySchedule(
                 <String>[
                   '\u2022 Picking wedding flowers',
-                  '\u2022 10:40 Golf (J, Jared, Nathan, Steve, and Chris)',
-                  '\u2022 Massages late afternoon (J, B, and Janice)',
+                  '\u2022 Golf (J, Jared, Nathan, Steve, and Chris)',
                   '\u2022 Going out for dinner',
                 ],
               ),
@@ -179,7 +176,8 @@ class Schedule extends StatelessWidget {
               _buildHeaderWithDivider('Saturday | 9/17', WeddingColors.pine),
               _buildDailySchedule(
                 <String>[
-                  '\u2022 Olympics',
+                  '\u2022 Electric Bike Tour around Lake Wenatchee',
+                  '\u2022 Wedding Olympics',
                   '\u2022 Taco night (Rachel, Chris, Nathan, and Jennifer)',
                 ],
               ),

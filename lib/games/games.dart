@@ -591,7 +591,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: WeddingColors.pine,
+          primary: WeddingColors.pine,
           minimumSize: const Size(double.infinity, 40),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -617,7 +617,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: WeddingColors.pine,
+          primary: WeddingColors.pine,
           minimumSize: const Size(double.infinity, 40),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -822,7 +822,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                             children: <Widget>[
                               TextButton(
                                 style: TextButton.styleFrom(
-                                    foregroundColor: WeddingColors.pine,
+                                    primary: WeddingColors.pine,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(0),
                                     ),
@@ -843,7 +843,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                               const SizedBox(width: 16),
                               TextButton(
                                 style: TextButton.styleFrom(
-                                    foregroundColor: Colors.white,
+                                    primary: Colors.white,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(0),
                                     ),
