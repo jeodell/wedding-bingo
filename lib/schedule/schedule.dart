@@ -178,7 +178,6 @@ class Schedule extends StatelessWidget {
                 <String>[
                   '\u2022 Electric Bike Tour around Lake Wenatchee',
                   '\u2022 Wedding Olympics',
-                  '\u2022 Taco night (Rachel, Chris, Nathan, and Jennifer)',
                 ],
               ),
               buildSpacer(),
