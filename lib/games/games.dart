@@ -244,7 +244,6 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
             _winner = true;
           });
           confettiController.play();
-          print('YOU WIN!');
         }
       });
     }
@@ -591,7 +590,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: WeddingColors.pine,
+          backgroundColor: WeddingColors.pine,
           minimumSize: const Size(double.infinity, 40),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -617,7 +616,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: WeddingColors.pine,
+          backgroundColor: WeddingColors.pine,
           minimumSize: const Size(double.infinity, 40),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -822,7 +821,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                             children: <Widget>[
                               TextButton(
                                 style: TextButton.styleFrom(
-                                    primary: WeddingColors.pine,
+                                    foregroundColor: WeddingColors.pine,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(0),
                                     ),
@@ -843,7 +842,7 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                               const SizedBox(width: 16),
                               TextButton(
                                 style: TextButton.styleFrom(
-                                    primary: Colors.white,
+                                    foregroundColor: Colors.white,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(0),
                                     ),
@@ -876,8 +875,9 @@ class _GamesState extends State<Games> with TickerProviderStateMixin {
                                 horizontal:
                                     MediaQuery.of(context).size.width * 0.25),
                             child: DropdownButtonFormField<String>(
-                                items: dropdownItems,
-                                onChanged: _onGuestSelection),
+                              items: dropdownItems,
+                              onChanged: _onGuestSelection,
+                            ),
                           ),
                         ],
                       ),
